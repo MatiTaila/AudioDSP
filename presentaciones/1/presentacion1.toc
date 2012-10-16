@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.10pt}
+\select@language {spanish}
+\beamer@sectionintoc {1}{Seccion 1}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Subseccion 1}{4}{0}{1}
+\beamer@sectionintoc {2}{Seccion 2}{5}{0}{2}
+\beamer@sectionintoc {3}{Referencias}{7}{0}{3}

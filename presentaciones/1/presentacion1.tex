@@ -1,0 +1,250 @@
+\documentclass[slidestop,compress,mathserif,xcolor=svgnames,table]{beamer}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc} % Ambos para solucin de asuntos de idioma.
+\usepackage{amsmath, amsfonts, amssymb} % Matemticas varias.
+\usepackage{longtable} % Tabla larga necesaria para el apndice de simbologa.
+%\usepackage{multimedia}
+\usepackage{movie15}
+\usepackage{enumitem}
+
+\setitemize{leftmargin=*}
+\setitemize[1]{label=\tiny$\blacksquare$}
+\setitemize[2]{label=\tiny$\bullet$}
+\setitemize[3]{label=\tiny$\bullet$}
+
+% --- Arreglos varios para la inclusion de imgenes
+\usepackage{subfigure}
+\DeclareGraphicsExtensions{.png,.jpg,.pdf,.mps,.gif,.bmp}
+
+% ================= CONFIGURACIN DEL BEAMER ====================
+% ===============================================================
+\mode<presentation>{
+% \usepackage{beamerthemeclassic}
+% \setbeameroption{show notes}
+% \setbeameroption{hide notes}
+\setbeameroption{notes on second screen}
+% \setbeamercovered{transparent}
+
+% \usetheme{Warsaw}
+% \usetheme{Frankfurt}
+% \usetheme{Berlin}
+ \usetheme{Madrid}
+% \usetheme{Antibes}
+
+% \usecolortheme{rose}
+% \usecolortheme{lily}
+% \usecolortheme{seahorse}
+% \usecolortheme{fly}
+\usecolortheme[RGB={70,110,45}]{structure}	% verde primaveral
+% \usecolortheme[RGB={100,12,20}]{structure}	% rojo sangre
+% \usecolortheme[RGB={30,40,30}]{structure}	    % Luto
+% \usecolortheme[RGB={160,230,70}]{structure}	% verde manzana Grand-Smith
+ 
+% \usefonttheme[onlymath]{serif}
+\usefonttheme{professionalfonts}
+
+\setbeamerfont{frametitle}{family=\rmfamily,shape=\scshape,size=\normalsize}
+%\setbeamertemplate{frametitle}[default][center]
+}
+% Make a TOC appear before every section
+\AtBeginSection[]
+{\begin{frame}
+  \tableofcontents[currentsection]
+ \end{frame}
+}
+\AtBeginNote{Notas:\par}
+
+
+% ========================= COMANDOS ============================
+% ===============================================================
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bcol}{\begin{columns}[T]}
+\newcommand{\ecol}{\end{columns}}
+\newcommand{\col}[1][0.5]{\column{#1\textwidth}}
+\newenvironment{itemize*}%
+  {\begin{itemize}%
+    \setlength{\topsep}{10pt}%
+    \setlength{\itemsep}{0pt}%
+    \setlength{\parskip}{10pt}}%
+  {\end{itemize}
+}
+
+% =================== DATOS DEL DOCUMENTO =======================
+% ===============================================================
+\author{Gonzalo Gutiérrez, Matas Tailanián}
+\date{19 de Octubre de 2012}
+\title{\textit{Seguimiento de Tempo}}
+\subtitle{Procesamiento digital de senales de audio\\Curso 2012}
+
+
+
+% ===============================================================
+% ===============================================================
+% ================ COMIENZO DEL DOCUMENTO =======================
+% ===============================================================
+% ===============================================================
+
+
+
+\begin{document}
+
+% ========================= FRAME ===============================
+% ===============================================================
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ========================= FRAME ===============================
+% ===============================================================
+\begin{frame}
+\frametitle{Resumen}
+\tableofcontents
+\end{frame}
+
+
+\section{Seccion 1}
+\subsection{Subseccion 1}
+% ========================= FRAME ===============================
+% ===============================================================
+\begin{frame}
+\frametitle{Titulo de la diapo}
+	
+\end{frame}
+
+
+\section{Seccion 2}
+% ========================= FRAME ===============================
+% ===============================================================
+\begin{frame}
+\frametitle{Ttulo}
+
+\end{frame}
+
+
+\section{Referencias}
+% ===============================================================
+% ========================= FRAME ===============================
+% ===============================================================
+\begin{frame}
+\frametitle{Referencias:}
+\begin{thebibliography}{99}
+\begin{small}
+\bibitem{bib:algo} Ejemplo. Aca pongo la primera referencia
+\vspace{-5pt}
+\bibitem{bib:otra_cosa}  Aca pongo otra referencia
+\vspace{-5pt}
+\bibitem{bib:y_asi} Y asi sucesivamente
+\end{small}
+\end{thebibliography}
+\end{frame}
+
+
+\frame{\frametitle{blocs}
+
+\begin{block}{title of the bloc}
+bloc text
+\end{block}
+
+\begin{exampleblock}{title of the bloc}
+bloc text
+\end{exampleblock}
+
+
+\begin{alertblock}{title of the bloc}
+bloc text
+\end{alertblock}
+}
+
+
+
+\end{document}
+
+
+
+% ================ FRAME TPICO CON FIGURA ======================
+% ===============================================================
+
+\begin{frame}
+\frametitle{Qu es un Parcial?}
+
+\begin{columns}
+
+\column{2in}
+\vspace{-25pt}
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[width=.85\textwidth]{./Pics/Espectrograma_ejemplo.jpg}
+  \end{center}
+  \vspace{-10pt}
+  \caption{Espectrograma}
+  \label{fig:espectrograma_ejemplo}
+\end{figure}
+
+\column{2in}
+\begin{itemize}
+	\item \textbf{Item 1}:\pause
+  	\begin{itemize*}
+	  \item subitem 1 \pause
+	  \item subitem 2 \pause
+	  \item subitem 3 \pause
+	\end{itemize*}
+	\item \textbf{Item 2}
+\end{itemize}
+
+\end{columns}
+\end{frame}
+
+
+
+
+% ======================== FIGURAS ==============================
+% ===============================================================
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{./Pics/		.eps}
+	\caption{		}
+	\label{fig:		}
+\end{figure}
+
+\begin{figure} [h!]
+  \centering
+  \subfloat[caption 1]{\label{fig:		}
+  		\includegraphics[width=0.45\textwidth]
+  			{./Pics/		.eps}}
+  \subfloat[caption 2]{\label{fig:		} 
+  		\includegraphics[width=0.45\textwidth]
+  			{./Pics/ 		.eps}}
+  \caption{Caption general}
+  \label{fig:	label general	}
+\end{figure}
+
+\begin{wrapfigure}{l}{0.6\textwidth}
+  \vspace{-20pt}
+  \begin{center}
+    \includegraphics[width=0.45\textwidth]
+    	{./Pics/		.eps}
+  \end{center}
+  \vspace{-20pt}
+  \caption{		}
+  \label{ 		}
+  \vspace{-10pt}
+\end{wrapfigure}
+
+\begin{figure} [h!]
+  \begin{center}
+    \begin{tabular}{cc}
+      \resizebox{50mm}{!}
+      	{\includegraphics{./Pics/ 	.eps}} &
+      \resizebox{50mm}{!}
+      	{\includegraphics{./Pics/	.eps}} \\
+      \resizebox{50mm}{!}
+      	{\includegraphics{./Pics/	.eps}} &
+      \resizebox{50mm}{!}
+      	{\includegraphics{./Pics/	.eps}} \\
+    \end{tabular}
+    \caption{ 		}
+    \label{ 		}
+  \end{center}
+\end{figure}

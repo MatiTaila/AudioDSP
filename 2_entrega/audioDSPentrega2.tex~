@@ -1,0 +1,105 @@
+%\documentclass[spanish,12pt,a4paper,titlepage,twoside,openright]{scrbook}
+\documentclass[12pt,a4paper,titlepage]{report}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage[spanish]{babel}
+\usepackage[dvips]{hyperref}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage[table]{xcolor}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{cancel}
+
+\usepackage[Sonny]{fncychap}
+%\usepackage[Glenn]{fncychap}
+%\usepackage[Conny]{fncychap}
+%\usepackage[Rejne]{fncychap}
+%\usepackage[Bjarne]{fncychap}
+
+\usepackage{subfiles}
+\usepackage{framed}
+\usepackage{appendix}
+\setlength{\topmargin}{-1.5cm}
+\setlength{\textheight}{25cm}
+\setlength{\oddsidemargin}{0.3cm} 
+\setlength{\textwidth}{15cm}
+\setlength{\columnsep}{0cm}
+%\setkomafont{disposition}{\normalfont\bfseries}
+\captionsetup{tablename=Tabla}
+
+\ChNameVar{\bfseries\LARGE\sf}\ChNumVar{\fontsize{62}{65}\selectfont}
+\ChTitleVar{\bfseries\LARGE\sf} \ChRuleWidth{2pt} \ChNameAsIs
+\ChTitleAsIs
+\renewcommand\FmN[4]{}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+
+
+\begin{titlepage}
+\begin{center}
+\vfill
+%\vspace{50cm}
+\textsc{\LARGE Facultad de Ingenier\'ia de la Universidad de la Rep\'ublica}\\[1.5cm]
+\vspace{2cm}
+\textsc{\LARGE Procesamiento Digital de Señales de Audio\\[1cm]Curso 2012}\\[0.5cm]
+\vspace{2.3cm}
+% Title
+\HRule \\[0.4cm]
+{ \huge \bfseries Reconocimiento de Tempo}\\[0.4cm]
+\HRule \\[1.5cm]
+\vspace{2cm}
+% Author and supervisor
+%\begin{center}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Autores:}\\
+%\begin{center}
+%\begin{LARGE}
+Gonzalo \textsc{Gutiérrez}\\ Mat\'ias \textsc{Tailani\'an}
+%\end{LARGE}
+%\end{center}
+\end{flushleft}
+\end{minipage}
+%\end{center}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\end{flushright}
+\end{minipage}
+
+\vspace{2cm}
+
+\vfill
+\begin{figure} [h!]
+\centering
+\subfloat{\includegraphics[width=0.25\textwidth]{./pics/logoIIE_transparente.png}}\hspace{1cm}
+\subfloat{\includegraphics[width=0.15\textwidth]{./pics/logo_fing_transparente.png}}\hspace{1cm}
+\subfloat{\includegraphics[width=0.15\textwidth]{./pics/logo_udelar.png}}
+\end{figure}
+
+% Bottom of the page
+{\large \today}
+\end{center}
+\end{titlepage}
+
+\chapter*{Primera etapa}
+Una primera aproximación podría realizarse utilizando la energía y la magnitud de tiempo corto. Efectuando un proceso similar al realizado en el práctico en la parte de segmentación de voz se podría tener una idea bastante fiel de los momentos de ataque de cualquiera de los instrumentos presentes en la pieza musical.\\
+
+Como en realidad lo que interesan son más que nada los cambios repentinos de la señal, se podría utilizar la derivada tanto de la magnitud como de la energía de tiempo corto. Por ejemplo se podría trabajar con una diferenciación de primer orden de estas magnitudes. Además se podría realizar este mismo procedimiento pero por bandas de frecuencia, con el fin de captar cualquier cambio importante en la energía sea cual sea su altura. Serviría por ejemplo para cuando haya un beat de algún instrumento a una frecuencia determinada pero que no tenga demasiada energía si la comparamos con la energía global de la pieza musical.\\
+
+Una vez que se obtenga un tempo estimado al analizar alguna parte de la señal, como primera aproximación se podría analizar en múltiplos de este tiempo y corroborar que efectivamente se presenten valores importantes de alguna de estas magnitudes en dichos instantes de tiempo. Sería deseable además no exigir valores elevados en todos los múltiplos de este tiempo, para permitir recursos como puede ser un ligado en una pieza musical.\\
+
+Otra forma para estimar el tempo de una pieza musical podría ser utilizando la tasa de cruces por cero. En el caso que la pieza tenga elementos de percusión, presentará sonidos de banda ancha en esos instantes, correspondientes a los sonidos sordos de la percusión.
+
+
+\end{document}
