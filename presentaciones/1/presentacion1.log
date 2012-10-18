@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  16 OCT 2012 20:57
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  18 OCT 2012 18:28
 entering extended mode
  %&-line parsing enabled.
 **presentacion1.tex
@@ -975,48 +975,44 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfig@top=\skip69
 \subfig@bottom=\skip70
 )
-(/usr/share/texmf/tex/latex/beamer/base/themes/theme/beamerthemeMadrid.sty
-Package: beamerthemeMadrid 2010/06/17  (rcs-revision d02a7cf4d8ae)
+(/usr/share/texmf/tex/latex/beamer/base/themes/theme/beamerthemeWarsaw.sty
+Package: beamerthemeWarsaw 2010/06/17  (rcs-revision d02a7cf4d8ae)
 
-(/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemewhale.sty
-Package: beamercolorthemewhale 2010/06/17  (rcs-revision d02a7cf4d8ae)
-)
-(/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemeorchid.sty
-Package: beamercolorthemeorchid 2010/06/17  (rcs-revision d02a7cf4d8ae)
-)
 (/usr/share/texmf/tex/latex/beamer/base/themes/inner/beamerinnerthemerounded.st
 y
 Package: beamerinnerthemerounded 2010/06/17  (rcs-revision d02a7cf4d8ae)
 )
-(/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemeinfolines.
-sty
-Package: beamerouterthemeinfolines 2010/07/10  (rcs-revision 445340293dde)
+(/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemeshadow.sty
+Package: beamerouterthemeshadow 2010/06/17  (rcs-revision d02a7cf4d8ae)
+(/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemesplit.sty
+Package: beamerouterthemesplit 2010/06/17  (rcs-revision d02a7cf4d8ae)
 ))
-(/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemestructure.
-sty
-Package: beamercolorthemestructure 2010/06/17  (rcs-revision d02a7cf4d8ae)
+(/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemeorchid.sty
+Package: beamercolorthemeorchid 2010/06/17  (rcs-revision d02a7cf4d8ae)
 )
-(/usr/share/texmf/tex/latex/beamer/base/themes/font/beamerfontthemeprofessional
-fonts.sty
-Package: beamerfontthemeprofessionalfonts 2010/06/17  (rcs-revision d02a7cf4d8a
-e)
+(/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemewhale.sty
+Package: beamercolorthemewhale 2010/06/17  (rcs-revision d02a7cf4d8ae)
+))
+(/usr/share/texmf/tex/latex/beamer/base/themes/font/beamerfontthemestructurebol
+d.sty
+Package: beamerfontthemestructurebold 2010/06/17  (rcs-revision d02a7cf4d8ae)
 ) (./presentacion1.aux)
 \openout1 = `presentacion1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
 
 *geometry auto-detecting driver*
 *geometry detected driver: pdftex*
@@ -1026,7 +1022,7 @@ landscape: --
 twocolumn: --
 twoside: --
 asymmetric: --
-h-parts: 10.95003pt, 342.2953pt, 10.95003pt
+h-parts: 28.45274pt, 307.28987pt, 28.45274pt
 v-parts: 0.0pt, 273.14662pt, 0.0pt
 hmarginratio: --
 vmarginratio: --
@@ -1041,10 +1037,10 @@ driver: pdftex
 -------------------- Page layout dimensions and switches
 \paperwidth  364.19536pt
 \paperheight 273.14662pt
-\textwidth  342.2953pt
+\textwidth  307.28987pt
 \textheight 244.6939pt
-\oddsidemargin  -61.31996pt
-\evensidemargin -61.31996pt
+\oddsidemargin  -43.81725pt
+\evensidemargin -43.81725pt
 \topmargin  -72.26999pt
 \headheight 14.22636pt
 \headsep    0.0pt
@@ -1072,7 +1068,7 @@ driver: pdftex
 \MPnumerator=\count174
 \everyMPtoPDFconversion=\toks49
 ) ABD: EveryShipout initializing macros
-Package hyperref Info: Link coloring OFF on input line 90.
+Package hyperref Info: Link coloring OFF on input line 104.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
@@ -1082,8 +1078,8 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count175
 )
-LaTeX Info: Redefining \ref on input line 90.
-LaTeX Info: Redefining \pageref on input line 90.
+LaTeX Info: Redefining \ref on input line 104.
+LaTeX Info: Redefining \pageref on input line 104.
 
 (./presentacion1.out) (./presentacion1.out)
 \@outlinefile=\write5
@@ -1116,34 +1112,98 @@ tionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 ) (./presentacion1.nav)
 
+LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
+(Font)              using `OT1/cmss/bx/n' instead on input line 104.
+
+
+LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <4> not available
+(Font)              size <5> substituted on input line 110.
+
+
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 96.
+(Font)              size <5> substituted on input line 110.
 
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./presentacion1.toc)
-
-LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <10.95> not available
-(Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 103.
-
-[2
-
-] (./presentacion1.toc) [3
-
-] [4
-
-] (./presentacion1.toc) [5
-
-] [6
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-(./presentacion1.toc) [7
+<./pics/bloques.png, id=83, 1075.01625pt x 664.4825pt>
+File: ./pics/bloques.png Graphic file (type png)
 
-] [8
+<use ./pics/bloques.png>
+LaTeX Font Info:    Try loading font information for U+msa on input line 146.
+ (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 146.
 
- </usr/share/texmf/tex/latex/beamer/base/art/beamericonarticle.pdf>] [9
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+) [2
+
+ <./pics/bloques.png (PNG copy)>]
+File: ./pics/bloques.png Graphic file (type png)
+ <use ./pics/bloques.png> [3
 
 ]
+File: ./pics/bloques.png Graphic file (type png)
+ <use ./pics/bloques.png> [4
+
+]
+File: ./pics/bloques.png Graphic file (type png)
+
+<use ./pics/bloques.png> [5
+
+]
+Overfull \hbox (1.99475pt too wide) detected at line 189
+[] [][][][]
+ []
+
+[6
+
+]
+Overfull \hbox (1.99475pt too wide) detected at line 189
+[] [][]
+ []
+
+[7
+
+]
+Overfull \hbox (1.99475pt too wide) detected at line 189
+[] [][]
+ []
+
+[8
+
+] <./pics/grafica.png, id=316, 738.76pt x 420.57124pt>
+File: ./pics/grafica.png Graphic file (type png)
+
+<use ./pics/grafica.png> [9
+
+ <./pics/grafica.png (PNG copy)>]
+File: ./pics/grafica.png Graphic file (type png)
+
+<use ./pics/grafica.png> [10
+
+]
+File: ./pics/grafica.png Graphic file (type png)
+ <use ./pics/grafica.png> [11
+
+]
+File: ./pics/grafica.png Graphic file (type png)
+
+<use ./pics/grafica.png> [12
+
+] [13
+
+] [14
+
+] [15
+
+] [16
+
+] [17
+
+ </usr/share/texmf/tex/latex/beamer/base/art/beamericonarticle.pdf>]
 \tf@nav=\write6
 \openout6 = `presentacion1.nav'.
 
@@ -1158,24 +1218,34 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <10.95> not available
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
  ) 
 Here is how much of TeX's memory you used:
- 16584 strings out of 494999
- 304301 string characters out of 1180816
- 419538 words of memory out of 3000000
- 19307 multiletter control sequences out of 15000+50000
- 7075 words of font info for 25 fonts, out of 3000000 for 9000
+ 16606 strings out of 494999
+ 303063 string characters out of 1180816
+ 429403 words of memory out of 3000000
+ 19292 multiletter control sequences out of 15000+50000
+ 11666 words of font info for 43 fonts, out of 3000000 for 9000
  54 hyphenation exceptions out of 8191
- 55i,16n,67p,402b,820s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sh
-are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-t
-exlive/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-texlive/font
-s/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/cm/cmssi12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
-s/cm/cmssi8.pfb>
-Output written on presentacion1.pdf (9 pages, 132711 bytes).
+ 55i,16n,60p,402b,666s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr
+/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf
+-texlive/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fon
+ts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss10.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share
+/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msa
+m7.pfb>
+Output written on presentacion1.pdf (17 pages, 454075 bytes).
 PDF statistics:
- 343 PDF objects out of 1000 (max. 8388607)
- 26 named destinations out of 1000 (max. 500000)
- 125 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 666 PDF objects out of 1000 (max. 8388607)
+ 48 named destinations out of 1000 (max. 500000)
+ 119 words of extra memory for PDF output out of 10000 (max. 10000000)
 
