@@ -1,5 +1,5 @@
-% startup
-function [SF] = SF(x,n_win,n_hop,n_bins,win)
+function [SF] = SF(x,n_win,n_hop,n_bins,win,opt)
+
 % path = 'train13';
 % [x,fs] = wavread(['train13' '.wav']);
 L      = length(x);
@@ -38,7 +38,9 @@ h = @(x) (x+abs(x))/2;
 
 SF = sum(h(diff));
 
-figure; plot(SF)
+if opt.show_plots >= 2
+    figure; plot(SF)
+end
 
 % [B,A] = butter(7,2500/(fs/2),'low');
 % SF_filt = filter(B,A,SF);
