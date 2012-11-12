@@ -92,14 +92,45 @@ if opt.show_plots >= 2
     axis tight
 end
 
+% Limits to search
+lims = zeros(1,size(MaxTabS,1));
+for i=1:size(MaxTabS,1)-1
+    lims(i)=(MaxTabS(i)+MaxTabS(i+1))/2;
+end
+lims = [1 lims length(S)];
+
+if opt.show_plots >= 2
+    figure;
+    stem(MaxTabS(:,1),ones(size(MaxTabS(:,1))),'color',blue1)
+    hold on
+    stem(lims,ones(length(lims)),'color',green1)
+    stem(.5*agents(1).trains(:,10),'color',red2)
+    legend('posicion de los maximos del SF','limites de los rangos de busqueda','train template de ejemplo')
+end
+
+% keyboard
+
 % select best phase hipothesis
 for i = 1:length(agents)
     for j=1:n_trains
+        error = 0;
         for k = 1:size(MaxTabS,1)
+            % hay q tener en cuenta q puede no haber ningun beat del train
+            % template en el rango y q puede haber mas de uno...
+            % rango ya esta definido por lims
+            indexes = find(agents(i).trains(:,j)==1);
+            cands = indexes(find(indexes>=lims(k) & indexes<lims(k+1)));
+            if ~isempty(cands)
+                difs = abs(MaxTabS(k,1)-cands);
+                error = error + min(difs);
+            end
             % pararse en cada uno de los MaxTabS(k,1) con el mas cercano de los agents(i).train(:,j)
             % sumar errores en todos los k
         end
+        agents(i).error(j) = error;
     end
+    [~,ind] = min(agents(i).error);
+    agents(i).phi = find(agents(i).trains(:,ind)==1,1,'first');
     % me quedo con el train(:,indice) donde indice es el que tiene menos error acumulado
     % y lo guardo en agents(i).phi
 end
