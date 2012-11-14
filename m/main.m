@@ -27,7 +27,7 @@ N         = length(t_ind_w);    % frames quantity in induction window
 
 n_bins = 2048;
 
-opt.show_plots = 2;
+opt.show_plots = 3;
 
 %% Feature detection: Spectral Flux
 

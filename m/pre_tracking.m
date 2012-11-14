@@ -99,7 +99,7 @@ for i=1:size(MaxTabS,1)-1
 end
 lims = [1 lims length(S)];
 
-if opt.show_plots >= 2
+if opt.show_plots >= 3
     figure;
     stem(MaxTabS(:,1),ones(size(MaxTabS(:,1))),'color',blue1)
     hold on
@@ -135,3 +135,59 @@ for i = 1:length(agents)
     % y lo guardo en agents(i).phi
 end
 
+
+if opt.show_plots >= 3
+    ag1 = 5;
+    ag2 = 2;
+    agente1 = zeros(size(S));
+    agente1(agents(ag1).phi:agents(ag1).Pm(1):end)=1;
+    agente2 = zeros(size(S));
+    agente2(agents(ag2).phi:agents(ag2).Pm(1):end)=1;
+    ag3 = 3;
+    ag4 = 4;
+    agente3 = zeros(size(S));
+    agente3(agents(ag3).phi:agents(ag3).Pm(1):end)=1;
+    agente4 = zeros(size(S));
+    agente4(agents(ag4).phi:agents(ag4).Pm(1):end)=1;
+    figure
+    plot(S,'color',green2)
+    hold on
+    stem(max(S)*agente1,'color',blue1)
+    stem(max(S)*agente2*.8,'color',red2)
+    stem(max(S)*agente3*.6,'color',green1)
+    stem(max(S)*agente4*.4,'color',orange1)
+    legend('S','agente1 con defasaje y todo','agente 2 con defasaje y todo')
+end
+
+%% Score
+
+for i = 1:length(agents)
+    agents(i).S_raw = sum(agents(i).error);
+end
+
+tmp = zeros(length(agents),1);
+for i = 1:length(agents)
+    tmp(i) = agents(i).S_raw;
+end
+maxSraw = max(tmp);
+
+for i = 1:length(agents)
+    tmp = 0;
+    for j = 1:length(agents)
+        if j~=i
+            tmp = tmp+r(agents(i).Pm(1),agents(j).Pm(1),n_hop,fs)*agents(j).S_raw;
+        end
+    end
+    agents(i).S_rel = 10*agents(i).S_raw+tmp;
+    agents(i).S = maxSraw*agents(i).S_rel;
+end
+
+Score = zeros(length(agents),1);
+for i = 1:length(agents)
+    Score(i) = agents(i).S;
+end
+
+if opt.show_plots > 2
+    figure
+    plot(Score,'-*','color',blue2)
+end
