@@ -7,10 +7,12 @@ n_Cluster_Width=fix((25*10^(-3))/hop);
 nij=Pi/Pj;
 if abs(nij-round(nij))<=n_Cluster_Width/Pj
     n=round(nij);
-else nji=Pj/Pi;
+else
+    nji=Pj/Pi;
     if abs(nji-round(nji))<=n_Cluster_Width/Pi
         n=round(nji);
-    else n=0;
+    else
+        n=0;
     end;
 end;
 
@@ -21,5 +23,3 @@ if (1<=n)&(n<=8)
     end;
 else rn=0;
 end;
-
-
