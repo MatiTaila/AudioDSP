@@ -44,7 +44,7 @@ agents(length(P)).Pt = 0;
 agents(length(P)).trains = 0;
 
 for i = 1:length(agents)
-    agents(i).Pt = P(i,1)/fs;
+    agents(i).Pt = P(i,1)/(fs/n_hop);
 end
 for i = 1:length(agents)
     agents(i).Pm = P(i,:);
