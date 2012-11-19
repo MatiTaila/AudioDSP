@@ -47,4 +47,4 @@ end
 
 t_ind_win = t(1:N);
 SFx_filt_ind_win = SFx_filt(1:N);
-[agents] =  pre_tracking(SFx_filt_ind_win,n_win,n_hop,n_ind_win,fs,opt);
+[agents] =  pre_tracking(SFx_filt_ind_win,n_win,n_hop,fs,opt);

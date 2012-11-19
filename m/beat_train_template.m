@@ -4,6 +4,10 @@ function [train] = beat_train_template(P,N,n_win,phi)
 % n_win: windows size
 % phi: phase of train
 
+if ~exist('phi','var')
+    phi = 0;
+end
+
 M = zeros(n_win,N);
 
 lags = 0:P/N:P-P/N;
