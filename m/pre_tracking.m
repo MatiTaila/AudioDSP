@@ -40,12 +40,19 @@ P =  MaxTabAcf(MaxTabAcf(:,2)>peak_thr(MaxTabAcf(:,1))',:); % Periodo en muestra
 
 % init agents
 agents(length(P)).Pm = 0;
-agents(length(P)).Pt = 0;
-agents(length(P)).trains = 0;
+agents(length(P)).Phi = 0;
+agents(length(P)).Sraw = 0;
+agents(length(P)).Srel = 0;
+agents(length(P)).S = 0;
+agents(length(P)).T_ = 0;
+agents(length(P)).T = 0;
 
-for i = 1:length(agents)
-    agents(i).Pt = P(i,1)/(fs/n_hop);
-end
+% agents(length(P)).Pt = 0;
+% agents(length(P)).trains = 0;
+% for i = 1:length(agents)
+%     agents(i).Pt = P(i,1)/(fs/n_hop);
+% end
+
 for i = 1:length(agents)
     agents(i).Pm = P(i,1);
 end
@@ -67,8 +74,11 @@ MaxTabSF = peak_filt(S);
 
 for i=1:length(agents)
     [score,phi] = S_raw(MaxTabSF,L,agents(i).Pm,n_hop,fs);
+    
     agents(i).Phi = phi;
-    agents(i).S_raw = score;
+    agents(i).Sraw = score;
+    agents(i).T = agents(i).Phi;
+    agents(i).T_ = agents(i).T(end) + agents(i).Pm(end);
     
     if opt.show_plots && i==2
         figure
@@ -83,49 +93,40 @@ for i=1:length(agents)
     
 end
 
-Sraw = zeros(length(agents),1);
-for i = 1:length(agents)
-    Sraw(i) = agents(i).S_raw;
-end
-
-if opt.show_plots > 2
-    figure(50)
-    plot(Sraw/max(Sraw),'-*','color',blue1)
-end
-
 %% Score
-
-tmp = zeros(length(agents),1);
-for i = 1:length(agents)
-    tmp(i) = agents(i).S_raw;
-end
-maxSraw = max(tmp);
 
 for i = 1:length(agents)
     tmp = 0;
     for j = 1:length(agents)
         if j~=i
-            tmp = tmp+r(agents(i).Pm(1),agents(j).Pm(1),n_hop,fs)*agents(j).S_raw;
+            tmp = tmp+r(agents(i).Pm(1),agents(j).Pm(1),n_hop,fs)*agents(j).Sraw;
         end
     end
-    agents(i).S_rel = 10*agents(i).S_raw+tmp;
-    agents(i).S = maxSraw*agents(i).S_rel;
+    agents(i).Srel = 10*agents(i).Sraw+tmp;
+end
+
+Sraw = zeros(length(agents),1);
+Srel = zeros(length(agents),1);
+for i = 1:length(agents)
+    Sraw(i) = agents(i).Sraw;
+    Srel(i) = agents(i).Srel;
+end
+
+maxSraw = max(Sraw);
+maxSrel = max(Srel);
+
+S = zeros(length(agents),1);
+for i = 1:length(agents)
+    agents(i).S = maxSraw*agents(i).Srel/maxSrel;
+    S(i)    = agents(i).S;
 end
 
 if opt.show_plots > 2
-    S = zeros(length(agents),1);
-    for i = 1:length(agents)
-        S(i) = agents(i).S;
-    end
-    Srel = zeros(length(agents),1);
-    for i = 1:length(agents)
-        Srel(i) = agents(i).S_rel;
-    end
-    
-    figure(50)
+    figure
+    plot(Sraw,'-*','color',blue1)
     hold on
-    plot(S/max(S),'-*','color',red2)
-    legend('S raw normalizado','S normalizado','location','southeast')
+    plot(S,'-*','color',red2)
+    legend('S raw','S','location','southeast')
 end
 
 
@@ -240,5 +241,5 @@ end
 % %% Score
 % 
 % for i = 1:length(agents)
-%     agents(i).S_raw = sum(agents(i).error);
+%     agents(i).Sraw = sum(agents(i).error);
 % end

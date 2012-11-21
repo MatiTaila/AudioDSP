@@ -9,7 +9,7 @@ function [score,phi] = S_raw(MaxTabSF,L,Pi,n_hop,fs)
 % fs       : Sample rate
 % -------------------------------------------------------------------------
 
-hop        = n_hop/fs; 
+hop        = n_hop/fs;
 n_Pmax     = round(1.2/hop);
 M          = 103.3594;                  % FIXME
 n_step_phi = ceil(n_Pmax/M);
