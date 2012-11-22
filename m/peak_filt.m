@@ -30,7 +30,7 @@ for i=1:size(MaxTab,1)
     dists(i) = dist;
 end
 
-th = 0.1;
+th = 0.10;
 thr = min(dists)+(max(dists)-min(dists))*th;
 
 MaxTab2 = MaxTab(dists>thr,:);

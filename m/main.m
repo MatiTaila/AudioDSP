@@ -97,8 +97,10 @@ for i=1:size(MaxTabSF,1)-1
                     inner_count = inner_count+1;
                     agents(j).loss = 0;
                     delta_s = (1-abs(error)/Tout_R)*MaxTabSF(i,2);
-                    agents(j).Pm  = [agents(j).Pm agents(j).Pm(end)+0.25*error];
-                    agents(j).Phi = [agents(j).Phi agents(j).Phi(end)+agents(j).Pm(end)];
+%                     agents(j).Pm  = [agents(j).Pm agents(j).Pm(end)+0.25*error];
+%                     agents(j).Phi = [agents(j).Phi agents(j).Phi(end)+agents(j).Pm(end)];
+                    agents(j).Pm  = agents(j).Pm(end)+0.25*error;
+                    agents(j).Phi = agents(j).Phi(end)+agents(j).Pm(end);
                 else % outer region
                     % creo hijos
                     outer_count = outer_count+1;
@@ -107,12 +109,15 @@ for i=1:size(MaxTabSF,1)-1
                     P_hijos = {0,error,0.5*error};
                     Phi_hijos = {error,error,0.5*error};
                     for k=1:3
-                        waiting_agents(ind).Pm = [agents(j).Pm agents(j).Pm(end)+P_hijos{k}];
-                        waiting_agents(ind).Phi = [agents(j).Phi agents(j).Phi(end)+Phi_hijos{k}+waiting_agents(ind).Pm(end)];
+%                         waiting_agents(ind).Pm = [agents(j).Pm agents(j).Pm(end)+P_hijos{k}];
+%                         waiting_agents(ind).Phi = [agents(j).Phi agents(j).Phi(end)+Phi_hijos{k}+waiting_agents(ind).Pm(end)];
+                        waiting_agents(ind).Pm = agents(j).Pm(end)+P_hijos{k};
+                        waiting_agents(ind).Phi = agents(j).Phi(end)+Phi_hijos{k}+waiting_agents(ind).Pm(end);
                         
                         waiting_agents(ind).Sraw = 0;
                         waiting_agents(ind).Srel = 0;
-                        waiting_agents(ind).S = [agents(j).S 0.9*agents(j).S(end)];
+%                         waiting_agents(ind).S = [agents(j).S 0.9*agents(j).S(end)];
+                        waiting_agents(ind).S = 0.9*agents(j).S(end);
                         waiting_agents(ind).T_ = 0;
                         waiting_agents(ind).T = 0;
                         waiting_agents(ind).age = 0;
@@ -121,7 +126,8 @@ for i=1:size(MaxTabSF,1)-1
                         ind = ind+1;
                     end
                 end
-                agents(j).S = [agents(j).S agents(j).S+delta_s];
+%                 agents(j).S = [agents(j).S agents(j).S+delta_s];
+                agents(j).S = agents(j).S+delta_s;
             end    
         end
     end
@@ -200,7 +206,7 @@ for i=1:size(MaxTabSF,1)-1
     
     [a,b]=max(S);
     periodos(i) = agents(b).Pm(end);
-    
+    fases(i) = agents(b).Phi(end);
     
     if opt.log >= 1
         if length(agents) == 0
@@ -212,4 +218,11 @@ end
 
 
 
+% y=zeros(size(fases));
+% y(round(fases*n_hop))=10;
+% [B,A]   = butter(1,0.01,'low');
+% y_filt = filtfilt(B,A,y);
+% 
+% len = min(length(x),length(y));
+% wavwrite(x(1:len)+y(1:len)',fs,16,'prueba.wav')
 
