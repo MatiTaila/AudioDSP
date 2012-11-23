@@ -14,7 +14,7 @@ L      = length(S);                % induction window size [muestras]
 %% Period P    
 
 % Autocorrelation
-K         = 100;                      % Bins for autocorrelation
+K         = 300;                      % Bins for autocorrelation
 [acf,~,~] = autocorr(S,K-1);
 
 MaxTabAcf = peak_filt(acf);

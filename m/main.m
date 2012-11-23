@@ -68,7 +68,8 @@ if opt.show_plots >= 1
 end
 
 for i=1:size(MaxTabSF,1)-1
-%     if i == 25, keyboard, end
+    
+%     if i == 45, keyboard, end
     
     delete = zeros(length(agents),1);
     inner_count = 0;
@@ -98,21 +99,28 @@ for i=1:size(MaxTabSF,1)-1
                     agents(j).loss = 0;
                     delta_s = (1-abs(error)/Tout_R)*MaxTabSF(i,2);
 %                     agents(j).Pm  = [agents(j).Pm agents(j).Pm(end)+0.25*error];
-%                     agents(j).Phi = [agents(j).Phi agents(j).Phi(end)+agents(j).Pm(end)];
+                    agents(j).Phi = [agents(j).Phi agents(j).Phi(end)+agents(j).Pm(end)];
                     agents(j).Pm  = agents(j).Pm(end)+0.25*error;
-                    agents(j).Phi = agents(j).Phi(end)+agents(j).Pm(end);
+%                     agents(j).Phi = agents(j).Phi(end)+agents(j).Pm(end);
                 else % outer region
                     % creo hijos
                     outer_count = outer_count+1;
                     agents(j).loss = agents(j).loss + 1;
                     delta_s = -(abs(error)/Tout_R)*MaxTabSF(i,2);
+                    
+%                     agents(j).Pm  = [agents(j).Pm agents(j).Pm(end)];
+                    agents(j).Phi = [agents(j).Phi agents(j).Phi(end)+agents(j).Pm(end)];
+                    agents(j).Pm  = agents(j).Pm(end);
+%                     agents(j).Phi = agents(j).Phi(end)+agents(j).Pm(end);
+
                     P_hijos = {0,error,0.5*error};
                     Phi_hijos = {error,error,0.5*error};
                     for k=1:3
-%                         waiting_agents(ind).Pm = [agents(j).Pm agents(j).Pm(end)+P_hijos{k}];
-%                         waiting_agents(ind).Phi = [agents(j).Phi agents(j).Phi(end)+Phi_hijos{k}+waiting_agents(ind).Pm(end)];
                         waiting_agents(ind).Pm = agents(j).Pm(end)+P_hijos{k};
-                        waiting_agents(ind).Phi = agents(j).Phi(end)+Phi_hijos{k}+waiting_agents(ind).Pm(end);
+%                         waiting_agents(ind).Phi = agents(j).Phi(end)+Phi_hijos{k}+waiting_agents(ind).Pm(end);
+%                         waiting_agents(ind).Pm = [agents(j).Pm agents(j).Pm(end)+P_hijos{k}];
+                        waiting_agents(ind).Phi = [agents(j).Phi agents(j).Phi(end)+Phi_hijos{k}+waiting_agents(ind).Pm(end)];
+                        
                         
                         waiting_agents(ind).Sraw = 0;
                         waiting_agents(ind).Srel = 0;
@@ -216,7 +224,44 @@ for i=1:size(MaxTabSF,1)-1
     
 end
 
+%%
 
+[a,b]=max(S);
+% fases2 = zeros(length(agents),1);
+% periodos2 = zeros(length(agents),1);
+% for i=1:length(agents)
+%     periodos2(i) = agents(b).Pm(end);
+%     fases2(i) = agents(b).Phi(end);
+% end
+fases2 = agents(b).Phi;
+
+y=zeros(size(fases2));
+y(round(fases2*n_hop))=1;
+
+[beat,fs_beat] = wavread('../../../../matlab/audio/beatroot/audio/31-sticks.wav');
+
+beats = conv(beat,y);
+
+len = min(length(x),length(beats));
+
+beats2 = beats(1:len)'/max(beats(1:len));
+
+wavwrite(x(1:len)+beats2,fs,16,'./proyecto/prueba.wav')
+
+if opt.show_plots >= 1
+    figure;
+    plot(x);
+    hold on;
+    %plot(SFx_filt/max(SFx_filt)*max(x),'color',red2)
+    h = plot(MaxTabSF(:,1)*n_hop,MaxTabSF(:,2)/max(MaxTabSF(:,2))*max(x),'o','color',red2);
+    %set(get(h,'BaseLine'),'LineStyle',':')
+    set(h,'MarkerFaceColor','red')
+    plot(1:length(y),y,'color',red2)
+    for i=1:length(MaxTabSF)
+        text(MaxTabSF(i,1)*n_hop,MaxTabSF(i,2)/max(MaxTabSF(:,2))*max(x),num2str(i))
+    end
+    axis tight
+end
 
 % y=zeros(size(fases));
 % y(round(fases*n_hop))=10;
@@ -226,3 +271,4 @@ end
 % len = min(length(x),length(y));
 % wavwrite(x(1:len)+y(1:len)',fs,16,'prueba.wav')
 
+%  figure;plot_with_colormap(1:length(S),S,'Titulo','label eje x','label eje y',2,'hot')
