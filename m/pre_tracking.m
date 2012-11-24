@@ -14,7 +14,7 @@ L      = length(S);                % induction window size [muestras]
 %% Period P    
 
 % Autocorrelation
-K         = 300;                      % Bins for autocorrelation
+K         = 100;                      % Bins for autocorrelation
 [acf,~,~] = autocorr(S,K-1);
 
 MaxTabAcf = peak_filt(acf);
@@ -31,7 +31,11 @@ M       = BPS_min:(BPS_max-BPS_min)/K:BPS_max-(BPS_max-BPS_min)/K;
 delta   = 0.75;
 AcfRms  = sqrt(mean(acf));
 
-peak_thr = delta*AcfRms./M;
+peak_thr = inf*ones(size(M));
+while sum(peak_thr(MaxTabAcf(:,1)) > MaxTabAcf(:,2)')>0
+    peak_thr = delta*AcfRms./M;
+    delta = delta/2;
+end
 
 % peak_thr_interp = interp1(1:K,peak_thr,MaxTabAcf(:,1),'linear','extrap');
 % P = MaxTabAcf(MaxTabAcf(:,2)>peak_thr_interp,:);
@@ -44,8 +48,6 @@ agents(length(P)).Phi = 0;
 agents(length(P)).Sraw = 0;
 agents(length(P)).Srel = 0;
 agents(length(P)).S = 0;
-agents(length(P)).T_ = 0;
-agents(length(P)).T = 0;
 
 % agents(length(P)).Pt = 0;
 % agents(length(P)).trains = 0;
@@ -77,8 +79,6 @@ for i=1:length(agents)
     
     agents(i).Phi = phi;
     agents(i).Sraw = score;
-    agents(i).T = agents(i).Phi;
-    agents(i).T_ = agents(i).T(end) + agents(i).Pm(end);
     
     if opt.show_plots && i==2
         figure

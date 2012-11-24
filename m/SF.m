@@ -38,7 +38,7 @@ h = @(x) (x+abs(x))/2;
 
 SF = sum(h(diff));
 
-if opt.show_plots >= 2
+if opt.show_plots >= 3
     figure; plot(SF)
 end
 
