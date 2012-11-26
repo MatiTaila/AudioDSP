@@ -1,4 +1,3 @@
-% startup
 
 close all
 clear all
@@ -10,7 +9,8 @@ audio_colors
 % read file
 
 path = '';
-file = 'train13';
+file = '180BPM';
+opt.sintetica  = 1;
 % path = './proyecto/';
 % file = 'orishas_wav';
 
@@ -20,7 +20,7 @@ L      = length(x);
 
 % time windows for spectral flux
 n_win = 1024;
-n_hop = n_win/2;
+n_hop = 100;
 win   = n_win/fs;
 hop   = n_hop/fs;
 t     = win/2:hop:L/fs;         % frame times [s]
@@ -31,21 +31,23 @@ n_ind_win = ind_win*fs;
 t_ind_w   = win/2:hop:ind_win;  % frame times in induction window [s]
 N         = length(t_ind_w);    % frames quantity in induction window
 
-n_bins = 2048;
+n_bins = 4096;
 
-opt.show_plots = 2;
+opt.show_plots = 1;
 opt.save_plots = 0;
 opt.log        = 1;
 opt.wav_write  = 1;
+opt.txt_write  = 1;
 
 %% Feature detection: Spectral Flux
 
 SFx = SF(x,n_win,n_hop,n_bins,'hamming',opt);
-
+W_SFx=2*pi*fs/n_hop;
+W_c=0.28;
 % Filtrado
-[B,A]   = butter(10,.4,'low');
+[B,A]   = butter(2,0.6,'low');
 SFx_filt = filtfilt(B,A,SFx);
-
+keyboard
 %% Pre-Tracking
 
 t_ind_win = t(1:N);
@@ -62,17 +64,21 @@ MaxTabSF   = peak_filt(SFx_filt);
 
 if opt.show_plots >= 1
     figure(10)
-    plot(SFx_filt,'color',blue1)
-    hold on
-    h = plot(MaxTabSF(:,1),MaxTabSF(:,2),'o','color',red2);
-    %set(get(h,'BaseLine'),'LineStyle',':')
-    set(h,'MarkerFaceColor','red')
+     h = stem(MaxTabSF(:,1)*n_hop,MaxTabSF(:,2)/max(MaxTabSF(:,2)),'fill','--','color',red2);
+        set(get(h,'BaseLine'),'LineStyle',':')
+        set(h,'MarkerFaceColor','red')
+   hold on
+   plot(abs(x/max(x)),'.-')
+   hold on
+   plot(n_hop:n_hop:(length(SFx))*n_hop,SFx/max(SFx),'r')
+   hold on
+   plot(n_hop:n_hop:(length(SFx_filt))*n_hop,SFx_filt/max(SFx_filt),'g')
     axis tight
     for i=1:length(MaxTabSF)
         text(MaxTabSF(i,1),MaxTabSF(i,2),num2str(i))
     end
 end
-
+keyboard
 n_Pmax     = round(1.2/hop);
 
 MAX_AGENTS         = 30;
@@ -106,7 +112,7 @@ else
 end
 
 % load click sound
-[click,fs_click] = wavread('../../../../matlab/audio/beatroot/audio/31-sticks.wav');
+[click,fs_click] = wavread('..\audio\31-sticks.wav');
 if fs_click ~= fs
     fprintf('===========================================\nOJOOOO!!! FRECUENCIAS DE MUESTREO DISTINTAS\n===========================================\n')
 end
@@ -118,9 +124,34 @@ signal_out    = (x+tracked_beats)/max(abs(x+tracked_beats)+.0001);
 
 if opt.wav_write
     fprintf('|---------------------------|\n| Salvando %s_tracked.wav |\n|---------------------------| \n',file)
-    wavwrite(signal_out,fs,['./proyecto/' file '_tracked.wav'])
+    wavwrite(signal_out,fs,[file '_tracked.wav'])
 end
 
+% texto
+if opt.txt_write
+    fprintf('|---------------------------|\n| Salvando %s_tracked.txt |\n|---------------------------| \n',file)
+ % crear un archivo .txt con datos
+ fileID = fopen ([file '_tracked.txt'],'w');
+ fprintf (fileID,'%6.2f',beats_t');
+ fclose (fileID);
+end
+ 
+
+ 
+ 
+ 
+%% Test 
+fprintf('==============================================\n');
+fprintf('|---------------------------|\n| Comparando con el groundTruth de %s_tracked.txt |\n|---------------------------| \n',file)
+
+if opt.sintetica
+    fprintf('Valor esperado: %s\n',file);
+    beat_ground_truth([file '_tracked.txt']); 
+else
+     beat_ground_truth([file '.txt']); 
+     beat_ground_truth([file '_tracked.txt']); 
+end;
+ 
 %% Plots
 
 if opt.show_plots >= 1
