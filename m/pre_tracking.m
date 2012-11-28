@@ -13,8 +13,11 @@ L      = length(S);                % induction window size [muestras]
 
 %% Period P    
 
+BPS_min = 0.24;
+BPS_max = 1.2;
+
 % Autocorrelation
-K         = 100;                      % Bins for autocorrelation
+K         = round(BPS_max*fs/n_hop);     % Bins for autocorrelation
 [acf,~,~] = autocorr(S,K-1);
 
 MaxTabAcf = peak_filt(acf);
@@ -24,14 +27,14 @@ if MaxTabAcf(1,1) == 1
     MaxTabAcf(1,:) = [];
 end
 
-BPS_min = 0.24;
-BPS_max = 1.2;
+% OJOOO TODO no estoy seguro q este bien, pero creo q si
+MaxTabAcf(:,1)=MaxTabAcf(:,1)-1;
 
 M       = BPS_min:(BPS_max-BPS_min)/K:BPS_max-(BPS_max-BPS_min)/K;
 delta   = 0.75;
 AcfRms  = sqrt(mean(acf));
-if AcfRms < 0
-    fprintf('=====================================================\nEN EL PRE TRACKING MEAN(ACF) DIO NEGATIVO!!!\n=====================================================')
+if mean(acf) < 0
+    fprintf('=====================================================\nEN EL PRE TRACKING MEAN(ACF) DIO NEGATIVO!!!\n=====================================================\n')
     AcfRms = 0;
 end
 
@@ -65,7 +68,7 @@ end
 
 if opt.show_plots >= 2
     figure;
-    plot(acf,'color',green2)
+    plot(0:K-1,acf,'color',green2)
     hold on
     plot(P(:,1),P(:,2),'.','MarkerSize',20,'color',blue1);
     plot(peak_thr,'color',orange1,'linewidth',2)
@@ -84,7 +87,7 @@ for i=1:length(agents)
     agents(i).Phi = phi;
     agents(i).Sraw = score;
     
-    if opt.show_plots && i==2
+    if opt.show_plots && i==1
         figure
         h = stem(MaxTabSF(:,1),MaxTabSF(:,2),'fill','--','color',red2);
         set(get(h,'BaseLine'),'LineStyle',':')
@@ -94,7 +97,7 @@ for i=1:length(agents)
         stem(2000*bp,'color',blue1)
         legend('\fontsize{15}SF','\fontsize{15}Predicted Beats')
     end
-    
+    keyboard
 end
 
 %% Score

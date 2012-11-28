@@ -15,9 +15,9 @@ L      = length(x);
 
 % time windows for spectral flux
 n_win = 1024;
-n_hop = n_win/2;
+% n_hop = n_win/2;
 % GTR
-% n_hop = 100;
+n_hop = 100;
 win   = n_win/fs;
 hop   = n_hop/fs;
 t     = win/2:hop:L/fs;         % frame times [s]
@@ -28,9 +28,9 @@ n_ind_win = ind_win*fs;
 t_ind_w   = win/2:hop:ind_win;  % frame times in induction window [s]
 N         = length(t_ind_w);    % frames quantity in induction window
 
-n_bins = 2048;
+% n_bins = 2048;
 % GTR
-% n_bins = 4096;
+n_bins = 4096;
 
 opt.show_plots = 2;
 opt.save_plots = 0;
@@ -105,7 +105,7 @@ MAX_OUTER          = 8;
 REDUNDANCY_P_MAX   = 11.6e-3*(fs/n_hop);
 REDUNDANCY_PHI_MAX = 23.2e-3*(fs/n_hop);
 
-agents = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX);
+[agents,fases] = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX);
 % agents = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt);
 
 %% Referee
@@ -120,15 +120,24 @@ end
 [a,b]=max(S);
 
 beats_m = agents(b).Phi';
+
+% beats_m = fases';
+
 beats_t = beats_m/(fs/n_hop);
 
-y=zeros(size(beats_m));
-y(round(beats_m*n_hop)) = 1;
-if length(y)<length(x)
-    y=[y;zeros(length(x)-length(y),1)];
-else
-    y=y(1:length(x));
+y = zeros(size(x));
+while beats_m(end)*n_hop>size(x,1)
+    beats_m(end)=[];
 end
+y(round(beats_m*n_hop),1) = 1;
+
+% y=zeros(size(beats_m));
+% y(round(beats_m*n_hop)) = 1;
+% if length(y)<length(x)
+%     y=[y;zeros(length(x)-length(y),1)];
+% else
+%     y=y(1:length(x));
+% end
 
 % load click sound
 [click,fs_click] = wavread(click_path);
@@ -137,8 +146,8 @@ if fs_click ~= fs
 end
 
 % wav write
-tracked_beats = conv(y,click,'same');
-tracked_beats = tracked_beats/max(abs(tracked_beats));
+tracked_beats = conv(y,click);
+tracked_beats = tracked_beats(1:length(x))/max(abs(tracked_beats(1:length(x))));
 signal_out    = (x+tracked_beats)/max(abs(x+tracked_beats)+.0001);
 
 if opt.wav_write
@@ -177,9 +186,10 @@ if opt.show_plots >= 1
     figure;
     plot(x,'color',blue1);
     hold on;
+    plot(tracked_beats/2,'color',green1)
     lines = find(y);
     for i=1:length(lines);
-        line([lines(i) lines(i)],[-1 1],'linewidth',1.8,'color',red2);
+        line([lines(i) lines(i)],[-1 1],'linewidth',2.2,'color',red2);
     end
     %     h = stem(ejex(y~=0),y(y~=0),'color',red2,'markersize',0,'linewidth',2);
     axis tight

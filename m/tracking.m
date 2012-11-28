@@ -1,9 +1,10 @@
-function agents = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX)
+function [agents,fases] = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX)
 
 KILLED_BY_LOSS = 0;
 KILLED_BY_REDUNDANCY = 0;
 KILLED_BY_OBSOLENCE = 0;
 KILLED_BY_REPLACEMENT = 0;
+KILLED_BY_OUTER_REGION = 0;
 
 for i=1:size(MaxTabSF,1)-1
     
@@ -15,7 +16,7 @@ for i=1:size(MaxTabSF,1)-1
     waiting_agents = [];
     ind = 1;
     for j=1:length(agents)
-        
+        keyboard
         Tout_R = 0.4*agents(j).Pm(end);
         Tout_L = 0.2*agents(j).Pm(end);
         Tin    = round(46.4e-3/hop);
@@ -115,6 +116,7 @@ for i=1:size(MaxTabSF,1)-1
         if delete(j)
             agents(j) = [];
             delete(j) = [];
+            KILLED_BY_OUTER_REGION = KILLED_BY_OUTER_REGION + 1;
         else
             j=j+1;
         end
@@ -209,16 +211,16 @@ for i=1:size(MaxTabSF,1)-1
         agents(L+j)=waiting_agents(j);
     end
     
-%     % Debug
-%     P = zeros(length(agents),1);
-%     S = zeros(length(agents),1);
-%     for j=1:length(agents)
-%         P(j)=agents(j).Pm(end);
-%         S(j)=agents(j).S(end);
-%     end
-%     [a,b]=max(S);
-%     periodos(i) = agents(b).Pm(end);
-%     fases(i) = agents(b).Phi(end);
+    % Debug
+    P = zeros(length(agents),1);
+    S = zeros(length(agents),1);
+    for j=1:length(agents)
+        P(j)=agents(j).Pm(end);
+        S(j)=agents(j).S(end);
+    end
+    [a,b]=max(S);
+    periodos(i) = agents(b).Pm(end);
+    fases(i) = agents(b).Phi(end);
     
     if opt.log >= 1
         if length(agents) == 0
@@ -231,6 +233,7 @@ end
 fprintf('-----------------------------------------------\n')
 fprintf('KILLED\n')
 fprintf('-----------------------------------------------\n')
+fprintf('KILLED_BY_OUTER_REGION: %d\n',KILLED_BY_OUTER_REGION)
 fprintf('KILLED_BY_REDUNDANCY: %d\n',KILLED_BY_REDUNDANCY)
 fprintf('KILLED_BY_OBSOLENCE: %d\n',KILLED_BY_OBSOLENCE)
 fprintf('KILLED_BY_LOSS: %d\n',KILLED_BY_LOSS)
