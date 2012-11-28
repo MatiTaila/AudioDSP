@@ -6,8 +6,8 @@ audio_colors
 %% Params
 
 % read file
-path = '';
-file = 'train16';
+path = './proyecto/';
+file = '90BPM';
 
 [x,fs] = wavread([path file '.wav']);
 if size(x,2)>1, x = x(:,1); end
@@ -97,15 +97,16 @@ if opt.show_plots >= 1
     end
 end
 
-n_Pmax     = round(1.2/hop);
+n_Pmax     = round(1.20/hop);
+n_Pmin     = round(0.24/hop);
 
 MAX_AGENTS         = 30;
 MAX_OUTER          = 8;
 REDUNDANCY_P_MAX   = 11.6e-3*(fs/n_hop);
 REDUNDANCY_PHI_MAX = 23.2e-3*(fs/n_hop);
 
-% agents = tracking(agents,MaxTabSF,n_Pmax,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX);
-agents = tracking(agents,MaxTabSF,n_Pmax,hop,MAX_AGENTS,MAX_OUTER,opt);
+agents = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX);
+% agents = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt);
 
 %% Referee
 
@@ -117,7 +118,7 @@ for j=1:length(agents)
 end
 
 [a,b]=max(S);
-b = 2;
+
 beats_m = agents(b).Phi';
 beats_t = beats_m/(fs/n_hop);
 

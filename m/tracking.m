@@ -1,4 +1,4 @@
-function agents = tracking(agents,MaxTabSF,n_Pmax,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX)
+function agents = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX)
 
 KILLED_BY_LOSS = 0;
 KILLED_BY_REDUNDANCY = 0;
@@ -36,32 +36,58 @@ for i=1:size(MaxTabSF,1)-1
                     inner_count = inner_count+1;
                     agents(j).loss = 0;
                     agents(j).Pm  = agents(j).Pm(end)+0.25*error;
-%                     agents(j).Phi = agents(j).Phi(end)+agents(j).Pm(end);
-%                     agents(j).Pm  = [agents(j).Pm agents(j).Pm(end)+0.25*error];
+                    % limits for P
+                    if agents(j).Pm(end)>n_Pmax;
+                        agents(j).Pm(end) = n_Pmax;
+                        if opt.log>=1
+                            disp('inner: saturacion periodo por arriba')
+                        end
+                    elseif agents(j).Pm(end)<n_Pmin
+                        agents(j).Pm(end)=n_Pmin;
+                        if opt.log>=1
+                            disp('inner: saturacion periodo por abajo')
+                        end
+                    end
                     agents(j).Phi = [agents(j).Phi agents(j).Phi(end)+agents(j).Pm(end)];
                     delta_s = (1-abs(error)/Tout_R)*MaxTabSF(i,2)*agents(j).Pm(end)/n_Pmax;
                 else % outer region
                     % creo hijos
                     outer_count = outer_count+1;
                     agents(j).loss = agents(j).loss + 1;
-                    
                     agents(j).Pm(end)  = agents(j).Pm(end);
-%                     agents(j).Phi = agents(j).Phi(end)+agents(j).Pm(end);
-%                     agents(j).Pm  = [agents(j).Pm agents(j).Pm(end)];
+                    % limits for P
+                    if agents(j).Pm(end)>n_Pmax;
+                        agents(j).Pm(end) = n_Pmax;
+                        if opt.log>=1
+                            disp('outer: saturacion periodo por arriba')
+                        end
+                    elseif agents(j).Pm(end)<n_Pmin
+                        agents(j).Pm(end)=n_Pmin;
+                        if opt.log>=1
+                            disp('outer: saturacion periodo por abajo')
+                        end
+                    end
                     agents(j).Phi = [agents(j).Phi agents(j).Phi(end)+agents(j).Pm(end)];
-                    
                     delta_s = -(abs(error)/Tout_R)*MaxTabSF(i,2)*agents(j).Pm(end)/n_Pmax;
                     P_hijos = {0,error,0.5*error};
                     Phi_hijos = {error,error,0.5*error};
                     for k=1:3
                         waiting_agents(ind).Pm = agents(j).Pm(end)+P_hijos{k};
-%                         waiting_agents(ind).Phi = agents(j).Phi(end)+Phi_hijos{k}+waiting_agents(ind).Pm(end);
-%                         waiting_agents(ind).Pm = [agents(j).Pm agents(j).Pm(end)+P_hijos{k}];
+                        % limits for P
+                        if waiting_agents(ind).Pm(end)>n_Pmax;
+                            waiting_agents(ind).Pm(end) = n_Pmax;
+                            if opt.log>=1
+                                disp('hijo: saturacion periodo por arriba')
+                            end
+                        elseif waiting_agents(ind).Pm(end)<n_Pmin
+                            waiting_agents(ind).Pm(end)=n_Pmin;
+                            if opt.log>=1
+                                disp('hijo: saturacion periodo por abajo')
+                            end
+                        end
                         waiting_agents(ind).Phi = [agents(j).Phi agents(j).Phi(end)+Phi_hijos{k}+waiting_agents(ind).Pm(end)];
-                        
                         waiting_agents(ind).Sraw = 0;
                         waiting_agents(ind).Srel = 0;
-%                         waiting_agents(ind).S = [agents(j).S 0.9*agents(j).S(end)];
                         waiting_agents(ind).S = 0.9*agents(j).S(end);
                         waiting_agents(ind).age = 0;
                         waiting_agents(ind).loss = 0;
@@ -69,7 +95,6 @@ for i=1:size(MaxTabSF,1)-1
                         ind = ind+1;
                     end
                 end
-%                 agents(j).S = [agents(j).S agents(j).S+delta_s];
                 agents(j).S = agents(j).S+delta_s;
             end    
         end
@@ -167,16 +192,16 @@ for i=1:size(MaxTabSF,1)-1
         end
     end
     
-    % replacement
-    while length(agents)>MAX_AGENTS
-        aux = zeros(length(agents),1);
-        for j=1:length(agents)
-            aux(j)=agents(j).S(end);
-        end
-        [a,index] = min(aux);
-        agents(index)=[];
-        KILLED_BY_REPLACEMENT = KILLED_BY_REPLACEMENT + 1;
-    end
+%     % replacement
+%     while length(agents)>MAX_AGENTS
+%         aux = zeros(length(agents),1);
+%         for j=1:length(agents)
+%             aux(j)=agents(j).S(end);
+%         end
+%         [a,index] = min(aux);
+%         agents(index)=[];
+%         KILLED_BY_REPLACEMENT = KILLED_BY_REPLACEMENT + 1;
+%     end
     
     % add waiting agents
     L = length(agents);
