@@ -7,7 +7,7 @@ audio_colors
 
 % read file
 path = './proyecto/';
-file = '90BPM';
+file = '180BPM';
 
 [x,fs] = wavread([path file '.wav']);
 if size(x,2)>1, x = x(:,1); end

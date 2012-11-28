@@ -9,9 +9,11 @@ function [score,phi] = S_raw(MaxTabSF,L,Pi,n_hop,fs)
 % fs       : Sample rate
 % -------------------------------------------------------------------------
 
+BPS_max    = 1.2;
 hop        = n_hop/fs;
-n_Pmax     = round(1.2/hop);
-M          = 103.3594;                  % FIXME
+n_Pmax     = round(BPS_max/hop);
+M          = round(BPS_max*fs/n_hop);
+% M          = 103.3594;                  % FIXME
 n_step_phi = ceil(n_Pmax/M);
 
 n_Tin      = round(46.4e-3/hop);        % en muestras
@@ -22,7 +24,7 @@ scores      = zeros(N_phi,1);
 
 for j=1:N_phi
     cum_err = 0;
-    bp  = beat_train_template(Pi,1,L,(j-1)*n_step_phi); % genero el tren de beat variable en phi
+    bp  = beat_train_template(Pi,L,(j)*n_step_phi); % genero el tren de beat variable en phi
     bpi = find(bp);                                     % lugares indice de la prediccion de beat
     for i=1:length(bpi),
         [NoSeUsa,I_MaxTabSF] = min(abs(MaxTabSF(:,1)-bpi(i)));

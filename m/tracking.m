@@ -7,16 +7,13 @@ KILLED_BY_REPLACEMENT = 0;
 KILLED_BY_OUTER_REGION = 0;
 
 for i=1:size(MaxTabSF,1)-1
-    
-%     if i == 45, keyboard, end
-    
     delete = zeros(length(agents),1);
     inner_count = 0;
     outer_count = 0;
     waiting_agents = [];
     ind = 1;
     for j=1:length(agents)
-        keyboard
+%         keyboard
         Tout_R = 0.4*agents(j).Pm(end);
         Tout_L = 0.2*agents(j).Pm(end);
         Tin    = round(46.4e-3/hop);
