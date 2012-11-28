@@ -7,7 +7,7 @@ function [train] = beat_train_template(P,N,n_win,phi)
 if ~exist('phi','var')
     phi = 0;
 end
-
+% keyboard
 M = zeros(n_win,N);
 
 lags = 0:P/N:P-P/N;

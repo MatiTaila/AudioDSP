@@ -30,6 +30,10 @@ BPS_max = 1.2;
 M       = BPS_min:(BPS_max-BPS_min)/K:BPS_max-(BPS_max-BPS_min)/K;
 delta   = 0.75;
 AcfRms  = sqrt(mean(acf));
+if AcfRms < 0
+    fprintf('=====================================================\nEN EL PRE TRACKING MEAN(ACF) DIO NEGATIVO!!!\n=====================================================')
+    AcfRms = 0;
+end
 
 peak_thr = inf*ones(size(M));
 while sum(peak_thr(MaxTabAcf(:,1)) > MaxTabAcf(:,2)')>0
@@ -43,11 +47,11 @@ end
 P =  MaxTabAcf(MaxTabAcf(:,2)>peak_thr(MaxTabAcf(:,1))',:); % Periodo en muestras
 
 % init agents
-agents(length(P)).Pm = 0;
-agents(length(P)).Phi = 0;
-agents(length(P)).Sraw = 0;
-agents(length(P)).Srel = 0;
-agents(length(P)).S = 0;
+agents(size(P,1)).Pm = 0;
+agents(size(P,1)).Phi = 0;
+agents(size(P,1)).Sraw = 0;
+agents(size(P,1)).Srel = 0;
+agents(size(P,1)).S = 0;
 
 % agents(length(P)).Pt = 0;
 % agents(length(P)).trains = 0;

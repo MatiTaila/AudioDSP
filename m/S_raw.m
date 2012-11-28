@@ -46,4 +46,4 @@ for j=1:N_phi
 end
 
 [score,I] = max(scores);
-phi       = (I-1)*n_step_phi; % es I-1 porque arranca en fase 0
+phi       = (I)*n_step_phi; % es I-1 porque arranca en fase 0

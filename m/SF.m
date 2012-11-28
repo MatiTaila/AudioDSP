@@ -33,6 +33,7 @@ for i = 1:N
 end
 
 diff = abs([fx(:,2:end) zeros(n_bins,1)]) - abs(fx);
+diff = [abs(fx(:,1)) diff(:,1:end-1)];
 
 h = @(x) (x+abs(x))/2;
 

@@ -35,23 +35,22 @@ for i=1:size(MaxTabSF,1)-1
                 if abs(error)<Tin % inner region
                     inner_count = inner_count+1;
                     agents(j).loss = 0;
-                    delta_s = (1-abs(error)/Tout_R)*MaxTabSF(i,2)*agents(j).Pm(end)/n_Pmax;
                     agents(j).Pm  = agents(j).Pm(end)+0.25*error;
 %                     agents(j).Phi = agents(j).Phi(end)+agents(j).Pm(end);
 %                     agents(j).Pm  = [agents(j).Pm agents(j).Pm(end)+0.25*error];
                     agents(j).Phi = [agents(j).Phi agents(j).Phi(end)+agents(j).Pm(end)];
-
+                    delta_s = (1-abs(error)/Tout_R)*MaxTabSF(i,2)*agents(j).Pm(end)/n_Pmax;
                 else % outer region
                     % creo hijos
                     outer_count = outer_count+1;
                     agents(j).loss = agents(j).loss + 1;
-                    delta_s = -(abs(error)/Tout_R)*MaxTabSF(i,2)*agents(j).Pm(end)/n_Pmax;
                     
                     agents(j).Pm(end)  = agents(j).Pm(end);
 %                     agents(j).Phi = agents(j).Phi(end)+agents(j).Pm(end);
 %                     agents(j).Pm  = [agents(j).Pm agents(j).Pm(end)];
                     agents(j).Phi = [agents(j).Phi agents(j).Phi(end)+agents(j).Pm(end)];
-
+                    
+                    delta_s = -(abs(error)/Tout_R)*MaxTabSF(i,2)*agents(j).Pm(end)/n_Pmax;
                     P_hijos = {0,error,0.5*error};
                     Phi_hijos = {error,error,0.5*error};
                     for k=1:3

@@ -1,16 +1,22 @@
-function chasqui(fs,t,BPM,texto)
-
-% 
+function chasqui(fs,t,BPM,texto,opt)
+% -------------------------------------------------------------------------
 % [train] = beat_train_template(60*fs/BPM,1,fs*t,10);
+% -------------------------------------------------------------------------
+% Example: chasqui(44100,10,180,'180BPM',opt);
+% -------------------------------------------------------------------------
 % [B,A]   = butter(1,0.01,'low');
 % audio = filtfilt(B,A,train);
 % wavwrite(abs(audio*(1/0.02)),fs,texto);
-% 
 % plot(abs(audio*(1/0.02)))
+% -------------------------------------------------------------------------
 
 [train] = beat_train_template(60*fs/BPM,1,fs*t,10);
 % load click sound
-[click,fs_click] = wavread('..\audio\31-sticks.wav');
+if opt
+    [click,fs_click] = wavread('../../../../matlab/audio/beatroot/audio/31-sticks.wav');
+else
+    [click,fs_click] = wavread('..\audio\31-sticks.wav');
+end
 if fs_click ~= fs
     fprintf('===========================================\nOJOOOO!!! FRECUENCIAS DE MUESTREO DISTINTAS\n===========================================\n')
 end
