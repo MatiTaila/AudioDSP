@@ -6,10 +6,12 @@ audio_colors
 %% Params
 
 % read file
-path = './proyecto/';
-file = '90BPM';
-% path = '';
-% file = 'train1';
+% path = './proyecto/';
+% file = '90BPM';
+% opt.sintetica  = 1;
+path = '';
+file = 'train13';
+opt.sintetica  = 0;
 
 [x,fs] = wavread([path file '.wav']);
 if size(x,2)>1, x = x(:,1); end
@@ -18,7 +20,7 @@ L      = length(x);
 % time windows for spectral flux
 n_win = 1024;
 % n_hop = n_win/2;
-n_hop = 100;
+n_hop = 256;
 win   = n_win/fs;
 hop   = n_hop/fs;
 t     = win/2:hop:L/fs;         % frame times [s]
@@ -38,7 +40,6 @@ opt.log        = 1;
 opt.wav_write  = 1;
 opt.txt_write  = 1;
 opt.compu_mati = 1;
-opt.sintetica  = 1;
 
 if opt.compu_mati
     click_path = '../../../../matlab/audio/beatroot/audio/31-sticks.wav';
@@ -55,7 +56,9 @@ W_c=0.28;
 % [B,A]   = butter(2,W_c/4,'low');
 [B,A]   = butter(2,W_c,'low');
 % [B,A]   = butter(10,.4,'low');
+
 SFx_filt = filtfilt(B,A,SFx);
+% SFx_filt = moving_avg(SFx,5);
 
 %% Pre-Tracking
 
@@ -169,13 +172,13 @@ end
 
 fprintf('Comparando con el groundTruth de %s_tracked.txt\n-----------------------------------------------\n',file)
 
-if opt.sintetica
-    fprintf('Valor esperado: %s\n',file);
-    beat_ground_truth(['./proyecto/' file '_tracked.txt']);
-else
-    beat_ground_truth([file '.txt']);
-    beat_ground_truth([file '_tracked.txt']);
-end
+% if opt.sintetica
+%     fprintf('Valor esperado: %s\n',file);
+%     beat_ground_truth(['./proyecto/' file '_tracked.txt']);
+% else
+%     beat_ground_truth([file '.txt']);
+%     beat_ground_truth(['./proyecto/' file '_tracked.txt']);
+% end
 
 %% Plots
 

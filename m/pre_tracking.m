@@ -39,7 +39,7 @@ if mean(acf) < 0
 end
 
 peak_thr = inf*ones(size(M));
-while sum(peak_thr(MaxTabAcf(:,1)) > MaxTabAcf(:,2)')>0
+while sum(peak_thr(MaxTabAcf(:,1)) < MaxTabAcf(:,2)')<size(MaxTabAcf,1)/3
     peak_thr = delta*AcfRms./M;
     delta = delta/2;
 end

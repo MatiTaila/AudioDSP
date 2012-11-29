@@ -23,6 +23,7 @@ for i=1:size(MaxTabSF,1)-1
         
         while bp+Tout_R < m
             bp=bp+agents(j).Pm(end);
+            error = m-bp;
         end
         
         if(abs(MaxTabSF(i+1,1)-bp)>=abs(error))
