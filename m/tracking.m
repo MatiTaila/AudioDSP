@@ -1,4 +1,4 @@
-function [agents,fases] = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX)
+function [agents] = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX)
 
 KILLED_BY_LOSS = 0;
 KILLED_BY_REDUNDANCY = 0;
@@ -208,16 +208,16 @@ for i=1:size(MaxTabSF,1)-1
         agents(L+j)=waiting_agents(j);
     end
     
-    % Debug
-    P = zeros(length(agents),1);
-    S = zeros(length(agents),1);
-    for j=1:length(agents)
-        P(j)=agents(j).Pm(end);
-        S(j)=agents(j).S(end);
-    end
-    [a,b]=max(S);
-    periodos(i) = agents(b).Pm(end);
-    fases(i) = agents(b).Phi(end);
+%     % Debug
+%     P = zeros(length(agents),1);
+%     S = zeros(length(agents),1);
+%     for j=1:length(agents)
+%         P(j)=agents(j).Pm(end);
+%         S(j)=agents(j).S(end);
+%     end
+%     [a,b]=max(S);
+%     periodos(i) = agents(b).Pm(end);
+%     fases(i) = agents(b).Phi(end);
     
     if opt.log >= 1
         if length(agents) == 0

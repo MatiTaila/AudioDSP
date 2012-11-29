@@ -7,7 +7,9 @@ audio_colors
 
 % read file
 path = './proyecto/';
-file = '180BPM';
+file = '90BPM';
+% path = '';
+% file = 'train1';
 
 [x,fs] = wavread([path file '.wav']);
 if size(x,2)>1, x = x(:,1); end
@@ -16,7 +18,6 @@ L      = length(x);
 % time windows for spectral flux
 n_win = 1024;
 % n_hop = n_win/2;
-% GTR
 n_hop = 100;
 win   = n_win/fs;
 hop   = n_hop/fs;
@@ -28,9 +29,8 @@ n_ind_win = ind_win*fs;
 t_ind_w   = win/2:hop:ind_win;  % frame times in induction window [s]
 N         = length(t_ind_w);    % frames quantity in induction window
 
-% n_bins = 2048;
-% GTR
 n_bins = 4096;
+% n_bins = 2048;
 
 opt.show_plots = 2;
 opt.save_plots = 0;
@@ -51,8 +51,8 @@ end
 SFx = SF(x,n_win,n_hop,n_bins,'hamming',opt);
 W_SFx=2*pi*fs/n_hop;
 W_c=0.28;
-% Filtrado
-% GTR
+% Filtering
+% [B,A]   = butter(2,W_c/4,'low');
 [B,A]   = butter(2,W_c,'low');
 % [B,A]   = butter(10,.4,'low');
 SFx_filt = filtfilt(B,A,SFx);
@@ -105,7 +105,7 @@ MAX_OUTER          = 8;
 REDUNDANCY_P_MAX   = 11.6e-3*(fs/n_hop);
 REDUNDANCY_PHI_MAX = 23.2e-3*(fs/n_hop);
 
-[agents,fases] = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX);
+[agents] = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX);
 % agents = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt);
 
 %% Referee
@@ -120,9 +120,6 @@ end
 [a,b]=max(S);
 
 beats_m = agents(b).Phi';
-
-% beats_m = fases';
-
 beats_t = beats_m/(fs/n_hop);
 
 y = zeros(size(x));
