@@ -1,13 +1,18 @@
-function [] = chasqui_variable(fs,t,BPMini,BPMfin,texto,opt)
+function chasqui_variable(fs,t,BPMini,BPMfin,step,path,opt)
 % -------------------------------------------------------------------------
-% [train] = beat_train_template(60*fs/BPM,1,fs*t,10);
+% chasqui_variable(fs,t,BPMini,BPMfin,step,path,opt)
 % -------------------------------------------------------------------------
-% Example: chasqui(44100,10,180,'180BPM',opt);
+% Example: 
+%   chasqui_variable(44100,10,90,180,5,'./proyecto/90a180step5.wav',1);
 % -------------------------------------------------------------------------
-% [B,A]   = butter(1,0.01,'low');
-% audio = filtfilt(B,A,train);
-% wavwrite(abs(audio*(1/0.02)),fs,texto);
-% plot(abs(audio*(1/0.02)))
+% Inputs:
+%   fs     : sample rate
+%   t      : total time of de generated synthetic signal
+%   BPMini : initial beat frequency in BPMs
+%   BPMfin : final beat frequency in BPMs
+%   step   : step for changing veat frequency
+%   path   : path for saving .wav
+%   opt    : pathes for different computers: 1=Mat, 0=GTR
 % -------------------------------------------------------------------------
 
 % load click sound
@@ -20,7 +25,6 @@ if fs_click ~= fs
     fprintf('===========================================\nOJOOOO!!! FRECUENCIAS DE MUESTREO DISTINTAS\n===========================================\n')
 end
 
-step = 5;
 BPMs = min(BPMini,BPMfin):step:max(BPMini,BPMfin);
 
 P = 60*fs./BPMs;
@@ -30,34 +34,10 @@ n_win = fs*t/L;
 train = zeros(L*n_win,1); train(1)=1;
 
 for i=1:L
-    train(find(train==1,1,'last'):P(i):n_win*i)=1;
+    train(fix(find(train==1,1,'last'):P(i):n_win*i))=1;
 end
 
-figure;plot(train)
-
-
-
-% Pini = 60*fs/BPMini;
-% Pfin = 60*fs/BPMfin;
-% n_win = fs*t;
-% phi = 1;
-% 
-% step = abs(Pini-Pfin)/(n_win-1);
-% P = Pini:60*fs/5:Pfin;
-% keyboard
-% Psum  = cumsum(P);
-% train = zeros(n_win,1);
-% train(floor(Psum))=1;
-
-% BPMvar = 60*fs/BPM_var;
-% 
-% lin = phi:P:n_win;
-% var = BPMvar*(0:length(lin)-1)/length(lin);
-% 
-% train = zeros(n_win,1);
-% train(lin+var,1)=1;
-
 tracked_beats = conv(train,click);
-tracked_beats = tracked_beats/max(abs(tracked_beats));
-wavwrite(tracked_beats,fs,texto);
+tracked_beats = tracked_beats/max(abs(tracked_beats)+.00001);
+wavwrite(tracked_beats,fs,path);
 
