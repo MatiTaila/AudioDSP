@@ -7,7 +7,7 @@ audio_colors
 
 % read file
 % path = './proyecto/';
-% file = '180BPM';
+% file = '100a120step5';
 % opt.sintetica  = 1;
 path = '';
 file = 'train13';
@@ -108,8 +108,8 @@ MAX_OUTER          = 8;
 REDUNDANCY_P_MAX   = 11.6e-3*(fs/n_hop);
 REDUNDANCY_PHI_MAX = 23.2e-3*(fs/n_hop);
 
-[agents] = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX);
-% agents = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt);
+% [agents] = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX);
+agents = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt);
 
 %% Referee
 
@@ -121,7 +121,8 @@ for j=1:length(agents)
 end
 
 [a,b]=max(S);
-
+% hold off
+% b=18
 beats_m = agents(b).Phi';
 beats_t = beats_m/(fs/n_hop);
 
@@ -215,4 +216,3 @@ if opt.show_plots >= 1
     %  plot_with_colormap(1:length(agents),S,'Score','Numero de agente','Score',2,'hot')
     stem(1:length(agents),S,'o','color',blue1,'markersize',6);
 end
- 

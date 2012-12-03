@@ -32,22 +32,42 @@ MaxTabAcf(:,1)=MaxTabAcf(:,1)-1;
 
 M       = BPS_min:(BPS_max-BPS_min)/K:BPS_max-(BPS_max-BPS_min)/K;
 delta   = 0.75;
-AcfRms  = sqrt(mean(acf));
-if mean(acf) < 0
-    fprintf('=====================================================\nEN EL PRE TRACKING MEAN(ACF) DIO NEGATIVO!!!\n=====================================================\n')
-    AcfRms = 0;
-end
+
+% AcfRms  = sqrt(mean(acf));
+% if mean(acf) < 0
+%     fprintf('=====================================================\nEN EL PRE TRACKING MEAN(ACF) DIO NEGATIVO!!!\n=====================================================\n')
+%     AcfRms = 0;
+% end
+
+AcfRms   = sqrt(sum(acf.^2)/length(acf));
+peak_thr = delta*AcfRms./M;
+step     = .1*peak_thr;
 
 peak_thr = inf*ones(size(M));
+j=0;
 while sum(peak_thr(MaxTabAcf(:,1)) < MaxTabAcf(:,2)')<size(MaxTabAcf,1)/3
-    peak_thr = delta*AcfRms./M;
-    delta = delta/2;
+    peak_thr = delta*AcfRms./M-j*step;
+    if opt.show_plots>=1
+        figure(1)
+        hold on
+        plot(peak_thr,'color',orange1,'linewidth',2)
+        if opt.show_plots>=2
+            figure(2)
+            hold on
+            plot(60./((1:length(peak_thr))*n_hop/fs), peak_thr,'color',orange1,'linewidth',2)
+        end
+    end
+    j=j+1;
 end
 
 % peak_thr_interp = interp1(1:K,peak_thr,MaxTabAcf(:,1),'linear','extrap');
 % P = MaxTabAcf(MaxTabAcf(:,2)>peak_thr_interp,:);
 
 P =  MaxTabAcf(MaxTabAcf(:,2)>peak_thr(MaxTabAcf(:,1))',:); % Periodo en muestras
+
+
+% TODO if size(P,1)==0 pongo agentes predeterminados
+
 
 % init agents
 agents(size(P,1)).Pm = 0;
@@ -66,15 +86,23 @@ for i = 1:length(agents)
     agents(i).Pm = P(i,1);
 end
 
-if opt.show_plots >= 2
-    figure;
+if opt.show_plots >= 1
+    figure(1)
     plot(0:K-1,acf,'color',green2)
-    hold on
     plot(P(:,1),P(:,2),'.','MarkerSize',20,'color',blue1);
-    plot(peak_thr,'color',orange1,'linewidth',2)
     title('\fontsize{16}AUTOCORRELACION DEL SF - Maximos locales filtrados')
     xlabel('\fontsize{16}Muestras')
-    legend('Autocorrelacion','Picos','Umbral')
+    legend('Autocorrelacion','Umbral','Picos')
+    
+    if opt.show_plots >= 2
+        figure(2)
+        plot(60./((0:K-1)*n_hop/fs),acf,'color',green2)
+        plot(60./(P(:,1)*n_hop/fs),P(:,2),'.','MarkerSize',20,'color',blue1);
+        title('\fontsize{16}AUTOCORRELACION DEL SF - Maximos locales filtrados')
+        xlabel('\fontsize{16}BPMs')
+        legend('Autocorrelacion','Umbral','Picos','location','southeast')
+        axis([60/BPS_max-10 60/BPS_min+10 min(acf) max(P(:,2))*1.2])
+    end
 end
 
 %% Phase
