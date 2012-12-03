@@ -7,7 +7,7 @@ audio_colors
 
 % read file
 % path = './proyecto/';
-% file = '90BPM';
+% file = '180BPM';
 % opt.sintetica  = 1;
 path = '';
 file = 'train13';
@@ -20,7 +20,7 @@ L      = length(x);
 % time windows for spectral flux
 n_win = 1024;
 % n_hop = n_win/2;
-n_hop = 256;
+n_hop = 100;
 win   = n_win/fs;
 hop   = n_hop/fs;
 t     = win/2:hop:L/fs;         % frame times [s]
@@ -103,7 +103,7 @@ end
 n_Pmax     = round(1.20/hop);
 n_Pmin     = round(0.24/hop);
 
-MAX_AGENTS         = 30;
+MAX_AGENTS         = 50;
 MAX_OUTER          = 8;
 REDUNDANCY_P_MAX   = 11.6e-3*(fs/n_hop);
 REDUNDANCY_PHI_MAX = 23.2e-3*(fs/n_hop);
@@ -183,10 +183,10 @@ fprintf('Comparando con el groundTruth de %s_tracked.txt\n----------------------
 %% Plots
 
 if opt.show_plots >= 1
-    figure;
+    figure(50);
     plot(x,'color',blue1);
     hold on;
-    plot(tracked_beats/2,'color',green1)
+%     plot(tracked_beats/2,'color',green1)
     lines = find(y);
     for i=1:length(lines);
         line([lines(i) lines(i)],[-1 1],'linewidth',2.2,'color',red2);
@@ -201,12 +201,16 @@ for i=1:length(agents)
     Ssorted(i) = sorted_agents(i).S(end);
 end
 
+aux = zeros(length(agents),1);
+for i=1:length(agents)
+    aux(i) = frames2bpm(Psorted(i),fs,n_hop);
+end
 if opt.show_plots >= 1
-    figure;
+    figure(100);
     subplot(2,1,1)
-    h=plot(Psorted,Ssorted,'o','color',red2,'markersize',6);
+    h=plot(aux,Ssorted,'o','color',red2,'markersize',6);
     set(h,'MarkerFaceColor',red2)
-    xlabel('Periodos [muestras]')
+    xlabel('Periodos [BPM]')
     subplot(2,1,2)
     %  plot_with_colormap(1:length(agents),S,'Score','Numero de agente','Score',2,'hot')
     stem(1:length(agents),S,'o','color',blue1,'markersize',6);

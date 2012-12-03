@@ -40,7 +40,7 @@ for j=1:N_phi
                 delta_s = -(abs(n_error_rel)/n_Tout_R)*MaxTabSF(I_MaxTabSF,2);
             end
         else
-            delta_s = -2;
+            delta_s = -2*MaxTabSF(I_MaxTabSF,2);
         end
         cum_err = cum_err + delta_s*Pi/n_Pmax;
     end

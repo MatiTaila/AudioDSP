@@ -62,7 +62,7 @@ MaxTabSF3 = MaxTabSF(dists>thr,:);
 
 median_thr  = zeros(length(SFx_filt),1);
 mean_thr    = zeros(length(SFx_filt),1);
-median_size = 5;
+median_size = 256;
 for i=median_size+1:length(SFx_filt)-median_size
     frame = SFx_filt(i-median_size:i+median_size);
     median_thr(i) = median(frame);

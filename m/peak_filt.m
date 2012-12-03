@@ -4,7 +4,7 @@ audio_colors;
 
 [MaxTab, MinTab] = peakdet(x, 1e-4);
 
-MaxTab(1,:)=[];
+% MaxTab(1,:)=[];
 
 % figure;
 %     plot(x,'color',green2)

@@ -7,6 +7,7 @@ KILLED_BY_REPLACEMENT = 0;
 KILLED_BY_OUTER_REGION = 0;
 
 for i=1:size(MaxTabSF,1)-1
+%     keyboard
     delete = zeros(length(agents),1);
     inner_count = 0;
     outer_count = 0;
@@ -29,6 +30,8 @@ for i=1:size(MaxTabSF,1)-1
         if(abs(MaxTabSF(i+1,1)-bp)>=abs(error))
             
             if ( error > Tout_R) || ( error < -Tout_L )
+%                 agents(j).Phi = [agents(j).Phi agents(j).Phi(end)+agents(j).Pm(end)];
+%                 agents(j).S = agents(j).S - 2*MaxTabSF(i,2)*agents(j).Pm(end)/n_Pmax;
                 delete(j) = 1;
             else % cae dentro de alguno de los intevalos
                 if abs(error)<Tin % inner region
@@ -192,16 +195,16 @@ for i=1:size(MaxTabSF,1)-1
         end
     end
     
-%     % replacement
-%     while length(agents)>MAX_AGENTS
-%         aux = zeros(length(agents),1);
-%         for j=1:length(agents)
-%             aux(j)=agents(j).S(end);
-%         end
-%         [a,index] = min(aux);
-%         agents(index)=[];
-%         KILLED_BY_REPLACEMENT = KILLED_BY_REPLACEMENT + 1;
-%     end
+    % replacement
+    while length(agents)>MAX_AGENTS
+        aux = zeros(length(agents),1);
+        for j=1:length(agents)
+            aux(j)=agents(j).S(end);
+        end
+        [a,index] = min(aux);
+        agents(index)=[];
+        KILLED_BY_REPLACEMENT = KILLED_BY_REPLACEMENT + 1;
+    end
     
     % add waiting agents
     L = length(agents);
