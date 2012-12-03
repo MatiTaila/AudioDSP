@@ -1,4 +1,4 @@
-function [] = chasqui_variable(fs,t,BPM,BPM_var,texto,opt)
+function [] = chasqui_variable(fs,t,BPMini,BPMfin,texto,opt)
 % -------------------------------------------------------------------------
 % [train] = beat_train_template(60*fs/BPM,1,fs*t,10);
 % -------------------------------------------------------------------------
@@ -20,18 +20,44 @@ if fs_click ~= fs
     fprintf('===========================================\nOJOOOO!!! FRECUENCIAS DE MUESTREO DISTINTAS\n===========================================\n')
 end
 
-P = 60*fs/BPM;
-n_win = fs*t;
-phi = 1;
+step = 5;
+BPMs = min(BPMini,BPMfin):step:max(BPMini,BPMfin);
 
-BPMvar = 60*fs/BPM_var;
+P = 60*fs./BPMs;
+L = length(P);
+n_win = fs*t/L;
 
-lin = phi:P:n_win;
-var = BPMvar*(0:length(lin)-1)/length(lin);
+train = zeros(L*n_win,1); train(1)=1;
 
-train = zeros(n_win,1);
-train(lin+var,1)=1;
+for i=1:L
+    train(find(train==1,1,'last'):P(i):n_win*i)=1;
+end
+
+figure;plot(train)
+
+
+
+% Pini = 60*fs/BPMini;
+% Pfin = 60*fs/BPMfin;
+% n_win = fs*t;
+% phi = 1;
+% 
+% step = abs(Pini-Pfin)/(n_win-1);
+% P = Pini:60*fs/5:Pfin;
+% keyboard
+% Psum  = cumsum(P);
+% train = zeros(n_win,1);
+% train(floor(Psum))=1;
+
+% BPMvar = 60*fs/BPM_var;
+% 
+% lin = phi:P:n_win;
+% var = BPMvar*(0:length(lin)-1)/length(lin);
+% 
+% train = zeros(n_win,1);
+% train(lin+var,1)=1;
 
 tracked_beats = conv(train,click);
 tracked_beats = tracked_beats/max(abs(tracked_beats));
 wavwrite(tracked_beats,fs,texto);
+

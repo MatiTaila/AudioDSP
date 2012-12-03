@@ -195,16 +195,16 @@ for i=1:size(MaxTabSF,1)-1
         end
     end
     
-    % replacement
-    while length(agents)>MAX_AGENTS
-        aux = zeros(length(agents),1);
-        for j=1:length(agents)
-            aux(j)=agents(j).S(end);
-        end
-        [a,index] = min(aux);
-        agents(index)=[];
-        KILLED_BY_REPLACEMENT = KILLED_BY_REPLACEMENT + 1;
-    end
+%     % replacement
+%     while length(agents)>MAX_AGENTS
+%         aux = zeros(length(agents),1);
+%         for j=1:length(agents)
+%             aux(j)=agents(j).S(end);
+%         end
+%         [a,index] = min(aux);
+%         agents(index)=[];
+%         KILLED_BY_REPLACEMENT = KILLED_BY_REPLACEMENT + 1;
+%     end
     
     % add waiting agents
     L = length(agents);
