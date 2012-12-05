@@ -17,7 +17,7 @@ function beats = beat_track(wavfilename)
 
 audio_colors
 opt.sintetica  = 0;
-opt.show_plots = 2;
+opt.show_plots = 0;
 opt.save_plots = 0;
 opt.log        = 1;
 opt.wav_write  = 1;
@@ -112,8 +112,8 @@ MAX_OUTER          = 8;
 REDUNDANCY_P_MAX   = 11.6e-3*(fs/n_hop);
 REDUNDANCY_PHI_MAX = 23.2e-3*(fs/n_hop);
 
-% [agents] = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX);
-agents = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt);
+agents = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt,REDUNDANCY_P_MAX,REDUNDANCY_PHI_MAX);
+% agents = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt);
 
 %% Referee
 

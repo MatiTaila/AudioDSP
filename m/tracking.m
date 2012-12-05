@@ -128,15 +128,10 @@ for i=1:size(MaxTabSF,1)-1
         aux_len = length(agents);
         redP   = zeros(aux_len,1);
         redPhi = zeros(aux_len,1);
-        for j=1:aux_len
-            redP(j)   = agents(j).Pm(end);
-            redPhi(j) = agents(j).Phi(end);
-            %         if length(agents(j).Phi)>1
-            %             redPhi(j) = agents(j).Phi(end)-agents(j).Phi(end-1)-agents(j).Pm(end);
-            %         else
-            %             redPhi(j) = agents(j).Phi(end);
-            %         end
-        end
+        
+        redP = [agents.Pm]';
+        redPhi = [agents.Phi]';
+        
         red_del = [];
         red_ind = 1;
         for j=1:aux_len
@@ -148,18 +143,18 @@ for i=1:size(MaxTabSF,1)-1
                 end
             end
         end
-        red_del_final = zeros(size(red_del,1),1);
+        red_del_final = zeros(length(agents),1);
         for j=1:size(red_del,1)
             if agents(red_del(j,1)).age > agents(red_del(j,2)).age
-                red_del_final(red_del(j,2)) = 1;
-            else
                 red_del_final(red_del(j,1)) = 1;
+            else
+                red_del_final(red_del(j,2)) = 1;
             end
         end
         j = 1;
         while j<=length(red_del_final)
             if red_del_final(j)
-                agents(red_del_final(j)) = [];
+                agents(j) = [];
                 red_del_final(j) = [];
                 KILLED_BY_REDUNDANCY = KILLED_BY_REDUNDANCY + 1;
             else
