@@ -17,7 +17,7 @@ function beats = beat_track(wavfilename)
 
 audio_colors
 opt.sintetica  = 0;
-opt.show_plots = 0;
+opt.show_plots = 2;
 opt.save_plots = 0;
 opt.log        = 1;
 opt.wav_write  = 1;
@@ -72,6 +72,8 @@ agents =  pre_tracking(SFx_filt_ind_win,n_win,n_hop,fs,opt);
 for i=1:length(agents)
     agents(i).age = 0;
     agents(i).loss = 0;
+    agents(i).wins = 0;
+    agents(i).id = i;
 end
 
 %% Tracking
@@ -117,16 +119,17 @@ agents = tracking(agents,MaxTabSF,n_Pmax,n_Pmin,hop,MAX_AGENTS,MAX_OUTER,opt,RED
 
 %% Referee
 
-S = zeros(length(agents),1);
-P = zeros(length(agents),1);
-for j=1:length(agents)
-    S(j)=agents(j).S(end);
-    P(j)=agents(j).Pm(end);
+S = [agents.S]';
+P = [agents.Pm]';
+W = [agents.wins]';
+
+[unUsed,Windex] = max(W);
+[unUsed,b]=max(S);
+
+if Windex ~= b
+    fprintf('=====================================================\nOJOOOO!!! DISTINTOS REFEREES DAN DISTINTOS RESULTADOS\n=====================================================\n')
 end
 
-[a,b]=max(S);
-% hold off
-% b=18
 beats_m = agents(b).Phi';
 beats = beats_m/(fs/n_hop);
 
@@ -220,3 +223,5 @@ if opt.show_plots >= 1
     %  plot_with_colormap(1:length(agents),S,'Score','Numero de agente','Score',2,'hot')
     stem(1:length(agents),S,'o','color',blue1,'markersize',6);
 end
+
+% keyboard
