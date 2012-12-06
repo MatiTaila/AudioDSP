@@ -36,10 +36,12 @@ for i=1:size(MaxTabSF,1)-1
         if(abs(MaxTabSF(i+1,1)-bp)>=abs(error)) %& (abs(MaxTabSF(i-1,1)-bp)>=abs(error))
             if ( error > Tout_R) || ( error < -Tout_L )
                 delete(j) = 1;
+                agents(j).outer_loss = agents(j).outer_loss + 1;
             else % cae dentro de alguno de los intevalos
                 if abs(error)<Tin % inner region
                     inner_count = inner_count+1;
                     agents(j).loss = 0;
+                    agents(j).outer_loss = 0;
                     agents(j).Pm  = agents(j).Pm(end)+0.25*error;
                     % limits for P
                     if agents(j).Pm(end)>n_Pmax;
@@ -63,7 +65,8 @@ for i=1:size(MaxTabSF,1)-1
                     % creo hijos
                     outer_count = outer_count+1;
                     agents(j).loss = agents(j).loss + 1;
-                    agents(j).Pm(end)  = agents(j).Pm(end);
+                    agents(j).outer_loss = 0;
+                    agents(j).Pm(end) = agents(j).Pm(end);
                     % limits for P
                     if agents(j).Pm(end)>n_Pmax;
                         agents(j).Pm(end) = n_Pmax;
@@ -109,6 +112,7 @@ for i=1:size(MaxTabSF,1)-1
                         waiting_agents(ind).S = 0.9*agents(j).S(end);
                         waiting_agents(ind).age = 0;
                         waiting_agents(ind).loss = 0;
+                        waiting_agents(ind).outer_loss = 0;
                         waiting_agents(ind).wins = 0;
                         ind = ind+1;
                     end
@@ -130,7 +134,7 @@ for i=1:size(MaxTabSF,1)-1
     % conservar toda la historia e ir viendo cuando mueren
     j = 1;
     while j<=length(agents)
-        if delete(j)
+        if delete(j) & (agents(j).outer_loss>MAX_OUTER) % MAX_OUTE R is used both when bp is in outer region or outside inner and outer
             agents(j) = [];
             delete(j) = [];
             KILLED_BY_OUTER_REGION = KILLED_BY_OUTER_REGION + 1;

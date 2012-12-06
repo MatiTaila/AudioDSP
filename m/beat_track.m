@@ -17,7 +17,7 @@ function beats = beat_track(wavfilename)
 
 audio_colors
 opt.sintetica  = 0;
-opt.show_plots = 2;
+opt.show_plots = 0;
 opt.save_plots = 0;
 opt.log        = 1;
 opt.wav_write  = 1;
@@ -72,6 +72,7 @@ agents =  pre_tracking(SFx_filt_ind_win,n_win,n_hop,fs,opt);
 for i=1:length(agents)
     agents(i).age = 0;
     agents(i).loss = 0;
+    agents(i).outer_loss = 0;
     agents(i).wins = 0;
     agents(i).id = i;
 end

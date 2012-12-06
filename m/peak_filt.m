@@ -39,7 +39,7 @@ thr = min(dists)+(max(dists)-min(dists))*th;
 thr_ini=thr;
 MaxTab2 = [];
 % keyboard
-while size(MaxTab2,1)<=size(MaxTab,1)/3
+while size(MaxTab2,1)<=size(MaxTab,1)/2
     MaxTab2 = MaxTab(dists>thr,:);
     thr=thr-thr_ini*.1;
 end
