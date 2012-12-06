@@ -56,6 +56,7 @@ while sum(peak_thr(MaxTabAcf(:,1)) < MaxTabAcf(:,2)')<size(MaxTabAcf,1)/3
             hold on
             plot(60./((1:length(peak_thr))*n_hop/fs), peak_thr,'color',orange1,'linewidth',2)
         end
+        hold off
     end
     j=j+1;
 end
@@ -70,6 +71,7 @@ P =  MaxTabAcf(MaxTabAcf(:,2)>peak_thr(MaxTabAcf(:,1))',:); % Periodo en muestra
 
 
 % init agents
+agents(size(P,1)).pre = 0;
 agents(size(P,1)).Pm = 0;
 agents(size(P,1)).Phi = 0;
 agents(size(P,1)).Sraw = 0;
@@ -82,10 +84,6 @@ agents(size(P,1)).S = 0;
 %     agents(i).Pt = P(i,1)/(fs/n_hop);
 % end
 
-for i = 1:length(agents)
-    agents(i).Pm = P(i,1);
-end
-
 if opt.show_plots >= 1
     figure(1)
     plot(0:K-1,acf,'color',green2)
@@ -93,6 +91,7 @@ if opt.show_plots >= 1
     title('\fontsize{16}AUTOCORRELACION DEL SF - Maximos locales filtrados')
     xlabel('\fontsize{16}Muestras')
     legend('Autocorrelacion','Umbral','Picos')
+    hold off
     
     if opt.show_plots >= 2
         figure(2)
@@ -102,6 +101,7 @@ if opt.show_plots >= 1
         xlabel('\fontsize{16}BPMs')
         legend('Autocorrelacion','Umbral','Picos','location','southeast')
         axis([60/BPS_max-10 60/BPS_min+10 min(acf) max(P(:,2))*1.2])
+        hold off
     end
 end
 
@@ -110,9 +110,11 @@ end
 MaxTabSF = peak_filt(S);
 
 for i=1:length(agents)
-    [score,phi] = S_raw(MaxTabSF,L,agents(i).Pm,n_hop,fs);
+    [score,phi] = S_raw(MaxTabSF,L,P(i,1),n_hop,fs);
     
-    agents(i).Phi = phi;
+    agents(i).pre  = phi;
+    agents(i).Pm   = P(i,1);
+    agents(i).Phi  = 0;
     agents(i).Sraw = score;
     
     if opt.show_plots && i==1
@@ -124,6 +126,7 @@ for i=1:length(agents)
         [bp] = beat_train_template(agents(i).Pm,L,phi);
         stem(2000*bp,'color',blue1)
         legend('\fontsize{15}SF','\fontsize{15}Predicted Beats')
+        hold off
     end
 end
 
@@ -161,4 +164,5 @@ if opt.show_plots > 2
     hold on
     plot(S,'-*','color',red2)
     legend('S raw','S','location','southeast')
+    hold off
 end

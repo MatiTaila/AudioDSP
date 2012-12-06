@@ -92,6 +92,7 @@ if opt.show_plots >= 1
     for i=1:length(MaxTabSF)
         text(MaxTabSF(i,1),MaxTabSF(i,2),num2str(i))
     end
+    hold off
     figure(11)
     h = stem(MaxTabSF(:,1)*n_hop,MaxTabSF(:,2)/max(MaxTabSF(:,2)),'fill','--','color',red2);
     set(get(h,'BaseLine'),'LineStyle',':')
@@ -104,6 +105,7 @@ if opt.show_plots >= 1
     for i=1:length(MaxTabSF)
         text(MaxTabSF(i,1)*n_hop,MaxTabSF(i,2)/max(MaxTabSF(:,2)),num2str(i))
     end
+    hold off
 end
 
 n_Pmax     = round(1.20/hop);
@@ -201,6 +203,7 @@ if opt.show_plots >= 1
     end
     %     h = stem(ejex(y~=0),y(y~=0),'color',red2,'markersize',0,'linewidth',2);
     axis tight
+    hold off
 end
 
 [Psorted,PsortInd]=sort(P);
@@ -222,6 +225,7 @@ if opt.show_plots >= 1
     subplot(2,1,2)
     %  plot_with_colormap(1:length(agents),S,'Score','Numero de agente','Score',2,'hot')
     stem(1:length(agents),S,'o','color',blue1,'markersize',6);
+    hold off
 end
 
 % keyboard

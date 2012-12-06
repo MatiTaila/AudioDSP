@@ -16,12 +16,16 @@ for i=1:size(MaxTabSF,1)-1
     waiting_agents = [];
     ind = 1;
     for j=1:length(agents)
-%         keyboard
+%         if i>=52 & agents(j).id==15, keyboard, end
         Tout_R = 0.4*agents(j).Pm(end);
         Tout_L = 0.2*agents(j).Pm(end);
         Tin    = round(46.4e-3/hop);
         m      = MaxTabSF(i,1);
-        bp     = agents(j).Phi(end);
+        if agents(j).Phi(end)~=0
+            bp = agents(j).Phi(end)+agents(j).Pm;
+        else
+            bp = agents(j).pre;
+        end
         error  = m-bp;
         
         while bp+Tout_R < m
@@ -29,11 +33,8 @@ for i=1:size(MaxTabSF,1)-1
             error = m-bp;
         end
         
-        if(abs(MaxTabSF(i+1,1)-bp)>=abs(error))
-            
+        if(abs(MaxTabSF(i+1,1)-bp)>=abs(error)) %& (abs(MaxTabSF(i-1,1)-bp)>=abs(error))
             if ( error > Tout_R) || ( error < -Tout_L )
-%                 agents(j).Phi = [agents(j).Phi agents(j).Phi(end)+agents(j).Pm(end)];
-%                 agents(j).S = agents(j).S - 2*MaxTabSF(i,2)*agents(j).Pm(end)/n_Pmax;
                 delete(j) = 1;
             else % cae dentro de alguno de los intevalos
                 if abs(error)<Tin % inner region
@@ -52,7 +53,11 @@ for i=1:size(MaxTabSF,1)-1
                             disp('inner: saturacion periodo por abajo')
                         end
                     end
-                    agents(j).Phi = [agents(j).Phi agents(j).Phi(end)+agents(j).Pm(end)];
+                    if agents(j).Phi(end)~=0
+                        agents(j).Phi = [agents(j).Phi agents(j).Phi(end)+agents(j).Pm(end)];
+                    else
+                        agents(j).Phi = bp+0.25*error;
+                    end
                     delta_s = (1-abs(error)/Tout_R)*MaxTabSF(i,2)*agents(j).Pm(end)/n_Pmax;
                 else % outer region
                     % creo hijos
@@ -71,11 +76,16 @@ for i=1:size(MaxTabSF,1)-1
                             disp('outer: saturacion periodo por abajo')
                         end
                     end
-                    agents(j).Phi = [agents(j).Phi agents(j).Phi(end)+agents(j).Pm(end)];
+                    if agents(j).Phi(end)~=0
+                        agents(j).Phi = [agents(j).Phi agents(j).Phi(end)+agents(j).Pm(end)];
+                    else
+                        agents(j).Phi = bp+0.25*error;
+                    end
                     delta_s = -(abs(error)/Tout_R)*MaxTabSF(i,2)*agents(j).Pm(end)/n_Pmax;
                     P_hijos = {0,error,0.5*error};
                     Phi_hijos = {error,error,0.5*error};
                     for k=1:3
+                        waiting_agents(ind).pre = 0;
                         waiting_agents(ind).Pm = agents(j).Pm(end)+P_hijos{k};
                         % limits for P
                         if waiting_agents(ind).Pm(end)>n_Pmax;
@@ -89,14 +99,17 @@ for i=1:size(MaxTabSF,1)-1
                                 disp('hijo: saturacion periodo por abajo')
                             end
                         end
-                        waiting_agents(ind).Phi = [agents(j).Phi agents(j).Phi(end)+Phi_hijos{k}+waiting_agents(ind).Pm(end)];
+                        if agents(j).Phi(end)~=0
+                            waiting_agents(ind).Phi = [agents(j).Phi agents(j).Phi(end)+Phi_hijos{k}+waiting_agents(ind).Pm(end)];
+                        else
+                            waiting_agents(ind).Phi = bp+Phi_hijos{k}+waiting_agents(ind).Pm(end);
+                        end
                         waiting_agents(ind).Sraw = 0;
                         waiting_agents(ind).Srel = 0;
                         waiting_agents(ind).S = 0.9*agents(j).S(end);
                         waiting_agents(ind).age = 0;
                         waiting_agents(ind).loss = 0;
                         waiting_agents(ind).wins = 0;
-                        
                         ind = ind+1;
                     end
                 end
@@ -212,16 +225,16 @@ for i=1:size(MaxTabSF,1)-1
         agents(L+j)=waiting_agents(j);
     end
     
-    % Alternative Referee
-    Svec = [agents.S]';
-    [unUsed,Sindex] = max(Svec);
-    agents(Sindex).wins = agents(Sindex).wins + 1;
-    
     if opt.log >= 1
         if length(agents) == 0
             fprintf('mierda: %d\n=======================================\n',i)
         end
     end
+    
+    % Alternative Referee
+    Svec = [agents.S]';
+    [unUsed,Sindex] = max(Svec);
+    agents(Sindex).wins = agents(Sindex).wins + 1;
     
 end
 

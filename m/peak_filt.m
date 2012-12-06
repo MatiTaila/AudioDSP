@@ -4,7 +4,7 @@ audio_colors;
 
 [MaxTab, MinTab] = peakdet(x, 1e-4);
 
-MaxTab(1,:)=[];
+% MaxTab(1,:)=[];
 
 % figure;
 %     plot(x,'color',green2)
@@ -36,5 +36,10 @@ end
 th = 0.10;
 % th = 0.20;
 thr = min(dists)+(max(dists)-min(dists))*th;
-
-MaxTab2 = MaxTab(dists>thr,:);
+thr_ini=thr;
+MaxTab2 = [];
+% keyboard
+while size(MaxTab2,1)<=size(MaxTab,1)/3
+    MaxTab2 = MaxTab(dists>thr,:);
+    thr=thr-thr_ini*.1;
+end
