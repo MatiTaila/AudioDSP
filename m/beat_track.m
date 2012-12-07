@@ -20,7 +20,7 @@ opt.sintetica  = 0;
 opt.show_plots = 0;
 opt.save_plots = 0;
 opt.log        = 1;
-opt.wav_write  = 1;
+opt.wav_write  = 0;
 opt.txt_write  = 1;
 opt.compu_mati = 1;
 
@@ -95,7 +95,7 @@ if opt.show_plots >= 1
     end
     hold off
     figure(11)
-    h = stem(MaxTabSF(:,1)*n_hop,MaxTabSF(:,2)/max(MaxTabSF(:,2)),'fill','--','color',red2);
+    h = stem(MaxTabSF(:,1)*n_hop+n_win/2-n_hop,MaxTabSF(:,2)/max(MaxTabSF(:,2)),'fill','--','color',red2);
     set(get(h,'BaseLine'),'LineStyle',':')
     set(h,'MarkerFaceColor','red')
     hold on
@@ -128,27 +128,20 @@ W = [agents.wins]';
 
 [unUsed,Windex] = max(W);
 [unUsed,b]=max(S);
+% b=Windex;
 
 if Windex ~= b
     fprintf('=====================================================\nOJOOOO!!! DISTINTOS REFEREES DAN DISTINTOS RESULTADOS\n=====================================================\n')
 end
 
 beats_m = agents(b).Phi';
-beats = beats_m/(fs/n_hop);
+beats = (beats_m*n_hop+n_win/2-n_hop)/fs;
 
 y = zeros(size(x));
 while beats_m(end)*n_hop>size(x,1)
     beats_m(end)=[];
 end
-y(round(beats_m*n_hop),1) = 1;
-
-% y=zeros(size(beats_m));
-% y(round(beats_m*n_hop)) = 1;
-% if length(y)<length(x)
-%     y=[y;zeros(length(x)-length(y),1)];
-% else
-%     y=y(1:length(x));
-% end
+y(round(beats_m*n_hop+n_win/2-n_hop),1) = 1;
 
 % load click sound
 [click,fs_click] = wavread(click_path);
@@ -228,5 +221,3 @@ if opt.show_plots >= 1
     stem(1:length(agents),S,'o','color',blue1,'markersize',6);
     hold off
 end
-
-% keyboard

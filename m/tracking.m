@@ -119,6 +119,8 @@ for i=1:size(MaxTabSF,1)-1
                 end
                 agents(j).S = agents(j).S+delta_s;
             end    
+        else
+%             agents(j).S = agents(j).S-MaxTabSF(i,2)*agents(j).Pm(end)/n_Pmax;
         end
         agents(j).age=agents(j).age+1;
     end

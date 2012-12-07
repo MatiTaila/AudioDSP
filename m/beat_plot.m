@@ -10,7 +10,7 @@ if nargin < 3; tt = []; end
 if nargin < 4; ff = []; end
 if nargin < 3; D = []; end
 
-if length(s) == 0; s = '-r'; end
+if length(s) == 0; s = '-g'; end
 
 if length(D) > 0
   imagesc(tt,ff,D);
