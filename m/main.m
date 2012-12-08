@@ -89,33 +89,33 @@ save('resultados_2','beFMesure1','BPM1','beContinuityBased2','beFMesure2','BPM2'
 
 %% Load Results
 
-r1 = load('resultados');
-r2 = load('resultados_referee2');
-r3 = load('resultados_sin_Pi_Pmax');
-r4 = load('resultados_desfavoreciendo_multiplos');
-r5 = load('resultados_desfavoreciendo_multiplos_referee_2');
-r6 = load('resultados_desfavoreciendo_multiplos_pero_no_tanto');
-
-beContinuityBased = [...
-    mean([r1.beContinuityBased1;r1.beContinuityBased2;r1.beContinuityBased3]);
-    mean([r2.beContinuityBased1;r2.beContinuityBased2;r2.beContinuityBased3]);
-    mean([r3.beContinuityBased1;r3.beContinuityBased2;r3.beContinuityBased3]);
-    mean([r4.beContinuityBased1;r4.beContinuityBased2;r4.beContinuityBased3]);
-    mean([r5.beContinuityBased1;r5.beContinuityBased2;r5.beContinuityBased3]);
-    mean([r6.beContinuityBased1;r6.beContinuityBased2;r6.beContinuityBased3]) ]
-
-beFMesure = [...
-    mean([r1.beFMesure1;r1.beFMesure2;r1.beFMesure3]);
-    mean([r2.beFMesure1;r2.beFMesure2;r2.beFMesure3]);
-    mean([r3.beFMesure1;r3.beFMesure2;r3.beFMesure3]);
-    mean([r4.beFMesure1;r4.beFMesure2;r4.beFMesure3]);
-    mean([r5.beFMesure1;r5.beFMesure2;r5.beFMesure3]);
-    mean([r6.beFMesure1;r6.beFMesure2;r6.beFMesure3]) ]
-
-cocientes = [...
-    [r1.BPM1(:,2)./r1.BPM1(:,3);r1.BPM2(:,2)./r1.BPM2(:,3);r1.BPM3(:,2)./r1.BPM3(:,3)]';
-    [r2.BPM1(:,2)./r2.BPM1(:,3);r2.BPM2(:,2)./r2.BPM2(:,3);r2.BPM3(:,2)./r2.BPM3(:,3)]';
-    [r3.BPM1(:,2)./r3.BPM1(:,3);r3.BPM2(:,2)./r3.BPM2(:,3);r3.BPM3(:,2)./r3.BPM3(:,3)]';
-    [r4.BPM1(:,2)./r4.BPM1(:,3);r4.BPM2(:,2)./r4.BPM2(:,3);r4.BPM3(:,2)./r4.BPM3(:,3)]';
-    [r5.BPM1(:,2)./r5.BPM1(:,3);r5.BPM2(:,2)./r5.BPM2(:,3);r5.BPM3(:,2)./r5.BPM3(:,3)]';
-    [r6.BPM1(:,2)./r6.BPM1(:,3);r6.BPM2(:,2)./r6.BPM2(:,3);r6.BPM3(:,2)./r6.BPM3(:,3)]' ]
+% r1 = load('resultados');
+% r2 = load('resultados_referee2');
+% r3 = load('resultados_sin_Pi_Pmax');
+% r4 = load('resultados_desfavoreciendo_multiplos');
+% r5 = load('resultados_desfavoreciendo_multiplos_referee_2');
+% r6 = load('resultados_desfavoreciendo_multiplos_pero_no_tanto');
+% 
+% beContinuityBased = [...
+%     mean([r1.beContinuityBased1;r1.beContinuityBased2;r1.beContinuityBased3]);
+%     mean([r2.beContinuityBased1;r2.beContinuityBased2;r2.beContinuityBased3]);
+%     mean([r3.beContinuityBased1;r3.beContinuityBased2;r3.beContinuityBased3]);
+%     mean([r4.beContinuityBased1;r4.beContinuityBased2;r4.beContinuityBased3]);
+%     mean([r5.beContinuityBased1;r5.beContinuityBased2;r5.beContinuityBased3]);
+%     mean([r6.beContinuityBased1;r6.beContinuityBased2;r6.beContinuityBased3]) ]
+% 
+% beFMesure = [...
+%     mean([r1.beFMesure1;r1.beFMesure2;r1.beFMesure3]);
+%     mean([r2.beFMesure1;r2.beFMesure2;r2.beFMesure3]);
+%     mean([r3.beFMesure1;r3.beFMesure2;r3.beFMesure3]);
+%     mean([r4.beFMesure1;r4.beFMesure2;r4.beFMesure3]);
+%     mean([r5.beFMesure1;r5.beFMesure2;r5.beFMesure3]);
+%     mean([r6.beFMesure1;r6.beFMesure2;r6.beFMesure3]) ]
+% 
+% cocientes = [...
+%     [r1.BPM1(:,2)./r1.BPM1(:,3);r1.BPM2(:,2)./r1.BPM2(:,3);r1.BPM3(:,2)./r1.BPM3(:,3)]';
+%     [r2.BPM1(:,2)./r2.BPM1(:,3);r2.BPM2(:,2)./r2.BPM2(:,3);r2.BPM3(:,2)./r2.BPM3(:,3)]';
+%     [r3.BPM1(:,2)./r3.BPM1(:,3);r3.BPM2(:,2)./r3.BPM2(:,3);r3.BPM3(:,2)./r3.BPM3(:,3)]';
+%     [r4.BPM1(:,2)./r4.BPM1(:,3);r4.BPM2(:,2)./r4.BPM2(:,3);r4.BPM3(:,2)./r4.BPM3(:,3)]';
+%     [r5.BPM1(:,2)./r5.BPM1(:,3);r5.BPM2(:,2)./r5.BPM2(:,3);r5.BPM3(:,2)./r5.BPM3(:,3)]';
+%     [r6.BPM1(:,2)./r6.BPM1(:,3);r6.BPM2(:,2)./r6.BPM2(:,3);r6.BPM3(:,2)./r6.BPM3(:,3)]' ]

@@ -121,6 +121,7 @@ for i=1:size(MaxTabSF,1)-1
             end    
         else
 %             agents(j).S = agents(j).S-MaxTabSF(i,2)*agents(j).Pm(end)/n_Pmax;
+%             agents(j).S = agents(j).S*.99;
         end
         agents(j).age=agents(j).age+1;
     end

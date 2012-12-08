@@ -1,4 +1,12 @@
 function beats = beat_track(wavfilename)
+
+% close all
+% clear all
+% clc
+% audio_colors
+% wavfilename = 'train1.wav';
+
+
 % -------------------------------------------------------------------------
 % function beats = beat_track(wavfilename);
 % -------------------------------------------------------------------------
@@ -17,10 +25,10 @@ function beats = beat_track(wavfilename)
 
 audio_colors
 opt.sintetica  = 0;
-opt.show_plots = 0;
+opt.show_plots = 2;
 opt.save_plots = 0;
 opt.log        = 1;
-opt.wav_write  = 0;
+opt.wav_write  = 1;
 opt.txt_write  = 1;
 opt.compu_mati = 1;
 
@@ -128,7 +136,7 @@ W = [agents.wins]';
 
 [unUsed,Windex] = max(W);
 [unUsed,b]=max(S);
-% b=Windex;
+% b=1;
 
 if Windex ~= b
     fprintf('=====================================================\nOJOOOO!!! DISTINTOS REFEREES DAN DISTINTOS RESULTADOS\n=====================================================\n')
