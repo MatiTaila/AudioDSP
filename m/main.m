@@ -85,7 +85,7 @@ disp(beFMesure3);
 
 %% Save results
 
-save('resultados_2','beFMesure1','BPM1','beContinuityBased2','beFMesure2','BPM2','beContinuityBased3','beFMesure3','BPM3')
+save('resultados_2012.12.09_W28_sin_limites','beContinuityBased1','beFMesure1','BPM1','beContinuityBased2','beFMesure2','BPM2','beContinuityBased3','beFMesure3','BPM3')
 
 %% Load Results
 

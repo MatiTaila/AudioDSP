@@ -16,7 +16,6 @@ for i=1:size(MaxTabSF,1)-1
     waiting_agents = [];
     ind = 1;
     for j=1:length(agents)
-%         if i>=52 & agents(j).id==15, keyboard, end
         Tout_R = 0.4*agents(j).Pm(end);
         Tout_L = 0.2*agents(j).Pm(end);
         Tin    = round(46.4e-3/hop);
@@ -121,7 +120,7 @@ for i=1:size(MaxTabSF,1)-1
             end    
         else
 %             agents(j).S = agents(j).S-MaxTabSF(i,2)*agents(j).Pm(end)/n_Pmax;
-%             agents(j).S = agents(j).S*.99;
+            agents(j).S = agents(j).S*.99;
         end
         agents(j).age=agents(j).age+1;
     end

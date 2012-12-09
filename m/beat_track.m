@@ -1,11 +1,10 @@
 function beats = beat_track(wavfilename)
 
 % close all
-% clear all
+% % clear all
 % clc
 % audio_colors
-% wavfilename = 'train1.wav';
-
+% % wavfilename = 'datos2_1_A.wav';
 
 % -------------------------------------------------------------------------
 % function beats = beat_track(wavfilename);
@@ -25,12 +24,13 @@ function beats = beat_track(wavfilename)
 
 audio_colors
 opt.sintetica  = 0;
-opt.show_plots = 2;
+opt.show_plots = 0;
 opt.save_plots = 0;
 opt.log        = 1;
-opt.wav_write  = 1;
+opt.wav_write  = 0;
 opt.txt_write  = 1;
 opt.compu_mati = 1;
+opt.referee    = 1;
 
 [x,fs] = wavread(wavfilename);
 if size(x,2)>1, x = x(:,1); end
@@ -63,6 +63,7 @@ end
 
 SFx = SF(x,n_win,n_hop,n_bins,'hamming',opt);
 W_SFx=2*pi*fs/n_hop;
+% W_c=0.20;
 W_c=0.28;
 % Filtering
 % [B,A]   = butter(2,W_c/4,'low');
@@ -76,7 +77,7 @@ SFx_filt = filtfilt(B,A,SFx);
 
 t_ind_win = t(1:N);
 SFx_filt_ind_win = SFx_filt(1:N);
-agents =  pre_tracking(SFx_filt_ind_win,n_win,n_hop,fs,opt);
+[agents,BPM_estimado] =  pre_tracking(SFx_filt_ind_win,n_win,n_hop,fs,opt);
 for i=1:length(agents)
     agents(i).age = 0;
     agents(i).loss = 0;
@@ -136,14 +137,76 @@ W = [agents.wins]';
 
 [unUsed,Windex] = max(W);
 [unUsed,b]=max(S);
-% b=1;
+
+if opt.referee == 2
+    b = Windex;
+end
+
+fprintf('MaxS: %0.0f\n',b);
+fprintf('MaxW: %0.0f\n',Windex);
+
+if opt.referee == 3
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% GTR %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    BPM_max=0;
+    BPM_candidatos=0;
+    for i=1:length(agents)
+        beats_m = agents(i).Phi';
+        beats = (beats_m*n_hop+n_win/2-n_hop)/fs;
+        bpm_tracker=frames2bpm(fs*mean(diff(beats)),fs,1);
+        agentes_bpm(i)=bpm_tracker;
+    end;
+    
+    for i=1:length(agentes_bpm)-1
+        for j=i+1:length(agentes_bpm)
+            n=multiplo(agentes_bpm(i),agentes_bpm(j));
+            if n>1
+                BPM_max=[BPM_max max([agentes_bpm(i) agentes_bpm(j)])];
+                BPM_candidatos=[BPM_candidatos agentes_bpm(i) agentes_bpm(j)];
+            end
+        end
+    end
+    
+    % %% Metodo 1
+    BPM_ganador_1=max(BPM_max);
+    if BPM_ganador_1 ~= 0
+        [unUsed,I]=min(abs(agentes_bpm-BPM_ganador_1));
+        b=I;
+        fprintf('MaxGTR: %0.0f\n',I);
+    end;
+end
+
+fprintf('-----------------------------------------------\n');
+
+% %% Metodo 2
+% %viendo si alguno de los multiplos es parecido al BPM estimado en el
+% %pretracking
+% [unUsed,I]=min(abs(BPM_candidatos-BPM_estimado));
+% BPM_ganador=BPM_candidatos(I);
+% if abs(BPM_ganador-BPM_estimado)<10
+%     [unUsed,I]=min(abs(agentes_bpm-BPM_ganador));%para sacar cual agente es
+%     if abs(S(b)-S(I))<6000  b=I;% comparo el puntaje con el de Matias
+%     else %segundo metodo, este elige el maximo BPM que es multiplo, sino usa el b de Matias
+%         BPM_ganador_1=max(BPM_max);
+%         if BPM_ganador_1 ~= 0
+%             [unUsed,I]=min(abs(agentes_bpm-BPM_ganador_1));
+%             if abs(S(b)-S(I))<6000  b=I;% comparo el puntaje con el de Matias
+%             end;
+%         end;
+%     end;
+% end;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 if Windex ~= b
     fprintf('=====================================================\nOJOOOO!!! DISTINTOS REFEREES DAN DISTINTOS RESULTADOS\n=====================================================\n')
 end
 
 beats_m = agents(b).Phi';
-beats = (beats_m*n_hop+n_win/2-n_hop)/fs;
+% gt      = load([wavfilename(1:end-4) '.lab']); 
+% beats_m = (gt*fs-n_win/2+n_hop)/n_hop;
+beats   = (beats_m*n_hop+n_win/2-n_hop)/fs;
 
 y = zeros(size(x));
 while beats_m(end)*n_hop>size(x,1)
@@ -167,7 +230,7 @@ if opt.wav_write
     if opt.compu_mati
         wavwrite(signal_out,fs,['./proyecto/results/' wavfilename(1:end-4) '_tracked.wav'])
     else
-        wavwrite(signal_out,fs,[file '_tracked.wav'])
+        wavwrite(signal_out,fs,['..\train\Tracked_Songs\' wavfilename(19:end-4) '_tracked.wav'])
     end
 end
 
@@ -180,7 +243,7 @@ if opt.txt_write
     fclose (fileID);
 end
 
-%% Test
+% %% Test
 
 fprintf('Comparando con el groundTruth de %s_tracked.txt\n-----------------------------------------------\n',wavfilename(1:end-4))
 
@@ -203,7 +266,9 @@ if opt.show_plots >= 1
     for i=1:length(lines);
         line([lines(i) lines(i)],[-1 1],'linewidth',2.2,'color',red2);
     end
-    %     h = stem(ejex(y~=0),y(y~=0),'color',red2,'markersize',0,'linewidth',2);
+%     h = stem(ejex(y~=0),y(y~=0),'color',red2,'markersize',0,'linewidth',2);
+%     h = stem(MaxTabSF(:,1)*n_hop+n_win/2-n_hop,MaxTabSF(:,2)/max(MaxTabSF(:,2)),'fill','--','color',red2);
+%     set(get(h,'BaseLine'),'LineStyle',':')
     axis tight
     hold off
 end
@@ -223,9 +288,23 @@ if opt.show_plots >= 1
     subplot(2,1,1)
     h=plot(aux,Ssorted,'o','color',red2,'markersize',6);
     set(h,'MarkerFaceColor',red2)
+    for k=1:length(agents)
+        text(aux(k),Ssorted(k),num2str(k))
+    end
     xlabel('Periodos [BPM]')
     subplot(2,1,2)
     %  plot_with_colormap(1:length(agents),S,'Score','Numero de agente','Score',2,'hot')
     stem(1:length(agents),S,'o','color',blue1,'markersize',6);
     hold off
 end
+
+% %% Performance
+
+gt = load([wavfilename(1:end-4) '.lab']);
+tracked = load([wavfilename(1:end-4) '_tracked.txt']);
+[cmlC1,cmlT1,amlC1,amlT1] = be_continuityBased(gt,beats);
+[f1,p1,r1,a1] = be_fMeasure(gt,tracked);
+if opt.log>=1
+    fprintf('Performance:\n\tCont-Based:\t cC:\t%0.2f\tcT:\t%0.2f\taC:\t%0.2f\taT:\t%0.2f\n\tF-Mesure:\t f:\t%0.2f\tp:\t%0.2f\tr:\t%0.2f\ta:\t%0.2f\n-------------------------------------------------------------------------------------\n',cmlC1,cmlT1,amlC1,amlT1,f1,p1,r1,a1)
+end
+% keyboard

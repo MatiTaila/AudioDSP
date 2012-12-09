@@ -1,4 +1,4 @@
-function [agents] = pre_tracking(S,n_win,n_hop,fs,opt)
+function [agents,BPM_estimado] = pre_tracking(S,n_win,n_hop,fs,opt)
 
 audio_colors
 
@@ -41,7 +41,7 @@ delta   = 0.75;
 
 AcfRms   = sqrt(sum(acf.^2)/length(acf));
 peak_thr = delta*AcfRms./M;
-step     = .1*peak_thr;
+step     = .2*peak_thr(end);
 
 peak_thr = inf*ones(size(M));
 j=0;
@@ -55,8 +55,8 @@ while sum(peak_thr(MaxTabAcf(:,1)) < MaxTabAcf(:,2)')<size(MaxTabAcf,1)/3
             figure(2)
             hold on
             plot(60./((1:length(peak_thr))*n_hop/fs), peak_thr,'color',orange1,'linewidth',2)
+            legend('Umbral')
         end
-        hold off
     end
     j=j+1;
 end
@@ -65,7 +65,6 @@ end
 % P = MaxTabAcf(MaxTabAcf(:,2)>peak_thr_interp,:);
 
 P =  MaxTabAcf(MaxTabAcf(:,2)>peak_thr(MaxTabAcf(:,1))',:); % Periodo en muestras
-
 
 % TODO if size(P,1)==0 pongo agentes predeterminados
 
@@ -99,7 +98,7 @@ if opt.show_plots >= 1
         plot(60./(P(:,1)*n_hop/fs),P(:,2),'.','MarkerSize',20,'color',blue1);
         title('\fontsize{16}AUTOCORRELACION DEL SF - Maximos locales filtrados')
         xlabel('\fontsize{16}BPMs')
-        legend('Autocorrelacion','Umbral','Picos','location','southeast')
+        legend('Autocorrelacion','Picos','location','southeast')
         axis([60/BPS_max-10 60/BPS_min+10 min(acf) max(P(:,2))*1.2])
         hold off
     end
@@ -118,7 +117,7 @@ for i=1:length(agents)
     agents(i).Sraw = score;
     
     if opt.show_plots && i==1
-        figure
+        figure(3)
         h = stem(MaxTabSF(:,1),MaxTabSF(:,2),'fill','--','color',red2);
         set(get(h,'BaseLine'),'LineStyle',':')
         set(h,'MarkerFaceColor','red')
@@ -159,10 +158,41 @@ for i = 1:length(agents)
 end
 
 if opt.show_plots > 2
-    figure
+    figure(4)
     plot(Sraw,'-*','color',blue1)
     hold on
     plot(S,'-*','color',red2)
     legend('S raw','S','location','southeast')
     hold off
 end
+
+string = num2str(frames2bpm(agents(1).Pm,fs,n_hop));
+for i=2:length(agents)
+    string = [string '\t' num2str(frames2bpm(agents(i).Pm,fs,n_hop))];
+end
+if opt.log
+    fprintf(['Salida del Pre-Tracking: Periodos:\n' string '\n'])
+    fprintf('-----------------------------------------------\n')
+end
+
+
+%% BPM estimado
+
+if size(P,1)> 2
+    for i=1:length(P)
+        BPM_estimado=60/(P(i,1)/(fs/n_hop));
+        if (BPM_estimado > 60/BPS_min) | (BPM_estimado < 60/BPS_max)
+            P(i,2)=0;
+        end
+    end
+    [unUsed,I]=max(P);
+    if P(I(2),2)~= 0
+        BPM_estimado=60/(P(I(2))/(fs/n_hop));
+    else
+        BPM_estimado=0;
+    end
+else
+    BPM_estimado=0;
+end
+
+
