@@ -1,15 +1,13 @@
 function [agents,BPM_estimado] = pre_tracking(S,n_win,n_hop,fs,opt)
 
-audio_colors
+if opt.show_plots
+    audio_colors;
+end
 
-win    = n_win/fs;                 % window length [s]
-hop    = n_hop/fs;                 % hop length [s]
-% ind_w  = n_ind_win/fs;             % induction window: 5 seconds
-t = (0:length(S)-1)*hop+win/2;     % frame times [s] in induction window
-% t      = win/2:hop:ind_w;          % frame times [s] in induction window
-% m      = length(t);                % frames quantity in induction window
-
-L      = length(S);                % induction window size [muestras]
+win = n_win/fs;                  % window length [s]
+hop = n_hop/fs;                  % hop length [s]
+t   = (0:length(S)-1)*hop+win/2; % frame times [s] in induction window
+L   = length(S);                 % induction window size [muestras]
 
 %% Period P    
 
@@ -27,17 +25,10 @@ if MaxTabAcf(1,1) == 1
     MaxTabAcf(1,:) = [];
 end
 
-% OJOOO TODO no estoy seguro q este bien, pero creo q si
 MaxTabAcf(:,1)=MaxTabAcf(:,1)-1;
 
 M       = BPS_min:(BPS_max-BPS_min)/K:BPS_max-(BPS_max-BPS_min)/K;
 delta   = 0.75;
-
-% AcfRms  = sqrt(mean(acf));
-% if mean(acf) < 0
-%     fprintf('=====================================================\nEN EL PRE TRACKING MEAN(ACF) DIO NEGATIVO!!!\n=====================================================\n')
-%     AcfRms = 0;
-% end
 
 AcfRms   = sqrt(sum(acf.^2)/length(acf));
 peak_thr = delta*AcfRms./M;
@@ -61,13 +52,7 @@ while sum(peak_thr(MaxTabAcf(:,1)) < MaxTabAcf(:,2)')<size(MaxTabAcf,1)/3
     j=j+1;
 end
 
-% peak_thr_interp = interp1(1:K,peak_thr,MaxTabAcf(:,1),'linear','extrap');
-% P = MaxTabAcf(MaxTabAcf(:,2)>peak_thr_interp,:);
-
 P =  MaxTabAcf(MaxTabAcf(:,2)>peak_thr(MaxTabAcf(:,1))',:); % Periodo en muestras
-
-% TODO if size(P,1)==0 pongo agentes predeterminados
-
 
 % init agents
 agents(size(P,1)).pre = 0;
@@ -76,12 +61,6 @@ agents(size(P,1)).Phi = 0;
 agents(size(P,1)).Sraw = 0;
 agents(size(P,1)).Srel = 0;
 agents(size(P,1)).S = 0;
-
-% agents(length(P)).Pt = 0;
-% agents(length(P)).trains = 0;
-% for i = 1:length(agents)
-%     agents(i).Pt = P(i,1)/(fs/n_hop);
-% end
 
 if opt.show_plots >= 1
     figure(1)
@@ -194,5 +173,3 @@ if size(P,1)> 2
 else
     BPM_estimado=0;
 end
-
-

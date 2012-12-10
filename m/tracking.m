@@ -119,7 +119,6 @@ for i=1:size(MaxTabSF,1)-1
                 agents(j).S = agents(j).S+delta_s;
             end    
         else
-%             agents(j).S = agents(j).S-MaxTabSF(i,2)*agents(j).Pm(end)/n_Pmax;
             agents(j).S = agents(j).S*.99;
         end
         agents(j).age=agents(j).age+1;
@@ -244,12 +243,14 @@ for i=1:size(MaxTabSF,1)-1
     
 end
 
-fprintf('-----------------------------------------------\n')
-fprintf('KILLED\n')
-fprintf('-----------------------------------------------\n')
-fprintf('KILLED_BY_OUTER_REGION: %d\n',KILLED_BY_OUTER_REGION)
-fprintf('KILLED_BY_REDUNDANCY: %d\n',KILLED_BY_REDUNDANCY)
-fprintf('KILLED_BY_OBSOLENCE: %d\n',KILLED_BY_OBSOLENCE)
-fprintf('KILLED_BY_LOSS: %d\n',KILLED_BY_LOSS)
-fprintf('KILLED_BY_REPLACEMENT: %d\n',KILLED_BY_REPLACEMENT)
-fprintf('===============================================\n')
+if opt.log>=1
+    fprintf('-----------------------------------------------\n')
+    fprintf('KILLED\n')
+    fprintf('-----------------------------------------------\n')
+    fprintf('KILLED_BY_OUTER_REGION: %d\n',KILLED_BY_OUTER_REGION)
+    fprintf('KILLED_BY_REDUNDANCY: %d\n',KILLED_BY_REDUNDANCY)
+    fprintf('KILLED_BY_OBSOLENCE: %d\n',KILLED_BY_OBSOLENCE)
+    fprintf('KILLED_BY_LOSS: %d\n',KILLED_BY_LOSS)
+    fprintf('KILLED_BY_REPLACEMENT: %d\n',KILLED_BY_REPLACEMENT)
+    fprintf('===============================================\n')
+end

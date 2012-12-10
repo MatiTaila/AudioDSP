@@ -1,11 +1,4 @@
 function beats = beat_track(wavfilename)
-
-% close all
-% % clear all
-% clc
-% audio_colors
-% % wavfilename = 'datos2_1_A.wav';
-
 % -------------------------------------------------------------------------
 % function beats = beat_track(wavfilename);
 % -------------------------------------------------------------------------
@@ -22,15 +15,19 @@ function beats = beat_track(wavfilename)
 %   beats_t : list of beats time in seconds
 % -------------------------------------------------------------------------
 
-audio_colors
 opt.sintetica  = 0;
 opt.show_plots = 0;
 opt.save_plots = 0;
-opt.log        = 1;
+opt.log        = 0;
 opt.wav_write  = 0;
-opt.txt_write  = 1;
+opt.txt_write  = 0;
 opt.compu_mati = 1;
 opt.referee    = 1;
+opt.cmp_gt     = 0;
+
+if opt.show_plots
+    audio_colors;
+end
 
 [x,fs] = wavread(wavfilename);
 if size(x,2)>1, x = x(:,1); end
@@ -54,7 +51,7 @@ n_bins = 4096;
 % n_bins = 2048;
 
 if opt.compu_mati
-    click_path = '../../../../matlab/audio/beatroot/audio/31-sticks.wav';
+    click_path = '/home/mat/Documentos/matlab/audio/beatroot/audio/31-sticks.wav';
 else
     click_path = '..\audio\31-sticks.wav';
 end
@@ -62,16 +59,10 @@ end
 %% Feature detection: Spectral Flux
 
 SFx = SF(x,n_win,n_hop,n_bins,'hamming',opt);
-W_SFx=2*pi*fs/n_hop;
-% W_c=0.20;
 W_c=0.28;
 % Filtering
-% [B,A]   = butter(2,W_c/4,'low');
-[B,A]   = butter(2,W_c,'low');
-% [B,A]   = butter(10,.4,'low');
-
+[B,A]    = butter(2,W_c,'low');
 SFx_filt = filtfilt(B,A,SFx);
-% SFx_filt = moving_avg(SFx,5);
 
 %% Pre-Tracking
 
@@ -142,13 +133,12 @@ if opt.referee == 2
     b = Windex;
 end
 
-fprintf('MaxS: %0.0f\n',b);
-fprintf('MaxW: %0.0f\n',Windex);
+if opt.log>=1
+    fprintf('MaxS: %0.0f\n',b);
+    fprintf('MaxW: %0.0f\n',Windex);
+end
 
-if opt.referee == 3
-    
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% GTR %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
+if opt.referee == 3    
     BPM_max=0;
     BPM_candidatos=0;
     for i=1:length(agents)
@@ -177,7 +167,9 @@ if opt.referee == 3
     end;
 end
 
-fprintf('-----------------------------------------------\n');
+if opt.log>=1
+    fprintf('-----------------------------------------------\n');
+end
 
 % %% Metodo 2
 % %viendo si alguno de los multiplos es parecido al BPM estimado en el
@@ -197,15 +189,13 @@ fprintf('-----------------------------------------------\n');
 %     end;
 % end;
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-if Windex ~= b
-    fprintf('=====================================================\nOJOOOO!!! DISTINTOS REFEREES DAN DISTINTOS RESULTADOS\n=====================================================\n')
+if opt.log>=1
+    if Windex ~= b
+        fprintf('=====================================================\nOJOOOO!!! DISTINTOS REFEREES DAN DISTINTOS RESULTADOS\n=====================================================\n')
+    end
 end
 
 beats_m = agents(b).Phi';
-% gt      = load([wavfilename(1:end-4) '.lab']); 
-% beats_m = (gt*fs-n_win/2+n_hop)/n_hop;
 beats   = (beats_m*n_hop+n_win/2-n_hop)/fs;
 
 y = zeros(size(x));
@@ -214,19 +204,19 @@ while beats_m(end)*n_hop>size(x,1)
 end
 y(round(beats_m*n_hop+n_win/2-n_hop),1) = 1;
 
-% load click sound
-[click,fs_click] = wavread(click_path);
-if fs_click ~= fs
-    fprintf('===========================================\nOJOOOO!!! FRECUENCIAS DE MUESTREO DISTINTAS\n===========================================\n')
-end
-
-% wav write
-tracked_beats = conv(y,click);
-tracked_beats = tracked_beats(1:length(x))/max(abs(tracked_beats(1:length(x))));
-signal_out    = (x+tracked_beats)/max(abs(x+tracked_beats)+.0001);
-
-if opt.wav_write
-    fprintf('Salvando %s_tracked.wav\n-----------------------------------------------\n',wavfilename(1:end-4))
+if opt.wav_write>=1
+    % load click sound
+    [click,fs_click] = wavread(click_path);
+    if fs_click ~= fs
+        fprintf('===========================================\nOJOOOO!!! FRECUENCIAS DE MUESTREO DISTINTAS\n===========================================\n')
+    end
+    % wav write
+    tracked_beats = conv(y,click);
+    tracked_beats = tracked_beats(1:length(x))/max(abs(tracked_beats(1:length(x))));
+    signal_out    = (x+tracked_beats)/max(abs(x+tracked_beats)+.0001);
+    if opt.log>=1
+        fprintf('Salvando %s_tracked.wav\n-----------------------------------------------\n',wavfilename(1:end-4))
+    end
     if opt.compu_mati
         wavwrite(signal_out,fs,['./proyecto/results/' wavfilename(1:end-4) '_tracked.wav'])
     else
@@ -243,32 +233,16 @@ if opt.txt_write
     fclose (fileID);
 end
 
-% %% Test
-
-fprintf('Comparando con el groundTruth de %s_tracked.txt\n-----------------------------------------------\n',wavfilename(1:end-4))
-
-% if opt.sintetica
-%     fprintf('Valor esperado: %s\n',file);
-%     beat_ground_truth(['./proyecto/' file '_tracked.txt']);
-% else
-%     beat_ground_truth([file '.txt']);
-%     beat_ground_truth(['./proyecto/' file '_tracked.txt']);
-% end
-
 %% Plots
 
 if opt.show_plots >= 1
     figure(50);
     plot(x,'color',blue1);
     hold on;
-%     plot(tracked_beats/2,'color',green1)
     lines = find(y);
     for i=1:length(lines);
         line([lines(i) lines(i)],[-1 1],'linewidth',2.2,'color',red2);
     end
-%     h = stem(ejex(y~=0),y(y~=0),'color',red2,'markersize',0,'linewidth',2);
-%     h = stem(MaxTabSF(:,1)*n_hop+n_win/2-n_hop,MaxTabSF(:,2)/max(MaxTabSF(:,2)),'fill','--','color',red2);
-%     set(get(h,'BaseLine'),'LineStyle',':')
     axis tight
     hold off
 end
@@ -298,13 +272,14 @@ if opt.show_plots >= 1
     hold off
 end
 
-% %% Performance
+%% Performance
 
-gt = load([wavfilename(1:end-4) '.lab']);
-tracked = load([wavfilename(1:end-4) '_tracked.txt']);
-[cmlC1,cmlT1,amlC1,amlT1] = be_continuityBased(gt,beats);
-[f1,p1,r1,a1] = be_fMeasure(gt,tracked);
-if opt.log>=1
-    fprintf('Performance:\n\tCont-Based:\t cC:\t%0.2f\tcT:\t%0.2f\taC:\t%0.2f\taT:\t%0.2f\n\tF-Mesure:\t f:\t%0.2f\tp:\t%0.2f\tr:\t%0.2f\ta:\t%0.2f\n-------------------------------------------------------------------------------------\n',cmlC1,cmlT1,amlC1,amlT1,f1,p1,r1,a1)
+if opt.cmp_gt
+    gt = load([wavfilename(1:end-4) '.lab']);
+    tracked = load([wavfilename(1:end-4) '_tracked.txt']);
+    [cmlC1,cmlT1,amlC1,amlT1] = be_continuityBased(gt,beats);
+    [f1,p1,r1,a1] = be_fMeasure(gt,tracked);
+    if opt.log>=1
+        fprintf('Performance:\n\tCont-Based:\t cC:\t%0.2f\tcT:\t%0.2f\taC:\t%0.2f\taT:\t%0.2f\n\tF-Mesure:\t f:\t%0.2f\tp:\t%0.2f\tr:\t%0.2f\ta:\t%0.2f\n-------------------------------------------------------------------------------------\n',cmlC1,cmlT1,amlC1,amlT1,f1,p1,r1,a1)
+    end
 end
-% keyboard
