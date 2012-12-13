@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  11 DEC 2012 12:12
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  13 DEC 2012 01:31
 entering extended mode
  %&-line parsing enabled.
 **audioDSPentregaFinal.tex
@@ -690,15 +690,15 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 73.
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-<./pics/logoIIE_transparente.png, id=3, 124.465pt x 69.25874pt>
+<./pics/logoIIE_transparente.png, id=43, 124.465pt x 69.25874pt>
 File: ./pics/logoIIE_transparente.png Graphic file (type png)
 
 <use ./pics/logoIIE_transparente.png>
-<./pics/logo_fing_transparente.png, id=5, 578.16pt x 566.115pt>
+<./pics/logo_fing_transparente.png, id=45, 578.16pt x 566.115pt>
 File: ./pics/logo_fing_transparente.png Graphic file (type png)
 
 <use ./pics/logo_fing_transparente.png>
-<./pics/logo_udelar.png, id=6, 179.67125pt x 197.73875pt>
+<./pics/logo_udelar.png, id=46, 179.67125pt x 197.73875pt>
 File: ./pics/logo_udelar.png Graphic file (type png)
 
 <use ./pics/logo_udelar.png> [1
@@ -724,11 +724,11 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.110 \chapter
-              *{Algoritmo} [1
+              {Algoritmo} [1
 
 ]
+Cap\'{\i }tulo 1.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 117.
-
 
 (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
@@ -736,70 +736,116 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 117.
 
-<./pics/bloques.png, id=34, 1075.01625pt x 664.4825pt>
+<./pics/bloques.png, id=74, 1075.01625pt x 664.4825pt>
 File: ./pics/bloques.png Graphic file (type png)
 
-<use ./pics/bloques.png> [2
+<use ./pics/bloques.png>
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
+
+ []
+
+[2
 
  <./pics/bloques.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 154--155
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 178--179
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--157
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--166
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
 
  []
 
-<./pics/graficamejor.png, id=41, 575.57893pt x 335.53929pt>
+<./pics/r.pdf, id=101, 487.8225pt x 396.48125pt>
+File: ./pics/r.pdf Graphic file (type pdf)
+ <use ./pics/r.pdf>
+Underfull \hbox (badness 10000) in paragraph at lines 208--209
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
+
+ []
+
+[4 <./pics/r.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 226--227
+
+ []
+
+<./pics/graficamejor.png, id=116, 575.57893pt x 335.53929pt>
 File: ./pics/graficamejor.png Graphic file (type png)
 
 <use ./pics/graficamejor.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--191
+Underfull \hbox (badness 10000) in paragraph at lines 251--253
 
  []
 
-[3] [4 <./pics/graficamejor.png>] [5
+[5 <./pics/graficamejor.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 295--296
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 303--306
+
+ []
+
+[6] [7]
+Cap\'{\i }tulo 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 309--310
+
+ []
+
+[8
+
+] [9
 
 ] (./audioDSPentregaFinal.aux) ) 
 Here is how much of TeX's memory you used:
- 9192 strings out of 494999
- 129525 string characters out of 1180816
- 226238 words of memory out of 3000000
- 12185 multiletter control sequences out of 15000+50000
- 13551 words of font info for 49 fonts, out of 3000000 for 9000
+ 9245 strings out of 494999
+ 130196 string characters out of 1180816
+ 229238 words of memory out of 3000000
+ 12219 multiletter control sequences out of 15000+50000
+ 15557 words of font info for 58 fonts, out of 3000000 for 9000
  54 hyphenation exceptions out of 8191
  44i,10n,42p,1117b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/am
 sfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
 mcsc10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb>
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/typ
-e1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/am
-sfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cm
-r8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss17.pfb></us
-r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
-mf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/f
-onts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/
-public/amsfonts/cm/cmti12.pfb>
-Output written on audioDSPentregaFinal.pdf (6 pages, 447341 bytes).
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share
+/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/a
+msfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
+mr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texm
+f-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texlive/fon
+ts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmss17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on audioDSPentregaFinal.pdf (10 pages, 521549 bytes).
 PDF statistics:
- 118 PDF objects out of 1000 (max. 8388607)
- 20 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 217 PDF objects out of 1000 (max. 8388607)
+ 36 named destinations out of 1000 (max. 500000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

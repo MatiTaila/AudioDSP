@@ -107,7 +107,7 @@ El problema del seguimiento de beat o \emph{beat tracking} es un problema todav�
 El presente trabajo presenta un algoritmo de seguimiento de \emph{beat} de una pieza musical y se basa en el trabajo de ``Jo\~ao Lobato Oliveira, Fabien Gouyon, Luis Gustavo Martins, Luis Paulo Reis'', titulado ``IBT: A real time tempo and beat tracking system, presentado en la \emph{$11^a$ International Society for Music Information Retrieval Conference, ISMIR}, en 2010'' (\cite{bib:el_posta}). Dicho trabaja se basa a su vez en el sistema \textbf{BeatRoot}, presentado en (\cite{bib:dixon}): Dixon S., ``Automatic extraction of tempo and beat from expressive performances.'', \emph{Journal of New Music Research}, 2001. De \cite{bib:dixon} se toma la idea de varios \textbf{agentes} compitiendo y llevando varias hipótesis de tempo y fase paralelamente, se agrega robustez ante entradas ruidosas y se implementa en tiempo real. Aún realizando todas las operaciones de forma causal y en tiempo real, se logra obtener resultados comparables con el estado del arte y se convierte además en el primer software \emph{open source} de seguimiento de beat en tiempo real.
 
 
-\chapter*{Algoritmo}
+\chapter{Algoritmo}
 
 Como se puede ver en la figura \ref{fig:bloques} el algoritmo consta de 3 fases fundamentales:
 \begin{itemize}
@@ -130,41 +130,101 @@ A su vez se presenta un sistema de evaluación que decide en función del puntaj
 \label{fig:bloques}
 \end{figure}
 
-\section*{Audio Feature Extraction}
+\section{Audio Feature Extraction}
+En \cite{bib:feature_extraction} se evalúan distintas magnitudes para caracterizar la información más relevante para el análisis rítmico. Está fuera del alcance del presente trabajo analizar la posibilidad de evaluar distintas magnitudes, por lo que se trabajará con el \textbf{Flujo Espectral} como magnitud característica de la pieza musical.\\
 
-\section*{Pre-Tracking}
+El flujo espectral utiliza una representación tiempo-frecuencia de la señal basada en la trasformada corta de Fourier utilizando una ventana de Hamming, $w(m)$.\\
 
-\vspace*{15pt}
-	\begin{itemize} \item \textbf{Período} \end{itemize}
-	\begin{equation*}
-		A(\tau) = \sum\limits_{n=0}^{m}SF(n)SF(n+\tau)
-		\label{ec:autocorrelacion}
-	\end{equation*}
-	$SF$ es el flujo espectral suavizado para el \emph{frame} $n$
-	\begin{equation*}
-		\begin{cases}
-		P_i = \arg\max_i \left\{ A(\tau) \right\}, & i=1,\dots, N\\
-		A(\tau)>\delta \frac{rms(A(\tau))}{M} & 
-		\end{cases}
-		\label{ec:period}
-	\end{equation*}
-$\delta$ es un umbral determinado empíricamente y $M$ es un rango de tiempos definido entre [50,250] BPM.
+$X(n,k)$ representa al k-ésimo bin de frecuencia del n-ésimo frame, como se ve en la ecuación \ref{ec:x}
+\begin{eqnarray}
+X(n,k)=\sum\limits_{m=-\frac{N}{2}}^{\frac{N}{2}-1} x(hn+m)w(m)e^{-\frac{2\pi jmk}{N}}
+\label{ec:x}
+\end{eqnarray}
 
-\begin{itemize} \item \textbf{Fase} \end{itemize}
-Para cada $P_i$ estimado se generan varias hipótesis para la fase: $\phi_i^j$. Se supone fase y períodos constantes en cada ventana de análisis.\\
-
-Se utiliza un \emph{template} de tren de pulsos para ver cuál ajusta mejor.\\[.5cm]
-\begin{itemize} \item \textbf{Agentes} \end{itemize}
-Para cada pareja $(P_i,\phi_i)$ se computa la suma de errores entre el template de tren de pulsos y los máximos del flujo espectral
+El flujo espectral lleva una medida del cambio en magnitud de cada \emph{bin} de frecuencia restringido a cambios positivos y sumado a lo largo de todos los \emph{bins} de frecuencia. En la ecuación \ref{ec:sf} se muestra su ecuación matemática para el cálculo.
+\begin{eqnarray}
+SF(n)=\sum\limits_{k=-\frac{N}{2}}^{\frac{N}{2}-1} H(|X(n,k)|-X(n-1,k)|)
+\label{ec:sf}
+\end{eqnarray}
+donde $N=2048$ (46 $ms$ a una frecuencia de muestreo $r=44100Hz$) y el tamaño del salto es $h=441$ (10 $ms$ o 78\% de solapado). $H(x)$ es un rectificador de media onda: $H(x)=\frac{x+|x|}{2}$.
 
 
+% TODO figura
 
-\section*{Beat-Tracking}
+\section{Pre-Tracking}
 
-Idea\\
-Supervisar flujo de entrada y mantener balance entre inercia y rapidez de la respuesta\\
+La etapa del Pre-Tracking es fundamental ya que en ella se basarán las etapas siguientes del algoritmo. Se analiza una \emph{ventana de inducción} de 5 segundos y se obtiene como salida un conjunto de agentes caracterizados por $(P_i,\phi _i, S_i) $ para cada agente $i=1\dots N$. Consta de 3 sub-etapas donde se calcula el período ($P_i$), fase ($\phi _i$) y puntaje ($S_i$) de cada agente $i$.
 
-Niveles de toleracia: $T_{in}\in[T_{in}^l,T_{in}^r]$ y $T_{out}\in[T_{out}^l,T_{in}^l] \bigcup [T_{in}^r,T_{out}^r]$
+\subsection{Período}
+La primera etapa consiste en hallar una función de periodicidad continua basada en la autocorrelación y el Flujo Espectral:
+\begin{equation}
+	A(\tau) = \sum\limits_{n=0}^{m}SF(n)SF(n+\tau)
+	\label{ec:autocorrelacion}
+\end{equation}
+La segunda etapa consiste en la detección de eventos, por medio de un hallado y filtrado de picos de la función de autocorrelación descripta anteriormente (ecuación \ref{ec:autocorrelacion}). Los eventos detectados en $A(\tau)$ corresponderán con los períodos iniciales de los agentes del Pre-Tracking. El criterio propuesto para obtener dichos picos es:
+\begin{equation*}
+	\begin{cases}
+	P_i = \arg\max_i \left\{ A(\tau) \right\}, & i=1,\dots, N\\
+	A(\tau)>\delta \frac{rms(A(\tau))}{M} & 
+	\end{cases}
+	\label{ec:period}
+\end{equation*}
+$\delta$ es un umbral determinado empíricamente en $0.75$ y $M$ es un rango de tiempos definido entre [50,250] BPM.
+
+% TODO figura y explicar que es lo q agregamos nosotros
+
+\subsection{Fase}
+
+Para cada $P_i$ estimado se generan $j$ hipótesis para la fase: $\phi_i^j$. Se supone fase y períodos constantes en cada ventana de análisis.\\
+
+Se utiliza un \emph{template} de tren de pulsos isócronos para ver cuál ajusta mejor a los picos del Flujo Espectral en la ventana de inducción.\\
+
+Utilizando un proceso de tracking simplificado como veremos en la sección \ref{sec:tracking} se selecciona el tren de pulsos que mejor ajusta los eventos detectados. Hasta este momento tenemos una pareja $(P_i,\phi _i)$ para cada agente.
+
+\subsection{Puntaje}
+
+A cada pareja $(P_i,\phi _i)$ se le asigna un puntaje preliminar $S_i^{raw}$ que corresponde a la suma de los errores entre los elementos del tren de pulsos y los máximos locales del Flujo Espectral, dado por la ecuación \ref{ec:ds}.\\
+
+\begin{wrapfigure}{l}{0.45\textwidth}
+	\vspace{-25pt}
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{./pics/r.pdf}
+	\end{center}
+	\vspace{-20pt}
+	\caption{r(n)}
+	\label{fig:r}
+	\vspace{-35pt}
+\end{wrapfigure}
+
+Luego considerando relaciones métricas entre pares de hipótesis de período ($n_{ij}$), se actualiza el puntaje a:
+$$S^{rel}_i=10S_i^{raw}+\mathop{\sum\limits_{j=0}^{N}}_{j \neq i}r(n_{ij})S_j^{raw}$$ donde 
+$$r(n)= \begin{cases}
+6-n, & 1\leq n \leq 4\\
+1, & 5\leq n \leq 8\\
+0, & en\;otro\;caso
+\end{cases}
+$$
+
+que también se puede ver representada en la figura \ref{fig:r}. El resultado de aplicar la función $r(n)$ es favorecer todos los agentes que tengan múltiplos enteros uno de otro.\\
+
+Por último el puntaje final está dado por:
+\begin{equation}
+S_i=\frac{S_i^{rel}}{\max S_i^{rel}}\max S_i^{raw}
+\label{ec:S}
+\end{equation}
+
+Tenemos entonces un conjunto de agentes, donde cada uno de ellos está caracterizado por una tríada $(P_i,\phi _i,S_i)$ que serán utilizados como hipótesis iniciales para la etapa de \textbf{Tracking}.
+
+\section{Beat-Tracking}
+\label{sec:tracking}
+
+La idea de la etapa de Tracking es supervisar flujo de entrada de los picos detectados del Flujo Espectral y mantener un buen balance entre inercia y rapidez de la respuesta ante cambios.\\
+
+Cada predicción es evaluada respecto de su desviación al máximo local correspondiente en los datos observados, considerando una ventana como se la mostrada en la figura \ref{fig:grafica}, donde se consideran 2 intervalos de tolerancia:
+\begin{itemize}
+\item \emph{inner}: $T_{in}\in[T_{in}^l,T_{in}^r]$ con $T_{in}^l=T_{in}^r=46.4ms$ para manejar pequeñas desviaciones de fase y período
+\item \emph{outer}: $T_{out}\in[T_{out}^l,T_{in}^l] \bigcup [T_{in}^r,T_{out}^r]$ con $T_{out}^l=0.2\;P_i$ y $T_{out}^r=0.4\;P_i$ para contemplar eventuales cambios repentinos de tiempo. La asimetría refleja una mayor tendencia a disminuir el tempo.\\
+\end{itemize}
 
 \begin{figure}[h!]
   \begin{center}
@@ -176,26 +236,81 @@ Niveles de toleracia: $T_{in}\in[T_{in}^l,T_{in}^r]$ y $T_{out}\in[T_{out}^l,T_{
   \label{fig:grafica}
 \end{figure}
 
-\begin{itemize} \item \textbf{$T_{in}\in[T_{in}^l,T_{in}^r]$} \end{itemize}
+En consecuencia aparecen 2 claros escenarios distintos: o bien que el máximo local del Flujo Espectral se encuentre en la región \emph{inner}, o bien que se encuentre en la región \emph{outer}.\\
+
+\begin{itemize} \item Máximo local en región \emph{inner}\end{itemize}
+En este caso se considera que el agente está siguiendo los beats de la pieza de buena manera y lo único que se realiza es un ajuste fino de período y fase según sigue:
 $$
 \begin{cases}
-P_i = P_i+0.25*error\\
-\phi_i = \phi_i+0.25*error
+P_i = P_i+0.25\;error\\
+\phi_i = \phi_i+0.25\;error
 \end{cases}
 $$
-\begin{itemize} \item \textbf{$T_{out}\in[T_{out}^l,T_{in}^l] \bigcup [T_{in}^r,T_{out}^r]$} \end{itemize}
-El agente mantiene su período y fase y además crea 3 ``hijos'' variando dichos parámetros\\
 
-Agent REferee\\
-Evalúa la distancia entre la predicción del \emph{beat} ($b_p$) y el máximo local ($m$) de $SF$. $P_m$ es el máximo período permitido\\
-$$\begin{cases}
-\Delta s = \left(1-\frac{|error|}{T^r_{out}} \right)\frac{P_i}{P_m}SF(m), & \exists m \in T_{in}\\
-\Delta s = -\left(\frac{|error|}{T^r_{out}} \right)\frac{P_i}{P_m}SF(m), & \exists m \in T_{out}\\
-\end{cases}$$
+\begin{itemize} \item Máximo local en región \emph{outer} \end{itemize}
+Este caso corresponde a desviaciones mayores que el caso anterior, donde el agente mantiene su período y fase pero para hacer frente a variaciones de tempo repentinas crea 3 ``hijos'' ($C_1$,$C_2$,$C_3$) para seguir 3 alternativas posibles combinando variaciones de \emph{timing} (fase) y \emph{tempo} (período), según sigue:\\
+\footnotesize
+$$
+C_1:
+\begin{cases}
+P_{C_1}=P_i\\
+\phi _{C_1}=\phi _i + error + P_{C_1}
+\end{cases}
+, \exists m \in T_{out}
+$$
+$$
+C_2:
+\begin{cases}
+P_{C_2}=P_i+error\\
+\phi _{C_2}=\phi _i + error + P_{C_2}
+\end{cases}
+, \exists m \in T_{out}
+$$
+$$
+C_3:
+\begin{cases}
+P_{C_3}=P_i+0.5\;error\\
+\phi _{C_3}=\phi _i +0.5\;error + P_{C_3}
+\end{cases}
+, \exists m \in T_{out}
+$$
+
+\normalsize
+
+Para que los hijos tengan competitividad respecto al resto de los agentes, se los inicializa con un puntaje igual al 90\% del puntaje del ``padre'' en ese instante.
+
+\subsection{Matado de agentes}
+
+En cualquier punto del análisis, algunas situaciones dan por finalizada la operación de un agente, con los criterios que se explican a continuación:
+
+\begin{itemize}
+\item \emph{Replacement}: un agente es matado si llegado al límite de agentes (fijado en 30), es el peor de todos y su puntaje es menor al de otro agente creado más recientemente.
+\item \emph{Redundancy}: para mejorar la eficiencia del algoritmo un agente es matado si está duplicando el trabajo de otro con mayor puntaje. Por duplicación de trabajo se entiende que la diferencia entre los períodos no debe ser mayor a $11.6\;ms$ y la diferencia entre las fases no debe superar los $23.2\;ms$.
+\item \emph{Obsolence}: un agente es matado si la diferencia entre su puntaje con el mejor agente es mayor al 80\% del mejor puntaje
+\item \emph{Loss}: un agente es matado si parece estar ``perdido'', sugerido una cantidad (fijada en 8) de veces consecutivas que la predicción del beat esté por afuera de la región \emph{inner}.
+\end{itemize}
+
+\subsection{Agent Referee}
+
+En la versión causal el \emph{referee} va determinando en cada instante cuál es el mejor agente. Mantiene una continua evaluación y le va asignando un puntaje a cada agente respecto a qué tan bueno es el matcheo entre los datos que van llegando y la prediccion del beat. La variación de puntaje en cada instante está dada por la ecuación \ref{ec:ds}.\\
+
+\begin{equation}
+\begin{cases}
+\Delta s = \left(1-\frac{|error|}{T^r_{out}} \right)\frac{P_i}{P_{max}}SF(m), & \exists m \in T_{in}\\
+\Delta s = -\left(\frac{|error|}{T^r_{out}} \right)\frac{P_i}{P_{max}}SF(m), & \exists m \in T_{out}
+\end{cases}
+\label{ec:ds}\\
+\end{equation}
+\\
+$b_p$ es la predicción del beat, $m$ el máximo correspondiente del Flujo Espectral, y $P_{max}$ el período máximo permitido (correspondiente a $250\;BPM$). El cociente $P_i/P_{max}$ es utilizado para normalizar la función puntaje por el período $P_i$ y es utilizado como una manera de disminuir el puntaje de los agentes más rápidos, que de otra manera tendería a aumentar dado que tienen una mayor cantidad de predicciones de beat. La utilización de un puntaje negativo cuando la predicción cae fuera de la región \emph{inner} infiere una penalización al agente correspondiente.\\
+
+\chapter{Nosotros}
+
+la matanza de agentes esta pensada para correr en tiempo real. Como nuestro trabajo no lo requería aunque era una buena cosa para conservar, se pueden modificar los criterios de matanza para dejar vivos mas agentes, porque no nos importa que demore un poco mas...\\
+
+Para la versión no causal se puede utilizar un referee elegido al final del proceso de tracking, como se propone en \cite{bib:dixon}, donde se asume que al ir teniendo buenos puntajes a lo largo del tracking, el agente que tenga mayot puntaje al finalizarlo será el mejor agente global.
 
 
-
-\section*{Referencias}
 \begin{thebibliography}{99}
 \begin{small}
 
@@ -204,7 +319,7 @@ $$\begin{cases}
 \bibitem{bib:dixon}S. Dixon. Automatic extraction of tempo and beat from
 expressive performances. In \emph{Journal of New Music Research, 30(1):39–58}, 2001.
 
-\bibitem{bib:otra_cosa}S. Dixon. Onset detection revisited. In \emph{in Proceedings of the 9th International Conference on Digital Audio Effects}, pages 133–13, Montreal, Canada, 2006.
+\bibitem{bib:feature_extraction}S. Dixon. Onset detection revisited. In \emph{in Proceedings of the 9th International Conference on Digital Audio Effects}, pages 133–13, Montreal, Canada, 2006.
 
 \bibitem{bib:y_asi}F. Gouyon, P. Herrera, and P. Cano. Pulse-dependent analyses of percussive music. In \emph{AES 22nd International Conference on Virtual}, Synthetic and Entertainment Audio, 2002.
 
