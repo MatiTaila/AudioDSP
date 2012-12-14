@@ -16,11 +16,11 @@ function beats = beat_track(wavfilename)
 % -------------------------------------------------------------------------
 
 opt.sintetica  = 0;
-opt.show_plots = 0;
+opt.show_plots = 2;
 opt.save_plots = 0;
-opt.log        = 0;
+opt.log        = 1;
 opt.wav_write  = 0;
-opt.txt_write  = 0;
+opt.txt_write  = 1;
 opt.compu_mati = 1;
 opt.referee    = 1;
 opt.cmp_gt     = 0;
@@ -257,21 +257,29 @@ aux = zeros(length(agents),1);
 for i=1:length(agents)
     aux(i) = frames2bpm(Psorted(i),fs,n_hop);
 end
+%%
 if opt.show_plots >= 1
     figure(100);
     subplot(2,1,1)
     h=plot(aux,Ssorted,'o','color',red2,'markersize',6);
     set(h,'MarkerFaceColor',red2)
-    for k=1:length(agents)
-        text(aux(k),Ssorted(k),num2str(k))
-    end
-    xlabel('Periodos [BPM]')
+    grid
+%     for k=1:length(agents)
+%         text(aux(k),Ssorted(k),num2str(k))
+%     end
+    xlabel('\fontsize{15}Periodos [BPM]')
+    ylabel('\fontsize{15}Puntaje')
     subplot(2,1,2)
     %  plot_with_colormap(1:length(agents),S,'Score','Numero de agente','Score',2,'hot')
-    stem(1:length(agents),S,'o','color',blue1,'markersize',6);
+    h=stem(1:length(agents),S,'o','color',blue1,'markersize',6);
+    set(h,'MarkerFaceColor',blue2)
+    grid
+    xlabel('\fontsize{15}Identificador de agente')
+    ylabel('\fontsize{15}Puntaje')
     hold off
 end
-
+%%
+% keyboard
 %% Performance
 
 if opt.cmp_gt

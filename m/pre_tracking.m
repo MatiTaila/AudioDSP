@@ -51,7 +51,7 @@ while sum(peak_thr(MaxTabAcf(:,1)) < MaxTabAcf(:,2)')<size(MaxTabAcf,1)/3
     end
     j=j+1;
 end
-
+% keyboard
 P =  MaxTabAcf(MaxTabAcf(:,2)>peak_thr(MaxTabAcf(:,1))',:); % Periodo en muestras
 
 % init agents
