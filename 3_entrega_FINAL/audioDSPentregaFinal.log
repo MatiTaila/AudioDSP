@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  14 DEC 2012 03:47
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  14 DEC 2012 12:26
 entering extended mode
  %&-line parsing enabled.
 **audioDSPentregaFinal.tex
@@ -877,78 +877,77 @@ Underfull \hbox (badness 10000) in paragraph at lines 359--360
 
  []
 
-<./pics/train13_agents.pdf, id=183, 509.905pt x 396.48125pt>
-File: ./pics/train13_agents.pdf Graphic file (type pdf)
-
-<use ./pics/train13_agents.pdf>
-<./pics/train13_autocorr.pdf, id=184, 531.9875pt x 423.5825pt>
-File: ./pics/train13_autocorr.pdf Graphic file (type pdf)
-
-<use ./pics/train13_autocorr.pdf>
-<./pics/train13_beats_bien.pdf, id=185, 501.875pt x 398.48875pt>
-File: ./pics/train13_beats_bien.pdf Graphic file (type pdf)
-
-<use ./pics/train13_beats_bien.pdf>
-Overfull \hbox (7.83324pt too wide) in paragraph at lines 381--384
- [][][][] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 39
-0.
-
-
-Package wrapfig Warning: Collision between wrapping environments on input line 
-392.
-
-<./pics/train11_agents.pdf, id=186, 509.905pt x 396.48125pt>
-File: ./pics/train11_agents.pdf Graphic file (type pdf)
-
-<use ./pics/train11_agents.pdf>
-<./pics/train11_autocorr.pdf, id=187, 527.9725pt x 423.5825pt>
-File: ./pics/train11_autocorr.pdf Graphic file (type pdf)
-
-<use ./pics/train11_autocorr.pdf>
-<./pics/train11_autocorr2.pdf, id=188, 512.91624pt x 399.4925pt>
-File: ./pics/train11_autocorr2.pdf Graphic file (type pdf)
-
-<use ./pics/train11_autocorr2.pdf>
-Overfull \hbox (7.83324pt too wide) in paragraph at lines 406--409
- [][][][] 
- []
-
 [10 <./pics/bpm90autocorr.pdf> <./pics/bpm90beats.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 369--370
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+ []
 
-<./pics/train11_beats_lento.pdf, id=211, 501.875pt x 398.48875pt>
-File: ./pics/train11_beats_lento.pdf Graphic file (type pdf)
+<./pics/datos_2_2_A_agents.pdf, id=205, 507.8975pt x 396.48125pt>
+File: ./pics/datos_2_2_A_agents.pdf Graphic file (type pdf)
 
-<use ./pics/train11_beats_lento.pdf>
-<./pics/train11_beats_bien.pdf, id=212, 501.875pt x 398.48875pt>
-File: ./pics/train11_beats_bien.pdf Graphic file (type pdf)
+<use ./pics/datos_2_2_A_agents.pdf>
+Underfull \hbox (badness 10000) in paragraph at lines 381--382
 
-<use ./pics/train11_beats_bien.pdf>
-Overfull \hbox (7.83324pt too wide) in paragraph at lines 416--419
- [][][][] 
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 383--384
+
+ []
+
+<./pics/datos_2_2_A_autocorr.pdf, id=210, 543.02875pt x 423.5825pt>
+File: ./pics/datos_2_2_A_autocorr.pdf Graphic file (type pdf)
+
+<use ./pics/datos_2_2_A_autocorr.pdf>
+<./pics/datos_2_2_A_beats_bien.pdf, id=211, 501.875pt x 398.48875pt>
+File: ./pics/datos_2_2_A_beats_bien.pdf Graphic file (type pdf)
+
+<use ./pics/datos_2_2_A_beats_bien.pdf>
+
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Package wrapfig Warning: Stationary wrapfigure forced to float on input line 42
-4.
+Underfull \hbox (badness 10000) in paragraph at lines 395--396
 
-[11 <./pics/bpm90a100beats.pdf> <./pics/bpmvariable.pdf> <./pics/train13_autoco
-rr.pdf> <./pics/train13_beats_bien.pdf>] [12 <./pics/train11_autocorr.pdf> <./p
-ics/train11_autocorr2.pdf> <./pics/train11_beats_lento.pdf> <./pics/train11_bea
-ts_bien.pdf> <./pics/train13_agents.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 426--427
+ []
 
+[11 <./pics/bpm90a100beats.pdf> <./pics/bpmvariable.pdf> <./pics/datos_2_2_A_ag
+ents.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 397--398
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 415--416
+
+ []
+
+<./pics/datos_2_14_A_agents.pdf, id=239, 509.905pt x 396.48125pt>
+File: ./pics/datos_2_14_A_agents.pdf Graphic file (type pdf)
+
+<use ./pics/datos_2_14_A_agents.pdf>
+Underfull \hbox (badness 1112) in paragraph at lines 428--429
+\OT1/cmr/m/n/12 con-fi-gu-ra-ci^^Son de los agen-tes al fi-
+ []
+
+
+Underfull \hbox (badness 2452) in paragraph at lines 428--429
+\OT1/cmr/m/n/12 na-li-zar el trac-king so-bre to-da la
+ []
+
+
+Underfull \hbox (badness 1622) in paragraph at lines 428--429
+\OT1/cmr/m/n/12 te que hay 2 agen-tes que tie-nen
+ []
+
+
+Underfull \hbox (badness 2582) in paragraph at lines 428--429
+\OT1/cmr/m/n/12 del res-to y que sus tem-pos son
+ []
+
+
+Underfull \hbox (badness 1577) in paragraph at lines 428--429
+\OT1/cmr/m/n/12 otro: el agen-te 1 con tem-po 130
  []
 
 
@@ -956,34 +955,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 428--429
 
  []
 
-
+[12 <./pics/datos_2_2_A_autocorr.pdf> <./pics/datos_2_2_A_beats_bien.pdf> <./pi
+cs/datos_2_14_A_agents.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 430--431
 
  []
 
+<./pics/datos_2_14_A_autocorr.pdf, id=265, 527.9725pt x 423.5825pt>
+File: ./pics/datos_2_14_A_autocorr.pdf Graphic file (type pdf)
 
-Underfull \hbox (badness 10000) in paragraph at lines 432--433
+<use ./pics/datos_2_14_A_autocorr.pdf>
+<./pics/datos_2_14_A_autocorr2.pdf, id=266, 532.99126pt x 423.5825pt>
+File: ./pics/datos_2_14_A_autocorr2.pdf Graphic file (type pdf)
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 434--435
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 436--437
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 438--439
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 440--441
-
+<use ./pics/datos_2_14_A_autocorr2.pdf>
+Overfull \hbox (7.83324pt too wide) in paragraph at lines 435--438
+ [][][][] 
  []
 
 
@@ -991,17 +978,93 @@ Underfull \hbox (badness 10000) in paragraph at lines 442--443
 
  []
 
-[13 <./pics/train11_agents.pdf>] [14
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--445
+
+ []
+
+<./pics/datos_2_14_A_beats_lento.pdf, id=271, 501.875pt x 398.48875pt>
+File: ./pics/datos_2_14_A_beats_lento.pdf Graphic file (type pdf)
+
+<use ./pics/datos_2_14_A_beats_lento.pdf>
+<./pics/datos_2_14_A_beats_bien.pdf, id=272, 501.875pt x 398.48875pt>
+File: ./pics/datos_2_14_A_beats_bien.pdf Graphic file (type pdf)
+
+<use ./pics/datos_2_14_A_beats_bien.pdf>
+Overfull \hbox (7.83324pt too wide) in paragraph at lines 449--452
+ [][][][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 456--457
+
+ []
+
+[13 <./pics/datos_2_14_A_autocorr.pdf> <./pics/datos_2_14_A_autocorr2.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 466--467
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 482--483
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 484--485
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 486--487
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 488--489
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 490--491
+
+ []
+
+[14 <./pics/datos_2_14_A_beats_lento.pdf> <./pics/datos_2_14_A_beats_bien.pdf>]
+
+Underfull \hbox (badness 10000) in paragraph at lines 492--493
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 494--495
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 496--497
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 498--499
+
+ []
+
+[15] [16
 
 ] (./audioDSPentregaFinal.aux) ) 
 Here is how much of TeX's memory you used:
- 9368 strings out of 494999
- 132994 string characters out of 1180816
+ 9373 strings out of 494999
+ 133306 string characters out of 1180816
  229238 words of memory out of 3000000
- 12302 multiletter control sequences out of 15000+50000
- 15557 words of font info for 58 fonts, out of 3000000 for 9000
+ 12304 multiletter control sequences out of 15000+50000
+ 15726 words of font info for 59 fonts, out of 3000000 for 9000
  54 hyphenation exceptions out of 8191
- 44i,10n,45p,1117b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,10n,45p,1117b,440s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/am
 sfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
 mcsc10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb>
@@ -1018,10 +1081,11 @@ ic/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
 m/cmss17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pf
 b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/shar
 e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-tex
-live/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on audioDSPentregaFinal.pdf (15 pages, 1056658 bytes).
+live/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on audioDSPentregaFinal.pdf (17 pages, 1062618 bytes).
 PDF statistics:
- 375 PDF objects out of 1000 (max. 8388607)
- 64 named destinations out of 1000 (max. 500000)
+ 400 PDF objects out of 1000 (max. 8388607)
+ 66 named destinations out of 1000 (max. 500000)
  219 words of extra memory for PDF output out of 10000 (max. 10000000)
 

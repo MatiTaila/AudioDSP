@@ -362,63 +362,119 @@ Una vez realizadas las pruebas sintéticas y corroborado el funcionamiento en si
 
 \section{Señales reales}
 
-\subsection{anda bien}
+Si bien el pasaje de casos sintéticos a reales siempre conlleva el agregado de una cantidad de no idealidades de la señal que pueden causar situaciones no previstas y así un mal desempeño del algoritmo, en este caso la performance alcanzada continúa siendo considerablemente buena. De todas formas se presentan casos donde el algoritmo funciona de forma correcta y donde tiene alguna dificultad.
 
-\begin{wrapfigure}{l}{0.45\textwidth}
+\subsection{Caso de buen funcionamiento}
+
+En esta sección se presentan los resultados para una pieza musical donde el comportamiento del algoritmo coincide completamente con el \emph{ground truth} de la señal.\\
+
+\begin{wrapfigure}{l}{0.55\textwidth}
 	\vspace{-25pt}
 	\begin{center}
-	\includegraphics[width=0.4\textwidth]{./pics/train13_agents.pdf}
+	\includegraphics[width=0.5\textwidth]{./pics/datos_2_2_A_agents.pdf}
 	\end{center}
 	\vspace{-20pt}
 	\caption{Agentes finales}
-	\label{fig:train13_agents}
-	\vspace{-35pt}
+	\label{fig:datos_2_2_A_agents}
 \end{wrapfigure}
+
+En la figura \ref{fig:datos_2_2_A_agents} se muestra la configuración de los agentes al terminar el tracking sobre toda la pieza musical. Cada punto en la gráfica representa un agente. En la gráfica de arriba se muestra el puntaje final de cada agente en función de su período final, mientras que en la gráfica de abajo se muestra lo mismo pero en función del identificador de cada agente. El número de agente da una idea de la ``edad'' de cada agente. Se puede observar en dicha figura que el $1^{er}$ agente tiene un puntaje ligeramente superior que el resto, por lo que será agente ganador para esta pieza.\\
+
+En la figura \ref{fig:datos_2_2_A} se muestran más resultados obtenidos para la pieza musical en cuestión. En la figura \ref{fig:datos_2_2_A_autocorr} se muestra la autocorrelación del Flujo Espectral en la \emph{ventana de inducción} en función del período en BPM y en la figura \ref{fig:datos_2_2_A_beats_bien} se muestra la señal original con los beats detectados sobrepuestos.\\
 
 \begin{figure} [h!]
 \centering
-  \subfloat[En función de las muestras]{\label{fig:train13_autocorr} \centering
-  		\includegraphics[width=.5\textwidth]{./pics/train13_autocorr.pdf}} 
-  \subfloat[Agente número 20]{\label{fig:train13_beats_bien} 
-  		\includegraphics[width=.5\textwidth]{./pics/train13_beats_bien.pdf}}
+  \subfloat[Autocorrelación del Flujo Espectral y filtrado de picos]{\label{fig:datos_2_2_A_autocorr} \centering
+  		\includegraphics[width=.47\textwidth]{./pics/datos_2_2_A_autocorr.pdf}} 
+  \subfloat[Beats detectados sobre la señal de audio original]{\label{fig:datos_2_2_A_beats_bien} 
+  		\includegraphics[width=.47\textwidth]{./pics/datos_2_2_A_beats_bien.pdf}}
   \caption{}
-  \label{fig:train13}.
+  \label{fig:datos_2_2_A}
 \end{figure}
 
+Si se observa el período del agente ganador mostrado en la figura \ref{fig:datos_2_2_A_agents} y se lo compara con el \emph{tempo} del mayor pico de la autocorrelación mostrado en la figura \ref{fig:datos_2_2_A_autocorr} se advierte una gran similitud, lo cual sugiere que el agente ganador viene de una familia inicializada por un agente creado en el pre-tracking correspondiente a dicho pico. En este caso el pre-tracking logró estimar de muy buena manera el tempo de la pieza musical y el agente se mantuvo durante toda la pieza ajustando levemente su \emph{tempo} y \emph{timing} y acumulando un buen puntaje.\\
+
+Por otra parte se puede corroborar visualmente observando la figura \ref{fig:datos_2_2_A_beats_bien} que en cada ataque de la pieza musical se presenta un beat detectado, lo cual corrobora el buen funcionamiento del algoritmo.\\
+
+Se realizaron además algunas pruebas cuantitativas utilizando las medidas \emph{Continuity based} y \emph{F-Measure} obteniendo el siguiente resultado:
+
+\begin{verbatim}
+---------------------------------------------------------------------
+Performance:
+        	Cont-Based:	 cC:	100.00	cT:	100.00	aC:	100.00	aT:	100.00
+        	F-Mesure:     f:	 94.44	 p:	94.44   r:	94.44 	 a:	89.47
+---------------------------------------------------------------------
+\end{verbatim}
+
+Por último y no menos importante es interesante destacar el resultado auditivo de la señal de salida, el cual parece comportarse de manera perfecta a lo largo de la pieza musical.
 
 
-\subsection{anda mal}
+\subsection{Caso de funcionamiento comprometido}
+\label{sec:andamal}
 
-\begin{wrapfigure}{l}{0.45\textwidth}
+En esta sección se presenta un caso en el que el desempeño del algoritmo tiene algunas dificultades, aunque en líneas generales la performance resulta aceptable.\\
+
+\begin{wrapfigure}{l}{0.55\textwidth}
 	\vspace{-25pt}
 	\begin{center}
-	\includegraphics[width=0.4\textwidth]{./pics/train11_agents.pdf}
+	\includegraphics[width=0.5\textwidth]{./pics/datos_2_14_A_agents.pdf}
 	\end{center}
 	\vspace{-20pt}
 	\caption{Agentes finales}
-	\label{fig:train11_agents}
+	\label{fig:datos_2_14_A_agents}
 	\vspace{-35pt}
 \end{wrapfigure}
 
-\begin{figure} [h!]
-\centering
-  \subfloat[En función de las muestras]{\label{fig:train11_autocorr} \centering
-  		\includegraphics[width=.5\textwidth]{./pics/train11_autocorr.pdf}} 
-  \subfloat[En función del período en BPM]{\label{fig:train11_autocorr2} 
-  		\includegraphics[width=.5\textwidth]{./pics/train11_autocorr2.pdf}}
-  \caption{Autocorrelación del Flujo Espectral}
-  \label{fig:train11_autocorrelaciones}.
-\end{figure}
+En la figura \ref{fig:datos_2_14_A_agents} se muestra la configuración de los agentes al finalizar el tracking sobre toda la pieza musical. Se advierte fácilmente que hay 2 agentes que tienen un puntaje ligeramente superior al del resto y que sus tempos son uno aproximadamente el doble del otro: el agente 1 con tempo 130 BPM y el agente 2 con tempo 65 BPM.\\
+
+He aquí un problema típico mucho más general que su aplicación a este caso de estudio. Es un problema ocasionado al tratar de computar automáticamente en una computadora algunas características que son intrínsecamente semánticas y por tanto humanas. Incluso el seguimiento del beat puede variar dependiendo de la persona, mientras que algunos pueden marcar un determinado tempo, otros pueden marcar el doble o la mitad. En este caso el consenso tomado del \emph{ground truth} dice que el agente que mejor captura el tempo de la pieza musical es el agente número 1. Como salida del algoritmo implementado el mejor agente resulta ser el agente número 2.\\
 
 \begin{figure} [h!]
 \centering
-  \subfloat[Agente número 2]{\label{fig:train11_beats_lento} \centering
-  		\includegraphics[width=.5\textwidth]{./pics/train11_beats_lento.pdf}} 
-  \subfloat[Agente número 20]{\label{fig:train11_beats_bien} 
-  		\includegraphics[width=.5\textwidth]{./pics/train11_beats_bien.pdf}}
-  \caption{Beats detectados}
-  \label{fig:train11_beats}.
+  \subfloat[En función de las muestras]{\label{fig:datos_2_14_A_autocorr} \centering
+  		\includegraphics[width=.5\textwidth]{./pics/datos_2_14_A_autocorr.pdf}} 
+  \subfloat[En función del período en BPM]{\label{fig:datos_2_14_A_autocorr2} 
+  		\includegraphics[width=.5\textwidth]{./pics/datos_2_14_A_autocorr2.pdf}}
+  \caption{Autocorrelación del Flujo Espectral}
+  \label{fig:datos_2_14_A_autocorrelaciones}
 \end{figure}
+
+En la figura \ref{fig:datos_2_14_A_autocorrelaciones} se muestra la autocorrelación del Flujo Espectral en la ventana de inducción del pre-tracking. Se puede observar que tanto el agente 1 como el 2 son inicializados en esta etapa ya que se advierten 2 claros picos, uno cerca de 65 BPM y otro cerca de 130 BPM.\\
+
+Por último en la figura \ref{fig:datos_2_14_A_beats} se muestran los resultados obtenidos si se elige como mejor agente al número 2 (figura \ref{fig:datos_2_14_A_beats_lento}), y si se elige al número 1 (figura \ref{fig:datos_2_14_A_beats_bien}).\\
+
+\begin{figure} [h!]
+\centering
+  \subfloat[Agente número 2]{\label{fig:datos_2_14_A_beats_lento} \centering
+  		\includegraphics[width=.5\textwidth]{./pics/datos_2_14_A_beats_lento.pdf}} 
+  \subfloat[Agente número 20]{\label{fig:datos_2_14_A_beats_bien} 
+  		\includegraphics[width=.5\textwidth]{./pics/datos_2_14_A_beats_bien.pdf}}
+  \caption{Beats detectados}
+  \label{fig:datos_2_14_A_beats}
+\end{figure}
+
+En este caso es muy difícil darse cuenta visualmente observando las imágenes de la figura \ref{fig:datos_2_14_A_beats} cuál de los dos sigue de mejor forma al beat, pero si analizamos auditivamente los resultados habrá consenso entre la mayoría de las personas que el agente número 20 sigue de mejor forma el beat de esta pieza musical.\\
+
+Si se elije como mejor agente al número 2 la performance alcanzada será:
+\begin{verbatim}
+---------------------------------------------------------------------
+Performance agente 2:
+        	Cont-Based:	 cC:	00.00	cT:	00.00	 aC:	100.00	aT:	100.00
+        	F-Mesure: 	   f:	67.47  p:	100.00	 r:	50.91	  a:	50.91
+---------------------------------------------------------------------
+\end{verbatim}
+Se puede ver que algunas medidas de desempeño penalizan fuertemente este tipo de errores mientras que otras los admiten de distintas formas y lo penalizan en mayor o menor medida.\\
+
+Por último si se elije como mejor agente al número 1 la performance alcanzada será perfecta:
+\begin{verbatim}
+---------------------------------------------------------------------
+Performance agente 1:
+        	Cont-Based:	 cC:	100.00	cT:	100.00	aC:	100.00	aT:	100.00
+        	F-Mesure:	    f:	100.00	 p:	100.00	 r:	100.00	 a:	100.00
+---------------------------------------------------------------------
+\end{verbatim}
+
+En este caso la performance del algoritmo hubiera sido perfecta.
 
 
 \section{conclusiones}
@@ -429,7 +485,7 @@ qedaron algunas dudas de implementacion\\
 
 se puede mejorar la parte de la eleccion del agente ganador\\
 
-las debilidades pueden estar en la dificultad de elegir el agente posta... nos pasa a veces q agarramos multiplos...\\
+las debilidades pueden estar en la dificultad de elegir el agente posta... nos pasa a veces q agarramos multiplos... como en la sección \ref{sec:andamal}. Se puede pensar en mejorarlo para elegir el correcto aunque será una difícil tarea el pasaje a lo semántico\\
 
 en general esta bastante robusto, no se usan umbrales duros ni cosas demasiado arbitrarias\\
 
