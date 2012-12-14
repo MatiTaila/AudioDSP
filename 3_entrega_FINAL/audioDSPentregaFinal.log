@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  13 DEC 2012 01:31
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  14 DEC 2012 03:47
 entering extended mode
  %&-line parsing enabled.
 **audioDSPentregaFinal.tex
@@ -690,21 +690,26 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 73.
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-<./pics/logoIIE_transparente.png, id=43, 124.465pt x 69.25874pt>
+<./pics/logoIIE_transparente.png, id=67, 124.465pt x 69.25874pt>
 File: ./pics/logoIIE_transparente.png Graphic file (type png)
 
 <use ./pics/logoIIE_transparente.png>
-<./pics/logo_fing_transparente.png, id=45, 578.16pt x 566.115pt>
+<./pics/logo_fing_transparente.png, id=69, 578.16pt x 566.115pt>
 File: ./pics/logo_fing_transparente.png Graphic file (type png)
 
 <use ./pics/logo_fing_transparente.png>
-<./pics/logo_udelar.png, id=46, 179.67125pt x 197.73875pt>
+<./pics/logo_udelar.png, id=70, 179.67125pt x 197.73875pt>
 File: ./pics/logo_udelar.png Graphic file (type png)
 
 <use ./pics/logo_udelar.png> [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./pics/logoIIE_transparent
 e.png> <./pics/logo_fing_transparente.png> <./pics/logo_udelar.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
  []
@@ -714,44 +719,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 103--104
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 105--106
-
- []
-
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.110 \chapter
-              {Algoritmo} [1
+l.106 
+       [1
 
-]
+] [2]
 Cap\'{\i }tulo 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 117.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 116.
 
 (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 117.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 116.
 
-<./pics/bloques.png, id=74, 1075.01625pt x 664.4825pt>
+<./pics/bloques.png, id=102, 1075.01625pt x 664.4825pt>
 File: ./pics/bloques.png Graphic file (type png)
 
 <use ./pics/bloques.png>
-Underfull \hbox (badness 10000) in paragraph at lines 134--135
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
 
  []
 
-[2
+[3
 
  <./pics/bloques.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 136--137
+Underfull \hbox (badness 10000) in paragraph at lines 135--136
 
  []
 
-[3]
+[4]
 Underfull \hbox (badness 10000) in paragraph at lines 178--179
 
  []
@@ -766,7 +766,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 186--187
 
  []
 
-<./pics/r.pdf, id=101, 487.8225pt x 396.48125pt>
+<./pics/r.pdf, id=129, 487.8225pt x 396.48125pt>
 File: ./pics/r.pdf Graphic file (type pdf)
  <use ./pics/r.pdf>
 Underfull \hbox (badness 10000) in paragraph at lines 208--209
@@ -778,12 +778,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 221--222
 
  []
 
-[4 <./pics/r.pdf>]
+[5 <./pics/r.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 226--227
 
  []
 
-<./pics/graficamejor.png, id=116, 575.57893pt x 335.53929pt>
+<./pics/graficamejor.png, id=144, 575.57893pt x 335.53929pt>
 File: ./pics/graficamejor.png Graphic file (type png)
 
 <use ./pics/graficamejor.png>
@@ -796,7 +796,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 251--253
 
  []
 
-[5 <./pics/graficamejor.png>]
+[6 <./pics/graficamejor.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 295--296
 
  []
@@ -806,26 +806,202 @@ Underfull \hbox (badness 10000) in paragraph at lines 303--306
 
  []
 
-[6] [7]
+[7] [8]
 Cap\'{\i }tulo 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 309--310
+Underfull \hbox (badness 10000) in paragraph at lines 311--312
 
  []
 
-[8
 
-] [9
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--319
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 320--321
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 322--323
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 329--330
+
+ []
+
+[9
+
+] <./pics/bpm90autocorr.pdf, id=173, 477.785pt x 417.56pt>
+File: ./pics/bpm90autocorr.pdf Graphic file (type pdf)
+
+<use ./pics/bpm90autocorr.pdf>
+<./pics/bpm90beats.pdf, id=174, 501.875pt x 398.48875pt>
+File: ./pics/bpm90beats.pdf Graphic file (type pdf)
+
+<use ./pics/bpm90beats.pdf>
+Overfull \hbox (7.83324pt too wide) in paragraph at lines 336--339
+ [][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 345--346
+
+ []
+
+<./pics/bpm90a100beats.pdf, id=179, 501.875pt x 398.48875pt>
+File: ./pics/bpm90a100beats.pdf Graphic file (type pdf)
+
+<use ./pics/bpm90a100beats.pdf>
+<./pics/bpmvariable.pdf, id=180, 501.875pt x 399.4925pt>
+File: ./pics/bpmvariable.pdf Graphic file (type pdf)
+
+<use ./pics/bpmvariable.pdf>
+Overfull \hbox (7.83324pt too wide) in paragraph at lines 352--355
+ [][][][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 359--360
+
+ []
+
+<./pics/train13_agents.pdf, id=183, 509.905pt x 396.48125pt>
+File: ./pics/train13_agents.pdf Graphic file (type pdf)
+
+<use ./pics/train13_agents.pdf>
+<./pics/train13_autocorr.pdf, id=184, 531.9875pt x 423.5825pt>
+File: ./pics/train13_autocorr.pdf Graphic file (type pdf)
+
+<use ./pics/train13_autocorr.pdf>
+<./pics/train13_beats_bien.pdf, id=185, 501.875pt x 398.48875pt>
+File: ./pics/train13_beats_bien.pdf Graphic file (type pdf)
+
+<use ./pics/train13_beats_bien.pdf>
+Overfull \hbox (7.83324pt too wide) in paragraph at lines 381--384
+ [][][][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 39
+0.
+
+
+Package wrapfig Warning: Collision between wrapping environments on input line 
+392.
+
+<./pics/train11_agents.pdf, id=186, 509.905pt x 396.48125pt>
+File: ./pics/train11_agents.pdf Graphic file (type pdf)
+
+<use ./pics/train11_agents.pdf>
+<./pics/train11_autocorr.pdf, id=187, 527.9725pt x 423.5825pt>
+File: ./pics/train11_autocorr.pdf Graphic file (type pdf)
+
+<use ./pics/train11_autocorr.pdf>
+<./pics/train11_autocorr2.pdf, id=188, 512.91624pt x 399.4925pt>
+File: ./pics/train11_autocorr2.pdf Graphic file (type pdf)
+
+<use ./pics/train11_autocorr2.pdf>
+Overfull \hbox (7.83324pt too wide) in paragraph at lines 406--409
+ [][][][] 
+ []
+
+[10 <./pics/bpm90autocorr.pdf> <./pics/bpm90beats.pdf>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./pics/train11_beats_lento.pdf, id=211, 501.875pt x 398.48875pt>
+File: ./pics/train11_beats_lento.pdf Graphic file (type pdf)
+
+<use ./pics/train11_beats_lento.pdf>
+<./pics/train11_beats_bien.pdf, id=212, 501.875pt x 398.48875pt>
+File: ./pics/train11_beats_bien.pdf Graphic file (type pdf)
+
+<use ./pics/train11_beats_bien.pdf>
+Overfull \hbox (7.83324pt too wide) in paragraph at lines 416--419
+ [][][][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Package wrapfig Warning: Stationary wrapfigure forced to float on input line 42
+4.
+
+[11 <./pics/bpm90a100beats.pdf> <./pics/bpmvariable.pdf> <./pics/train13_autoco
+rr.pdf> <./pics/train13_beats_bien.pdf>] [12 <./pics/train11_autocorr.pdf> <./p
+ics/train11_autocorr2.pdf> <./pics/train11_beats_lento.pdf> <./pics/train11_bea
+ts_bien.pdf> <./pics/train13_agents.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 428--429
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 430--431
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 432--433
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 434--435
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 436--437
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 438--439
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 440--441
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 442--443
+
+ []
+
+[13 <./pics/train11_agents.pdf>] [14
 
 ] (./audioDSPentregaFinal.aux) ) 
 Here is how much of TeX's memory you used:
- 9245 strings out of 494999
- 130196 string characters out of 1180816
+ 9368 strings out of 494999
+ 132994 string characters out of 1180816
  229238 words of memory out of 3000000
- 12219 multiletter control sequences out of 15000+50000
+ 12302 multiletter control sequences out of 15000+50000
  15557 words of font info for 58 fonts, out of 3000000 for 9000
  54 hyphenation exceptions out of 8191
- 44i,10n,42p,1117b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,10n,45p,1117b,407s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/am
 sfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
 mcsc10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb>
@@ -843,9 +1019,9 @@ m/cmss17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pf
 b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/shar
 e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-tex
 live/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on audioDSPentregaFinal.pdf (10 pages, 521549 bytes).
+Output written on audioDSPentregaFinal.pdf (15 pages, 1056658 bytes).
 PDF statistics:
- 217 PDF objects out of 1000 (max. 8388607)
- 36 named destinations out of 1000 (max. 500000)
- 111 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 375 PDF objects out of 1000 (max. 8388607)
+ 64 named destinations out of 1000 (max. 500000)
+ 219 words of extra memory for PDF output out of 10000 (max. 10000000)
 

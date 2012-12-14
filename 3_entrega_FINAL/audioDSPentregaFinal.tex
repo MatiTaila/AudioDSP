@@ -96,8 +96,6 @@ Gonzalo \textsc{Gutiérrez}\\ Mat\'ias \textsc{Tailani\'an}
 
 \chapter*{Introducción}
 
-\vspace*{-1cm}
-
 Al escuchar música una reacción inconsciente muy común es mover el pie golpeando el piso a tiempo con el \textbf{beat}. La tarea computacional que intenta replicar ese comportamiento es conocida como \textbf{beat tracking}.\\
 
 La métrica de la señal se puede pensar como una estructura de pulsos percibidos a diferentes escalas temporales en una pieza musical. Se consideran 3 niveles métricos básicos: el \emph{tatum}, el \emph{tactus} o \emph{beat} y el \emph{compás}. El tatum es el valor en tiempo más pequeño que puede encontrarse en una pieza musical, es la unidad atómica de la pieza. En general los otros valores de duración presentes en la pieza son múltiplos de tatum. El tactus o beat está más relacionado con el aspecto semántico, y está directamente vinculado con el \textbf{tempo} de la pieza. Por último el compás está vinculado con la tasa de cambios armónicos o la duración de un patrón rítmico.\\
@@ -107,7 +105,8 @@ El problema del seguimiento de beat o \emph{beat tracking} es un problema todav�
 El presente trabajo presenta un algoritmo de seguimiento de \emph{beat} de una pieza musical y se basa en el trabajo de ``Jo\~ao Lobato Oliveira, Fabien Gouyon, Luis Gustavo Martins, Luis Paulo Reis'', titulado ``IBT: A real time tempo and beat tracking system, presentado en la \emph{$11^a$ International Society for Music Information Retrieval Conference, ISMIR}, en 2010'' (\cite{bib:el_posta}). Dicho trabaja se basa a su vez en el sistema \textbf{BeatRoot}, presentado en (\cite{bib:dixon}): Dixon S., ``Automatic extraction of tempo and beat from expressive performances.'', \emph{Journal of New Music Research}, 2001. De \cite{bib:dixon} se toma la idea de varios \textbf{agentes} compitiendo y llevando varias hipótesis de tempo y fase paralelamente, se agrega robustez ante entradas ruidosas y se implementa en tiempo real. Aún realizando todas las operaciones de forma causal y en tiempo real, se logra obtener resultados comparables con el estado del arte y se convierte además en el primer software \emph{open source} de seguimiento de beat en tiempo real.
 
 
-\chapter{Algoritmo}
+\chapter{Metodología}
+\label{sec:metodologia}
 
 Como se puede ver en la figura \ref{fig:bloques} el algoritmo consta de 3 fases fundamentales:
 \begin{itemize}
@@ -149,9 +148,10 @@ SF(n)=\sum\limits_{k=-\frac{N}{2}}^{\frac{N}{2}-1} H(|X(n,k)|-X(n-1,k)|)
 donde $N=2048$ (46 $ms$ a una frecuencia de muestreo $r=44100Hz$) y el tamaño del salto es $h=441$ (10 $ms$ o 78\% de solapado). $H(x)$ es un rectificador de media onda: $H(x)=\frac{x+|x|}{2}$.
 
 
-% TODO figura
+%TODO figura
 
 \section{Pre-Tracking}
+\label{sec:pretracking}
 
 La etapa del Pre-Tracking es fundamental ya que en ella se basarán las etapas siguientes del algoritmo. Se analiza una \emph{ventana de inducción} de 5 segundos y se obtiene como salida un conjunto de agentes caracterizados por $(P_i,\phi _i, S_i) $ para cada agente $i=1\dots N$. Consta de 3 sub-etapas donde se calcula el período ($P_i$), fase ($\phi _i$) y puntaje ($S_i$) de cada agente $i$.
 
@@ -171,7 +171,7 @@ La segunda etapa consiste en la detección de eventos, por medio de un hallado y
 \end{equation*}
 $\delta$ es un umbral determinado empíricamente en $0.75$ y $M$ es un rango de tiempos definido entre [50,250] BPM.
 
-% TODO figura y explicar que es lo q agregamos nosotros
+%TODO figura y explicar que es lo q agregamos nosotros
 
 \subsection{Fase}
 
@@ -304,11 +304,142 @@ En la versión causal el \emph{referee} va determinando en cada instante cuál e
 \\
 $b_p$ es la predicción del beat, $m$ el máximo correspondiente del Flujo Espectral, y $P_{max}$ el período máximo permitido (correspondiente a $250\;BPM$). El cociente $P_i/P_{max}$ es utilizado para normalizar la función puntaje por el período $P_i$ y es utilizado como una manera de disminuir el puntaje de los agentes más rápidos, que de otra manera tendería a aumentar dado que tienen una mayor cantidad de predicciones de beat. La utilización de un puntaje negativo cuando la predicción cae fuera de la región \emph{inner} infiere una penalización al agente correspondiente.\\
 
-\chapter{Nosotros}
+\chapter{Resultados}
+
+\section{Implementación}
+
+En esta sección se presentan algunos detalles en los cuales fue necesario ahondar el estudio para la correcta implementación del algoritmo presentado en la sección \ref{sec:metodologia}, y que resultan interesante destacarlos y documentarlos.\\
+
+%TODO escribir esto bien de aca pa abajo
+
+A la hora de realizar el tracking se planta la posibilidad de pararse en los picos del sF o pararse en las predicciones de beat. centrar la ventana\\
+
+
+no matar agentes fuera del outer\\
+
+El filtrado de los picos se realiza analizando las distancias entre cada máximo y los mínimos aledaños a él.\\
 
 la matanza de agentes esta pensada para correr en tiempo real. Como nuestro trabajo no lo requería aunque era una buena cosa para conservar, se pueden modificar los criterios de matanza para dejar vivos mas agentes, porque no nos importa que demore un poco mas...\\
 
 Para la versión no causal se puede utilizar un referee elegido al final del proceso de tracking, como se propone en \cite{bib:dixon}, donde se asume que al ir teniendo buenos puntajes a lo largo del tracking, el agente que tenga mayot puntaje al finalizarlo será el mejor agente global.
+
+
+\section{Señales sintéticas}
+
+Como primer prueba para testear el algoritmo implementado se generan diversas señales sintéticas con período constante. Para ello se convolucionan el sonido de un platillo de batería con un tren de pulsos de frecuencia constante. La prueba siguiente, también sintética consiste en generar una señal con frecuencia variando linealmente a lo largo del tiempo para analizar la performance del algoritmo en el tracking del período variante de una señal.\\
+
+Como primer ejemplo se presenta el caso de una señal de período constante en $90\;BMP$. Los resultados se muestran en las figuras \ref{fig:90BPM}.
+
+\begin{figure} [h!]
+\centering
+  \subfloat[Autocorrelación del Flujo Espectral]{\label{fig:bpm90autocorr} \centering
+  		\includegraphics[width=.5\textwidth]{./pics/bpm90autocorr.pdf}} 
+  \subfloat[Beats detectados sobre la señal]{\label{fig:bpm90beats} 
+  		\includegraphics[width=.5\textwidth]{./pics/bpm90beats.pdf}}
+  \caption{Señal sintética de 90 BPM}
+  \label{fig:90BPM}
+\end{figure}
+
+%TODO aca se puede poner los tiempos de los beats y comparar cuantitativamente...
+
+La figura \ref{fig:bpm90autocorr} muestra la autocorrelación del flujo espectral calculado en la \emph{ventana de inducción} mencionada en la sección \ref{sec:pretracking} del Pre-Tracking. Se puede apreciar claramente que el pico marcado que aparece en la figura corresponde con un período de 90BPM, coincidiendo perfectamente con el período de la señal sintética generada. Se puede decir entonces que el Pre-Tracking captó perfectamente el período del beat. Se muestra también el umbral utilizado para filtrar los máximos locales del Flujo Espectral detectados. Por otro lado en la figura \ref{fig:bpm90beats} se muestra una representación de la señal de audio, y sobrepuesta a ella una línea roja en la posición de cada beat detectado. Se puede corroborar el perfecto funcionamiento del algoritmo en este caso.\\
+
+Para analizar la capacidad de adaptación del algoritmo a una pieza musical con tempo variante se genera una señal sintética con período variante entre 90BPM y 100BPM. Los resultados se muestran en la figura \ref{fig:tempovariante}.
+
+\begin{figure} [h!]
+\centering
+  \subfloat[Beats detectados sobre la señal]{\label{fig:bpm90a100beats} \centering
+  		\includegraphics[width=.5\textwidth]{./pics/bpm90a100beats.pdf}} 
+  \subfloat[Evolución del tempo]{\label{fig:bpmvariable} 
+  		\includegraphics[width=.5\textwidth]{./pics/bpmvariable.pdf}}
+  \caption{Señal sintética con tempo variante en forma lineal}
+  \label{fig:tempovariante}.
+\end{figure}
+
+En la figura \ref{fig:bpm90a100beats} se muestra la señal sintética original con los beats sobrepuestos, donde se puede observar a grandes rasgos que se realiza el tracking en forma exitosa. Por otro lado en la figura \ref{fig:bpmvariable} se puede observar con más detalle la evolución del tempo a lo largo del tiempo. Comparando ambas curvas se puede afirmar que, a menos de un error de alrededor de $0.5\;BPM$, se realiza un tracking exitoso del tempo de la pieza.\\
+
+Una vez realizadas las pruebas sintéticas y corroborado el funcionamiento en situaciones controladas, se procede a testear el algoritmo implementado en situaciones reales, como se pasa a describir en la siguiente sección.
+
+\section{Señales reales}
+
+\subsection{anda bien}
+
+\begin{wrapfigure}{l}{0.45\textwidth}
+	\vspace{-25pt}
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{./pics/train13_agents.pdf}
+	\end{center}
+	\vspace{-20pt}
+	\caption{Agentes finales}
+	\label{fig:train13_agents}
+	\vspace{-35pt}
+\end{wrapfigure}
+
+\begin{figure} [h!]
+\centering
+  \subfloat[En función de las muestras]{\label{fig:train13_autocorr} \centering
+  		\includegraphics[width=.5\textwidth]{./pics/train13_autocorr.pdf}} 
+  \subfloat[Agente número 20]{\label{fig:train13_beats_bien} 
+  		\includegraphics[width=.5\textwidth]{./pics/train13_beats_bien.pdf}}
+  \caption{}
+  \label{fig:train13}.
+\end{figure}
+
+
+
+\subsection{anda mal}
+
+\begin{wrapfigure}{l}{0.45\textwidth}
+	\vspace{-25pt}
+	\begin{center}
+	\includegraphics[width=0.4\textwidth]{./pics/train11_agents.pdf}
+	\end{center}
+	\vspace{-20pt}
+	\caption{Agentes finales}
+	\label{fig:train11_agents}
+	\vspace{-35pt}
+\end{wrapfigure}
+
+\begin{figure} [h!]
+\centering
+  \subfloat[En función de las muestras]{\label{fig:train11_autocorr} \centering
+  		\includegraphics[width=.5\textwidth]{./pics/train11_autocorr.pdf}} 
+  \subfloat[En función del período en BPM]{\label{fig:train11_autocorr2} 
+  		\includegraphics[width=.5\textwidth]{./pics/train11_autocorr2.pdf}}
+  \caption{Autocorrelación del Flujo Espectral}
+  \label{fig:train11_autocorrelaciones}.
+\end{figure}
+
+\begin{figure} [h!]
+\centering
+  \subfloat[Agente número 2]{\label{fig:train11_beats_lento} \centering
+  		\includegraphics[width=.5\textwidth]{./pics/train11_beats_lento.pdf}} 
+  \subfloat[Agente número 20]{\label{fig:train11_beats_bien} 
+  		\includegraphics[width=.5\textwidth]{./pics/train11_beats_bien.pdf}}
+  \caption{Beats detectados}
+  \label{fig:train11_beats}.
+\end{figure}
+
+
+\section{conclusiones}
+
+anda en general muy rico\\
+
+qedaron algunas dudas de implementacion\\
+
+se puede mejorar la parte de la eleccion del agente ganador\\
+
+las debilidades pueden estar en la dificultad de elegir el agente posta... nos pasa a veces q agarramos multiplos...\\
+
+en general esta bastante robusto, no se usan umbrales duros ni cosas demasiado arbitrarias\\
+
+es un sistema muy bien pensado donde se favorece a los mejores y la competencia parece ser un buen camino\\
+
+tiene una buena relación entre la inercia y la rapidez de respuesta\\
+
+en silencios de una cancion sigue marcando el beat como venia por un rato..\\
+
+buenos resultados auditivamente hablando\\
 
 
 \begin{thebibliography}{99}
