@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="casos.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="TriangleInL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="TriangleInL"
+       style="overflow:visible">
+      <path
+         id="path5701"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         transform="scale(-0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="TriangleOutL"
+       style="overflow:visible">
+      <path
+         id="path5710"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         transform="scale(0.8)" />
+    </marker>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5314">
+      <stop
+         style="stop-color:#008000;stop-opacity:1;"
+         offset="0"
+         id="stop5316" />
+      <stop
+         style="stop-color:#008000;stop-opacity:0;"
+         offset="1"
+         id="stop5318" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5314"
+       id="radialGradient5320"
+       cx="365.17014"
+       cy="58.877155"
+       fx="365.17014"
+       fy="58.877155"
+       r="7.4159914"
+       gradientUnits="userSpaceOnUse" />
+    <marker
+       inkscape:stockid="TriangleInL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleInL-8"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5701-8"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="scale(-0.8,-0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutL-0"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5710-2"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="scale(0.8,0.8)" />
+    </marker>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5314-9"
+       id="radialGradient5320-3"
+       cx="365.17014"
+       cy="58.877155"
+       fx="365.17014"
+       fy="58.877155"
+       r="7.4159913"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5314-9">
+      <stop
+         style="stop-color:#008000;stop-opacity:1;"
+         offset="0"
+         id="stop5316-0" />
+      <stop
+         style="stop-color:#008000;stop-opacity:0;"
+         offset="1"
+         id="stop5318-4" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5314-9-2"
+       id="radialGradient5320-3-4"
+       cx="365.17014"
+       cy="58.877155"
+       fx="365.17014"
+       fy="58.877155"
+       r="7.4159913"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5314-9-2">
+      <stop
+         style="stop-color:#008000;stop-opacity:1;"
+         offset="0"
+         id="stop5316-0-0" />
+      <stop
+         style="stop-color:#008000;stop-opacity:0;"
+         offset="1"
+         id="stop5318-4-4" />
+    </linearGradient>
+    <radialGradient
+       r="7.4159913"
+       fy="58.877155"
+       fx="365.17014"
+       cy="58.877155"
+       cx="365.17014"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient6360"
+       xlink:href="#linearGradient5314-9-2"
+       inkscape:collect="always" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="358.80391"
+     inkscape:cy="457.55786"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="776"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000063;stroke-width:1.69999999999999996;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:6.79999999999999982, 6.79999999999999982;stroke-dashoffset:0"
+       d="m 250.51783,111.91016 0,263.64981"
+       id="path2989"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <path
+       style="fill:none;stroke:#000063;stroke-width:1.69999999999999996;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:6.79999999999999982, 6.79999999999999982;stroke-dashoffset:0"
+       d="m 336.3808,112.41524 0,263.64981"
+       id="path2989-0"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <path
+       style="fill:none;stroke:#000063;stroke-width:1.69999999999999996;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:6.79999999999999982, 6.79999999999999982;stroke-dashoffset:0"
+       d="m 421.73869,114.68808 0,263.64981"
+       id="path2989-0-3"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <path
+       style="fill:none;stroke:#000063;stroke-width:1.69999999999999996;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:6.79999999999999982, 6.79999999999999982;stroke-dashoffset:0"
+       d="m 507.60166,114.68808 0,263.64982"
+       id="path2989-0-4"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <path
+       style="fill:none;stroke:#000063;stroke-width:1.69999999999999996;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:6.79999999999999982, 6.79999999999999982;stroke-dashoffset:0"
+       d="m 592.45447,113.67793 0,263.64981"
+       id="path2989-0-8"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <path
+       style="fill:none;stroke:#000063;stroke-width:1.69999999999999996;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:6.79999999999999982, 6.79999999999999982;stroke-dashoffset:0"
+       d="m 164.14979,113.17285 0,263.64981"
+       id="path2989-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 86.873119,334.14372 C 113.13709,368.48891 156.57364,85.646197 175.76654,204.8442 c 19.1929,119.198 10.10153,126.26907 29.29443,160.61425 19.1929,34.34519 41.41625,-355.5736942 51.51778,-190.91883 10.10152,164.65487 26.26396,168.69548 71.72083,186.87822 45.45686,18.18275 86.87312,-300.015304 98.99495,-186.87822 12.12183,113.13709 12.12183,181.82746 34.34518,181.82746 22.22336,0 35.35534,-365.6752225 59.599,-208.09143 24.24366,157.5838 13.13199,185.86807 26.26397,203.04067 13.13198,17.17259 36.36549,-213.14219 48.48732,-161.62441 12.12183,51.51778 16.16244,146.47212 38.3858,158.59395 22.22335,12.12183 13.13198,2.0203 13.13198,2.0203"
+       id="path3065"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <path
+       sodipodi:type="arc"
+       style="fill:url(#radialGradient5320);fill-opacity:1;stroke:none"
+       id="path3860"
+       sodipodi:cx="365.17014"
+       sodipodi:cy="58.877155"
+       sodipodi:rx="6.5659914"
+       sodipodi:ry="6.5659914"
+       d="m 371.73613,58.877155 a 6.5659914,6.5659914 0 1 1 -13.13199,0 6.5659914,6.5659914 0 1 1 13.13199,0 z"
+       transform="matrix(2.3076923,0,0,2.3076923,-423.48702,16.445906)"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <g
+       id="g5330"
+       transform="translate(-7.0710678,47.47717)"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140">
+      <text
+         sodipodi:linespacing="125%"
+         id="text5322"
+         y="58.372078"
+         x="331.33002"
+         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:32px"
+           y="58.372078"
+           x="331.33002"
+           id="tspan5324"
+           sodipodi:role="line">b</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5326"
+         y="67.463448"
+         x="349.51279"
+         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="67.463448"
+           x="349.51279"
+           id="tspan5328"
+           sodipodi:role="line">p</tspan></text>
+    </g>
+    <g
+       id="g5330-8"
+       transform="translate(74.418452,38.449506)"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140">
+      <text
+         sodipodi:linespacing="125%"
+         id="text5322-3"
+         y="58.372078"
+         x="331.33002"
+         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:32px"
+           y="58.372078"
+           x="331.33002"
+           id="tspan5324-1"
+           sodipodi:role="line">b</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5326-2"
+         y="67.463448"
+         x="349.51279"
+         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="67.463448"
+           x="349.51279"
+           id="tspan5328-1"
+           sodipodi:role="line">p</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="436.89099"
+       y="112.92032"
+       id="text5366"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140"><tspan
+         sodipodi:role="line"
+         id="tspan5368"
+         x="436.89099"
+         y="112.92032"
+         style="font-size:18px">2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="424.26407"
+       y="149.28581"
+       id="text5370"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140"><tspan
+         sodipodi:role="line"
+         id="tspan5372"
+         x="424.26407"
+         y="149.28581"
+         style="font-size:32px">m</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#TriangleInL);marker-end:url(#TriangleOutL)"
+       d="m 61.619305,65.443146 0,342.441714 626.294575,0"
+       id="path5374"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="76.771591"
+       y="311.92038"
+       id="text5376"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140"><tspan
+         sodipodi:role="line"
+         id="tspan5378"
+         x="76.771591"
+         y="311.92038">SF</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="599.02045"
+       y="430.10822"
+       id="text5380"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140"><tspan
+         sodipodi:role="line"
+         id="tspan5382"
+         x="599.02045"
+         y="430.10822">Tiempo</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="-181.77576"
+       y="49.564606"
+       id="text6194"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-1,1,0,0,0)"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso1.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140"><tspan
+         sodipodi:role="line"
+         id="tspan6196"
+         x="-181.77576"
+         y="49.564606">Amplitud</tspan></text>
+    <path
+       style="fill:none;stroke:#000063;stroke-width:1.70000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6.8, 6.8;stroke-dashoffset:0"
+       d="m 253.33777,528.55857 0,263.64981"
+       id="path2989-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <path
+       style="fill:none;stroke:#000063;stroke-width:1.70000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6.8, 6.8;stroke-dashoffset:0"
+       d="m 339.20074,529.06365 0,263.64981"
+       id="path2989-0-83"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <path
+       style="fill:none;stroke:#000063;stroke-width:1.70000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6.8, 6.8;stroke-dashoffset:0"
+       d="m 424.55863,531.33649 0,263.64981"
+       id="path2989-0-3-2"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <path
+       style="fill:none;stroke:#000063;stroke-width:1.70000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6.8, 6.8;stroke-dashoffset:0"
+       d="m 510.4216,531.33649 0,263.64982"
+       id="path2989-0-4-2"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <path
+       style="fill:none;stroke:#000063;stroke-width:1.70000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6.8, 6.8;stroke-dashoffset:0"
+       d="m 595.27441,530.32634 0,263.64981"
+       id="path2989-0-8-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <path
+       style="fill:none;stroke:#000063;stroke-width:1.70000005;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:6.8, 6.8;stroke-dashoffset:0"
+       d="m 166.96974,529.82126 0,263.64981"
+       id="path2989-9-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <path
+       sodipodi:type="arc"
+       style="fill:url(#radialGradient5320-3);fill-opacity:1;stroke:none"
+       id="path3860-5"
+       sodipodi:cx="365.17014"
+       sodipodi:cy="58.877155"
+       sodipodi:rx="6.5659914"
+       sodipodi:ry="6.5659914"
+       d="m 371.73613,58.877155 a 6.5659914,6.5659914 0 1 1 -13.13199,0 6.5659914,6.5659914 0 1 1 13.13199,0 z"
+       transform="matrix(2.3076923,0,0,2.3076923,-465.66708,550.09432)"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <g
+       id="g5330-6"
+       transform="translate(78.74888,463.12558)"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140">
+      <text
+         sodipodi:linespacing="125%"
+         id="text5322-7"
+         y="58.372078"
+         x="331.33002"
+         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           style="font-size:32px"
+           y="58.372078"
+           x="331.33002"
+           id="tspan5324-6"
+           sodipodi:role="line">b</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text5326-4"
+         y="67.463448"
+         x="349.51279"
+         style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="67.463448"
+           x="349.51279"
+           id="tspan5328-9"
+           sodipodi:role="line">p</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="427.08401"
+       y="565.9342"
+       id="text5370-2"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140"><tspan
+         sodipodi:role="line"
+         id="tspan5372-1"
+         x="427.08401"
+         y="565.9342"
+         style="font-size:32px">m</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#TriangleInL);marker-end:url(#TriangleOutL)"
+       d="m 64.43925,482.09156 0,342.44171 626.29458,0"
+       id="path5374-0"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="93.591537"
+       y="761.56879"
+       id="text5376-0"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140"><tspan
+         sodipodi:role="line"
+         id="tspan5378-4"
+         x="93.591537"
+         y="761.56879">SF</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="601.84033"
+       y="846.75659"
+       id="text5380-4"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140"><tspan
+         sodipodi:role="line"
+         id="tspan5382-6"
+         x="601.84033"
+         y="846.75659">Tiempo</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="-598.42419"
+       y="52.384552"
+       id="text6194-3"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,-1,1,0,0,0)"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140"><tspan
+         sodipodi:role="line"
+         id="tspan6196-4"
+         x="-598.42419"
+         y="52.384552">Amplitud</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 120,770.36218 c 28,2 33,-251 56,-171 23,80 5,171 34,171 29,0 34,-364 54,-168 20,196 36,212 47,158 11,-54 24,-275 34,-154 10,121 17,192 23,160 6,-32 4,-121 11,-67 7,54 14,120 20,68 6,-52 22,-285 27,-170 5,115 24,177 36,178 12,1 48,-274 54,-178 6,96 14,167 25,172 11,5 47,-148 59,-108 12,40 14,113 32,92 18,-21 18,-24 18,-24"
+       id="path6343"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <path
+       sodipodi:type="arc"
+       style="fill:url(#radialGradient6360);fill-opacity:1;stroke:none"
+       id="path3860-5-5"
+       sodipodi:cx="365.17014"
+       sodipodi:cy="58.877155"
+       sodipodi:rx="6.5659914"
+       sodipodi:ry="6.5659914"
+       d="m 371.73613,58.877155 a 6.5659914,6.5659914 0 1 1 -13.13199,0 6.5659914,6.5659914 0 1 1 13.13199,0 z"
+       transform="matrix(2.3076923,0,0,2.3076923,-419.70031,432.49182)"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="359.32031"
+       y="670.32312"
+       id="text5370-2-4"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140"><tspan
+         sodipodi:role="line"
+         id="tspan5372-1-5"
+         x="359.32031"
+         y="670.32312"
+         style="font-size:32px">m</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
+       x="456"
+       y="575.36218"
+       id="text6400"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/mat/Documentos/facultad/postgrado/materias/audio_procesamiento_digital/proyecto/3_entrega_FINAL/pics/caso2.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140"><tspan
+         sodipodi:role="line"
+         id="tspan6402"
+         x="456"
+         y="575.36218">2</tspan></text>
+  </g>
+</svg>

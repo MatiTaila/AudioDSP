@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  14 DEC 2012 12:26
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  15 DEC 2012 20:38
 entering extended mode
  %&-line parsing enabled.
 **audioDSPentregaFinal.tex
@@ -723,149 +723,159 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.106 
-       [1
+l.108 \chapter
+              {Metodología} [1
 
-] [2]
+]
 Cap\'{\i }tulo 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 116.
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 117--119
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
+
+ []
+
+[2
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 129.
 
 (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 116.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 129.
 
-<./pics/bloques.png, id=102, 1075.01625pt x 664.4825pt>
+<./pics/bloques.png, id=103, 1075.01625pt x 664.4825pt>
 File: ./pics/bloques.png Graphic file (type png)
 
 <use ./pics/bloques.png>
-Underfull \hbox (badness 10000) in paragraph at lines 133--134
+Underfull \hbox (badness 10000) in paragraph at lines 146--147
 
  []
 
-[3
 
- <./pics/bloques.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
+Underfull \hbox (badness 10000) in paragraph at lines 148--149
+
+ []
+
+[3 <./pics/bloques.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 191--192
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--194
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 186--187
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
 
  []
 
 <./pics/r.pdf, id=129, 487.8225pt x 396.48125pt>
 File: ./pics/r.pdf Graphic file (type pdf)
  <use ./pics/r.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 208--209
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 221--222
 
  []
 
-[5 <./pics/r.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 226--227
+
+Underfull \hbox (badness 10000) in paragraph at lines 234--235
 
  []
 
-<./pics/graficamejor.png, id=144, 575.57893pt x 335.53929pt>
-File: ./pics/graficamejor.png Graphic file (type png)
 
-<use ./pics/graficamejor.png>
 Underfull \hbox (badness 10000) in paragraph at lines 239--240
 
  []
 
+[5 <./pics/r.pdf>]
+<./pics/graficamejor.png, id=145, 575.57893pt x 335.53929pt>
+File: ./pics/graficamejor.png Graphic file (type png)
 
-Underfull \hbox (badness 10000) in paragraph at lines 251--253
+<use ./pics/graficamejor.png>
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 264--266
 
  []
 
 [6 <./pics/graficamejor.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 295--296
+Underfull \hbox (badness 10000) in paragraph at lines 308--309
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--306
+Underfull \hbox (badness 10000) in paragraph at lines 316--319
 
  []
 
-[7] [8]
+[7]
 Cap\'{\i }tulo 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 311--312
+Underfull \hbox (badness 10000) in paragraph at lines 325--326
+
+ []
+
+<./pics/caso1.png, id=164, 531.70071pt x 301.46915pt>
+File: ./pics/caso1.png Graphic file (type png)
+ <use ./pics/caso1.png>
+<./pics/caso2.png, id=166, 531.70071pt x 301.46915pt>
+File: ./pics/caso2.png Graphic file (type png)
+ <use ./pics/caso2.png>
+[8
+
+ <./pics/caso1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 356--357
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 315--316
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--319
+Underfull \hbox (badness 10000) in paragraph at lines 364--365
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 320--321
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 322--323
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
-
- []
-
-[9
-
-] <./pics/bpm90autocorr.pdf, id=173, 477.785pt x 417.56pt>
+<./pics/bpm90autocorr.pdf, id=178, 477.785pt x 417.56pt>
 File: ./pics/bpm90autocorr.pdf Graphic file (type pdf)
 
 <use ./pics/bpm90autocorr.pdf>
-<./pics/bpm90beats.pdf, id=174, 501.875pt x 398.48875pt>
+<./pics/bpm90beats.pdf, id=179, 501.875pt x 398.48875pt>
 File: ./pics/bpm90beats.pdf Graphic file (type pdf)
 
 <use ./pics/bpm90beats.pdf>
-Overfull \hbox (7.83324pt too wide) in paragraph at lines 336--339
- [][][][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 345--346
-
- []
-
-<./pics/bpm90a100beats.pdf, id=179, 501.875pt x 398.48875pt>
-File: ./pics/bpm90a100beats.pdf Graphic file (type pdf)
-
-<use ./pics/bpm90a100beats.pdf>
-<./pics/bpmvariable.pdf, id=180, 501.875pt x 399.4925pt>
-File: ./pics/bpmvariable.pdf Graphic file (type pdf)
-
-<use ./pics/bpmvariable.pdf>
-Overfull \hbox (7.83324pt too wide) in paragraph at lines 352--355
+Overfull \hbox (7.83324pt too wide) in paragraph at lines 371--374
  [][][][] 
  []
 
@@ -873,33 +883,52 @@ Overfull \hbox (7.83324pt too wide) in paragraph at lines 352--355
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
+Underfull \hbox (badness 10000) in paragraph at lines 378--379
 
  []
 
-[10 <./pics/bpm90autocorr.pdf> <./pics/bpm90beats.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 369--370
+[9 <./pics/caso2.png>]
+<./pics/bpm90a100beats.pdf, id=193, 501.875pt x 398.48875pt>
+File: ./pics/bpm90a100beats.pdf Graphic file (type pdf)
+
+<use ./pics/bpm90a100beats.pdf>
+<./pics/bpmvariable.pdf, id=194, 501.875pt x 399.4925pt>
+File: ./pics/bpmvariable.pdf Graphic file (type pdf)
+
+<use ./pics/bpmvariable.pdf>
+Overfull \hbox (7.83324pt too wide) in paragraph at lines 385--388
+ [][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 392--393
 
  []
 
-<./pics/datos_2_2_A_agents.pdf, id=205, 507.8975pt x 396.48125pt>
+[10 <./pics/bpm90autocorr.pdf> <./pics/bpm90beats.pdf> <./pics/bpm90a100beats.p
+df> <./pics/bpmvariable.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 402--403
+
+ []
+
+<./pics/datos_2_2_A_agents.pdf, id=227, 507.8975pt x 396.48125pt>
 File: ./pics/datos_2_2_A_agents.pdf Graphic file (type pdf)
 
 <use ./pics/datos_2_2_A_agents.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 381--382
+Underfull \hbox (badness 10000) in paragraph at lines 414--415
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--384
+Underfull \hbox (badness 10000) in paragraph at lines 416--417
 
  []
 
-<./pics/datos_2_2_A_autocorr.pdf, id=210, 543.02875pt x 423.5825pt>
+<./pics/datos_2_2_A_autocorr.pdf, id=232, 543.02875pt x 423.5825pt>
 File: ./pics/datos_2_2_A_autocorr.pdf Graphic file (type pdf)
 
 <use ./pics/datos_2_2_A_autocorr.pdf>
-<./pics/datos_2_2_A_beats_bien.pdf, id=211, 501.875pt x 398.48875pt>
+<./pics/datos_2_2_A_beats_bien.pdf, id=233, 501.875pt x 398.48875pt>
 File: ./pics/datos_2_2_A_beats_bien.pdf Graphic file (type pdf)
 
 <use ./pics/datos_2_2_A_beats_bien.pdf>
@@ -907,164 +936,141 @@ File: ./pics/datos_2_2_A_beats_bien.pdf Graphic file (type pdf)
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 395--396
-
- []
-
-[11 <./pics/bpm90a100beats.pdf> <./pics/bpmvariable.pdf> <./pics/datos_2_2_A_ag
-ents.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 397--398
+Underfull \hbox (badness 10000) in paragraph at lines 428--429
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 415--416
+Underfull \hbox (badness 10000) in paragraph at lines 430--431
 
  []
 
-<./pics/datos_2_14_A_agents.pdf, id=239, 509.905pt x 396.48125pt>
+[11 <./pics/datos_2_2_A_agents.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 448--449
+
+ []
+
+<./pics/datos_2_14_A_agents.pdf, id=251, 509.905pt x 396.48125pt>
 File: ./pics/datos_2_14_A_agents.pdf Graphic file (type pdf)
 
 <use ./pics/datos_2_14_A_agents.pdf>
-Underfull \hbox (badness 1112) in paragraph at lines 428--429
+Underfull \hbox (badness 1112) in paragraph at lines 461--462
 \OT1/cmr/m/n/12 con-fi-gu-ra-ci^^Son de los agen-tes al fi-
  []
 
 
-Underfull \hbox (badness 2452) in paragraph at lines 428--429
+Underfull \hbox (badness 2452) in paragraph at lines 461--462
 \OT1/cmr/m/n/12 na-li-zar el trac-king so-bre to-da la
  []
 
 
-Underfull \hbox (badness 1622) in paragraph at lines 428--429
+Underfull \hbox (badness 1622) in paragraph at lines 461--462
 \OT1/cmr/m/n/12 te que hay 2 agen-tes que tie-nen
  []
 
 
-Underfull \hbox (badness 2582) in paragraph at lines 428--429
+Underfull \hbox (badness 2582) in paragraph at lines 461--462
 \OT1/cmr/m/n/12 del res-to y que sus tem-pos son
  []
 
 
-Underfull \hbox (badness 1577) in paragraph at lines 428--429
+Underfull \hbox (badness 1577) in paragraph at lines 461--462
 \OT1/cmr/m/n/12 otro: el agen-te 1 con tem-po 130
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 428--429
+Underfull \hbox (badness 10000) in paragraph at lines 461--462
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 463--464
 
  []
 
 [12 <./pics/datos_2_2_A_autocorr.pdf> <./pics/datos_2_2_A_beats_bien.pdf> <./pi
 cs/datos_2_14_A_agents.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 430--431
-
- []
-
-<./pics/datos_2_14_A_autocorr.pdf, id=265, 527.9725pt x 423.5825pt>
+<./pics/datos_2_14_A_autocorr.pdf, id=276, 527.9725pt x 423.5825pt>
 File: ./pics/datos_2_14_A_autocorr.pdf Graphic file (type pdf)
 
 <use ./pics/datos_2_14_A_autocorr.pdf>
-<./pics/datos_2_14_A_autocorr2.pdf, id=266, 532.99126pt x 423.5825pt>
+<./pics/datos_2_14_A_autocorr2.pdf, id=277, 532.99126pt x 423.5825pt>
 File: ./pics/datos_2_14_A_autocorr2.pdf Graphic file (type pdf)
 
 <use ./pics/datos_2_14_A_autocorr2.pdf>
-Overfull \hbox (7.83324pt too wide) in paragraph at lines 435--438
+Overfull \hbox (7.83324pt too wide) in paragraph at lines 468--471
  [][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 442--443
+Underfull \hbox (badness 10000) in paragraph at lines 475--476
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--445
+Underfull \hbox (badness 10000) in paragraph at lines 477--478
 
  []
 
-<./pics/datos_2_14_A_beats_lento.pdf, id=271, 501.875pt x 398.48875pt>
+<./pics/datos_2_14_A_beats_lento.pdf, id=282, 501.875pt x 398.48875pt>
 File: ./pics/datos_2_14_A_beats_lento.pdf Graphic file (type pdf)
 
 <use ./pics/datos_2_14_A_beats_lento.pdf>
-<./pics/datos_2_14_A_beats_bien.pdf, id=272, 501.875pt x 398.48875pt>
+<./pics/datos_2_14_A_beats_bien.pdf, id=283, 501.875pt x 398.48875pt>
 File: ./pics/datos_2_14_A_beats_bien.pdf Graphic file (type pdf)
 
 <use ./pics/datos_2_14_A_beats_bien.pdf>
-Overfull \hbox (7.83324pt too wide) in paragraph at lines 449--452
+Overfull \hbox (7.83324pt too wide) in paragraph at lines 482--485
  [][][][] 
  []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 456--457
+Underfull \hbox (badness 10000) in paragraph at lines 489--490
 
  []
 
-[13 <./pics/datos_2_14_A_autocorr.pdf> <./pics/datos_2_14_A_autocorr2.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 466--467
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 482--483
+[13 <./pics/datos_2_14_A_autocorr.pdf> <./pics/datos_2_14_A_autocorr2.pdf> <./p
+ics/datos_2_14_A_beats_lento.pdf> <./pics/datos_2_14_A_beats_bien.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 499--500
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 484--485
+Underfull \hbox (badness 10000) in paragraph at lines 515--516
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 486--487
+Underfull \hbox (badness 10000) in paragraph at lines 517--518
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 488--489
+Underfull \hbox (badness 10000) in paragraph at lines 519--520
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 490--491
-
- []
-
-[14 <./pics/datos_2_14_A_beats_lento.pdf> <./pics/datos_2_14_A_beats_bien.pdf>]
-
-Underfull \hbox (badness 10000) in paragraph at lines 492--493
+Underfull \hbox (badness 10000) in paragraph at lines 521--522
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 494--495
+Underfull \hbox (badness 10000) in paragraph at lines 523--524
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 496--497
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 498--499
-
- []
-
-[15] [16
+[14] [15] [16
 
 ] (./audioDSPentregaFinal.aux) ) 
 Here is how much of TeX's memory you used:
- 9373 strings out of 494999
- 133306 string characters out of 1180816
- 229238 words of memory out of 3000000
- 12304 multiletter control sequences out of 15000+50000
+ 9391 strings out of 494999
+ 133582 string characters out of 1180816
+ 228238 words of memory out of 3000000
+ 12316 multiletter control sequences out of 15000+50000
  15726 words of font info for 59 fonts, out of 3000000 for 9000
  54 hyphenation exceptions out of 8191
- 44i,10n,45p,1117b,440s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,10n,45p,1117b,441s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/am
 sfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
 mcsc10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb>
@@ -1083,9 +1089,9 @@ b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/shar
 e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-tex
 live/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fonts/
 type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on audioDSPentregaFinal.pdf (17 pages, 1062618 bytes).
+Output written on audioDSPentregaFinal.pdf (17 pages, 1167166 bytes).
 PDF statistics:
- 400 PDF objects out of 1000 (max. 8388607)
- 66 named destinations out of 1000 (max. 500000)
- 219 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 415 PDF objects out of 1000 (max. 8388607)
+ 70 named destinations out of 1000 (max. 500000)
+ 229 words of extra memory for PDF output out of 10000 (max. 10000000)
 

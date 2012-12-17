@@ -95,7 +95,7 @@ Gonzalo \textsc{Gutiérrez}\\ Mat\'ias \textsc{Tailani\'an}
 
 
 \chapter*{Introducción}
-
+\vspace*{-1cm}
 Al escuchar música una reacción inconsciente muy común es mover el pie golpeando el piso a tiempo con el \textbf{beat}. La tarea computacional que intenta replicar ese comportamiento es conocida como \textbf{beat tracking}.\\
 
 La métrica de la señal se puede pensar como una estructura de pulsos percibidos a diferentes escalas temporales en una pieza musical. Se consideran 3 niveles métricos básicos: el \emph{tatum}, el \emph{tactus} o \emph{beat} y el \emph{compás}. El tatum es el valor en tiempo más pequeño que puede encontrarse en una pieza musical, es la unidad atómica de la pieza. En general los otros valores de duración presentes en la pieza son múltiplos de tatum. El tactus o beat está más relacionado con el aspecto semántico, y está directamente vinculado con el \textbf{tempo} de la pieza. Por último el compás está vinculado con la tasa de cambios armónicos o la duración de un patrón rítmico.\\
@@ -107,6 +107,19 @@ El presente trabajo presenta un algoritmo de seguimiento de \emph{beat} de una p
 
 \chapter{Metodología}
 \label{sec:metodologia}
+
+El ritmo como concepto musical es intuitivamente fácil de entender pero de alguna manera difícil de definir. La experiencia del ritmo involucra movimiento, regularidad, agrupamiento, acentuación y diferenciación (Handel, 1989, p. 384). No hay un ``ground truth'' que se pueda encontrar en simples medidas de la señal. El único \emph{ground truth} es el acuerdo que se realiza entre las percepciones de distintas personas que escuchan la pieza musical. Pensando en técnicas de tracking de \emph{beat} automáticas, más allá de todas las técnicas utilizadas, es necesario dar en algún momento, un salto semántico que nos permita obtener un resultado similar a nuestro \emph{ground truth}: la percepción humana. Para lograr este objetivo se pueden realizar algunas consideraciones heurísticas como acotar el rango de tempo que una persona tiene a marcar al escuchar una pieza. Una regla simple es por ejemplo poner un umbral donde todas las piezas que tengan un tempo detectado superior, se utilice la mitad del tempo detectado.\\
+
+Para la detección del \emph{beat} comúnmente se utilizan técnicas basadas en una detección estadística, simplemente utilizando la energía de la señal o analizando la energía en una banda de frecuencias seleccionada, o técnicas de filtrado y detección del ritmo mediante bancos de filtros y procesamiento de frecuencias seleccionadas.\\
+
+Una de las técnicas más utilizadas, por muchos algoritmos de detección y tracking de \emph{beat}, es la división en subbandas de frecuencias. Una vez pasada la señal por un banco de filtros pasabandas se realiza la detección de envolvente en cada subbanda.\\
+
+Luego de extraída la envolvente y procesada con alguna técnica en cada canal, una técnica clásica para determinar el \emph{tempo} de la señal es utilizar un banco de filtros resonadores.
+Considerando un filtro de retardo T y ganancia $\alpha$, si la señal de entrada tiene amplitud A y periodo K, la señal de salida va a presentar valores altos si T=K (o eventualmente algún divisor). De lo contrario se obtiene una salida chica. Al final del algoritmo se obtiene una especie de puntaje para cada filtro resonador. El filtro que obtenga más puntaje será el que tenga un retardo más parecido al período de la señal.\\
+
+Kalman\\
+
+Nosotros\\
 
 Como se puede ver en la figura \ref{fig:bloques} el algoritmo consta de 3 fases fundamentales:
 \begin{itemize}
@@ -306,23 +319,45 @@ $b_p$ es la predicción del beat, $m$ el máximo correspondiente del Flujo Espec
 
 \chapter{Resultados}
 
-\section{Implementación}
+\section{Detalles de implementación}
+\label{sec:nosotros}
 
 En esta sección se presentan algunos detalles en los cuales fue necesario ahondar el estudio para la correcta implementación del algoritmo presentado en la sección \ref{sec:metodologia}, y que resultan interesante destacarlos y documentarlos.\\
 
-%TODO escribir esto bien de aca pa abajo
+A la hora de realizar el tracking es necesario computar el error entre la predicción del beat y el máximo del Flujo Espectral, lo cual puede hacerse de diferentes maneras y no se brinda información acerca de cómo está implementado en \cite{bib:el_posta}. Se plantean 2 casos posibles:
+\begin{enumerate}
+\item Recorrer los máximos del flujo espectral e ir comparando con la predicción del beat para cada agente y hallar el error
+\item Recorrer las predicciones de beat para cada agente e ir comparando con el máximo del Flujo Espectral correspondiente
+\end{enumerate}
+Para la implementación se decidió utilizar la primera opción. Se recorre entonces para cada pico del flujo espectral cada uno de los agentes considerando su predicción de beat.
 
-A la hora de realizar el tracking se planta la posibilidad de pararse en los picos del sF o pararse en las predicciones de beat. centrar la ventana\\
+\begin{wrapfigure}{l}{0.55\textwidth}
+	\vspace{-25pt}
+	\begin{center}
+	\includegraphics[width=0.5\textwidth]{./pics/caso1.png}
+	\end{center}
+	\vspace{-20pt}
+	\caption{Caso 1}
+	\label{fig:caso1}
+\end{wrapfigure}
 
+Una de las primeras dificultades que se encontraron fue que cuando faltaban algunos picos en el Flujo Espectral los agentes morían rápidamente debido a que la predicción cae muy lejos del evento. Dicha situación se representa en la figura \ref{fig:caso1}. Las líneas punteadas representan las predicciones de un agente ejemplo. A la vista está que el agente aproxima de buena manera a todos de los picos del Flujo Espectral, pero parece faltar un pico en las cercanías de $b_p$. Al comparar el pico $m$ con la predicción $b_p$, el error es tan grande que causa la terminación del agente. Para evitar esta terminación lo que se hace es comparar $m$ con $b_{p_2}=b_p+P$ en lugar de con $b_p$.
 
-no matar agentes fuera del outer\\
+\begin{wrapfigure}{r}{0.55\textwidth}
+	\vspace{-25pt}
+	\begin{center}
+	\includegraphics[width=0.5\textwidth]{./pics/caso2.png}
+	\end{center}
+	\vspace{-20pt}
+	\caption{Caso 2}
+	\label{fig:caso2}
+\end{wrapfigure}
 
-El filtrado de los picos se realiza analizando las distancias entre cada máximo y los mínimos aledaños a él.\\
+Una segunda dificultad, muy estrechamente vinculada con la anterior consiste en la aparición de máximos intermedios \emph{espúreos} que también causan la muerte de un buen agente. La situación se representa en la figura \ref{fig:caso2}. Al comparar el máximo $m$ con la predicción de beat $b_p$ se obtiene un error demasiado grande que causa la muerte del agente. Para solucionar esta situación lo que se hace es comparar el error entre $b_p$ y $m_2$ (el siguiente máximo del Flujo Espectral) y si este error es menor al primero, no se efectúa ninguna acción sobre ese agente. De todas formas es interesante destacar que al continuar el algoritmo, cuando sea el turno del máximo $m_2$ se realizará el proceso de tracking normalmente.\\
 
-la matanza de agentes esta pensada para correr en tiempo real. Como nuestro trabajo no lo requería aunque era una buena cosa para conservar, se pueden modificar los criterios de matanza para dejar vivos mas agentes, porque no nos importa que demore un poco mas...\\
+El trabajo en el que nos basamos está pensado para correr en tiempo real, pero como la propuesta nuestra no lo requería nos tomamos algunas libertades que enlentecen el algoritmo. La más importante es \emph{no matar a los agentes que caen fuera de la región ``outer''}. De hecho lo que se implementó es matarlos si caen fuera de dicha región consecutivamente más de una cantidad fija de veces.\\
 
-Para la versión no causal se puede utilizar un referee elegido al final del proceso de tracking, como se propone en \cite{bib:dixon}, donde se asume que al ir teniendo buenos puntajes a lo largo del tracking, el agente que tenga mayot puntaje al finalizarlo será el mejor agente global.
-
+Para elegir el agente ganador tomamos la idea de que utiliza \emph{Dixon} en el \emph{BeatRoot} (\cite{bib:dixon}), donde se utiliza un referee que decide al final del proceso de tracking. Se basa en la idea que al ir teniendo buenos puntajes a lo largo del tracking, el agente que tenga mayor puntaje al finalizarlo será el mejor agente global.
 
 \section{Señales sintéticas}
 
@@ -339,8 +374,6 @@ Como primer ejemplo se presenta el caso de una señal de período constante en $
   \caption{Señal sintética de 90 BPM}
   \label{fig:90BPM}
 \end{figure}
-
-%TODO aca se puede poner los tiempos de los beats y comparar cuantitativamente...
 
 La figura \ref{fig:bpm90autocorr} muestra la autocorrelación del flujo espectral calculado en la \emph{ventana de inducción} mencionada en la sección \ref{sec:pretracking} del Pre-Tracking. Se puede apreciar claramente que el pico marcado que aparece en la figura corresponde con un período de 90BPM, coincidiendo perfectamente con el período de la señal sintética generada. Se puede decir entonces que el Pre-Tracking captó perfectamente el período del beat. Se muestra también el umbral utilizado para filtrar los máximos locales del Flujo Espectral detectados. Por otro lado en la figura \ref{fig:bpm90beats} se muestra una representación de la señal de audio, y sobrepuesta a ella una línea roja en la posición de cada beat detectado. Se puede corroborar el perfecto funcionamiento del algoritmo en este caso.\\
 
@@ -477,26 +510,19 @@ Performance agente 1:
 En este caso la performance del algoritmo hubiera sido perfecta.
 
 
-\section{conclusiones}
+\section{Conclusiones}
 
-anda en general muy rico\\
+Como primer punto se debe destacar que una gran cantidad de detalles de implementación no están documentados en el \emph{paper} que se basó el presente trabajo (\cite{bib:el_posta}), lo cual ocasionó una serie de dudas y  por tanto la toma de las decisiones que nos parecieron más adecuadas, mencionadas en la sección \ref{sec:nosotros}.\\
 
-qedaron algunas dudas de implementacion\\
+Como conclusión general se puede decir que se obtuvieron buenos resultados, en algunas piezas musicales los resultados son excelentes, y en otras ``más difíciles'' no tanto, pero en general parecen ser aceptables. El trabajo \cite{bib:el_posta} consta además de un software disponible en \emph{Marsyas framework} bajo licencia GPL. Comparando los resultados de esta implementación con los resultados del presente trabajo debemos decir que obtuvimos un desempeño algo inferior.\\
 
-se puede mejorar la parte de la eleccion del agente ganador\\
+El algoritmo además de arrojar buenos resultados en la mayoría de los casos, está programado con buena robustez ante diferentes características de las señales de entrada, poniendo siempre umbrales variables y dependientes de características propias de la señal y teniendo algunos cuidados especiales retroalimentando información obtenida de la señal misma para cambiar dinámicamente algunos valores.\\
 
-las debilidades pueden estar en la dificultad de elegir el agente posta... nos pasa a veces q agarramos multiplos... como en la sección \ref{sec:andamal}. Se puede pensar en mejorarlo para elegir el correcto aunque será una difícil tarea el pasaje a lo semántico\\
+Como se mostró en la sección \ref{sec:andamal}, se cometen algunos errores a la hora de elegir el agente ganador. En esta materia se puede pensar en alguna técnica para agregar que permita, cambiando el criterio de elección del agente ganador, obtener resultados más fieles a la realidad.\\
 
-en general esta bastante robusto, no se usan umbrales duros ni cosas demasiado arbitrarias\\
+Es interesante destacar que se logró un buen equilibrio entre la inercia a los cambios transitorios que puedan existir en una pieza musical y la rapidez de adaptación a cambios de tempo. Por ejemplo en pasajes donde se producen silencios o cortes abruptos pasajeros en una pieza musical, el algoritmo sigue marcando el beat constantemente, como es de esperar.\\
 
-es un sistema muy bien pensado donde se favorece a los mejores y la competencia parece ser un buen camino\\
-
-tiene una buena relación entre la inercia y la rapidez de respuesta\\
-
-en silencios de una cancion sigue marcando el beat como venia por un rato..\\
-
-buenos resultados auditivamente hablando\\
-
+En definitiva se puede decir que la idea de varios agentes compitiendo por seguir el tempo de la canción lo mejor posibles es una buena técnica que arroja buenos resultados. La manera de puntuar a los agentes parece estar muy bien lograda, ya que favorece a los mejores agentes. De todas formas pueden surgir algunas complicaciones a la hora de elegir cuál es el ganador, pero en general se logra dar en buena forma el salto semántico desde el automatismo a la percepción auditiva rítmica del ser humano.
 
 \begin{thebibliography}{99}
 \begin{small}
