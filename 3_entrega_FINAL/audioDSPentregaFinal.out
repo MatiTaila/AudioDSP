@@ -1,16 +1,17 @@
+\BOOKMARK [0][-]{subfigure.1.3}{Introducci\363n}{}
 \BOOKMARK [0][-]{chapter.1}{Metodolog\355a}{}
-\BOOKMARK [1][-]{section.1.1}{Audio Feature Extraction}{chapter.1}
-\BOOKMARK [1][-]{section.1.2}{Pre-Tracking}{chapter.1}
-\BOOKMARK [2][-]{subsection.1.2.1}{Per\355odo}{section.1.2}
-\BOOKMARK [2][-]{subsection.1.2.2}{Fase}{section.1.2}
-\BOOKMARK [2][-]{subsection.1.2.3}{Puntaje}{section.1.2}
-\BOOKMARK [1][-]{section.1.3}{Beat-Tracking}{chapter.1}
-\BOOKMARK [2][-]{subsection.1.3.1}{Matado de agentes}{section.1.3}
-\BOOKMARK [2][-]{subsection.1.3.2}{Agent Referee}{section.1.3}
+\BOOKMARK [1][-]{section.1.1}{Algoritmos cl\341sicos}{chapter.1}
+\BOOKMARK [1][-]{section.1.2}{Algoritmo a implementar}{chapter.1}
+\BOOKMARK [2][-]{subsection.1.2.1}{Audio Feature Extraction}{section.1.2}
+\BOOKMARK [2][-]{subsection.1.2.2}{Pre-Tracking}{section.1.2}
+\BOOKMARK [2][-]{subsection.1.2.3}{Beat-Tracking}{section.1.2}
+\BOOKMARK [2][-]{subsection.1.2.4}{Agent Referee}{section.1.2}
+\BOOKMARK [2][-]{subsection.1.2.4}{Agent Referee}{section.1.2}
 \BOOKMARK [0][-]{chapter.2}{Resultados}{}
 \BOOKMARK [1][-]{section.2.1}{Detalles de implementaci\363n}{chapter.2}
 \BOOKMARK [1][-]{section.2.2}{Se\361ales sint\351ticas}{chapter.2}
 \BOOKMARK [1][-]{section.2.3}{Se\361ales reales}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.3.1}{Caso de buen funcionamiento}{section.2.3}
 \BOOKMARK [2][-]{subsection.2.3.2}{Caso de funcionamiento comprometido}{section.2.3}
-\BOOKMARK [1][-]{section.2.4}{Conclusiones}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.3.3}{Caso de mal funcionamiento}{section.2.3}
+\BOOKMARK [0][-]{chapter.3}{Conclusiones}{}

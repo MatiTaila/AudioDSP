@@ -92,9 +92,11 @@ Gonzalo \textsc{Gutiérrez}\\ Mat\'ias \textsc{Tailani\'an}
 \end{center}
 \end{titlepage}
 
-
+\tableofcontents
 
 \chapter*{Introducción}
+\addcontentsline{toc}{chapter}{Introducción}
+
 \vspace*{-1cm}
 Al escuchar música una reacción inconsciente muy común es mover el pie golpeando el piso a tiempo con el \textbf{beat}. La tarea computacional que intenta replicar ese comportamiento es conocida como \textbf{beat tracking}.\\
 
@@ -108,6 +110,8 @@ El presente trabajo presenta un algoritmo de seguimiento de \emph{beat} de una p
 \chapter{Metodología}
 \label{sec:metodologia}
 
+\section{Algoritmos clásicos}
+
 El ritmo como concepto musical es intuitivamente fácil de entender pero de alguna manera difícil de definir. La experiencia del ritmo involucra movimiento, regularidad, agrupamiento, acentuación y diferenciación (Handel, 1989, p. 384). No hay un ``ground truth'' que se pueda encontrar en simples medidas de la señal. El único \emph{ground truth} es el acuerdo que se realiza entre las percepciones de distintas personas que escuchan la pieza musical. Pensando en técnicas de tracking de \emph{beat} automáticas, más allá de todas las técnicas utilizadas, es necesario dar en algún momento, un salto semántico que nos permita obtener un resultado similar a nuestro \emph{ground truth}: la percepción humana. Para lograr este objetivo se pueden realizar algunas consideraciones heurísticas como acotar el rango de tempo que una persona tiene a marcar al escuchar una pieza. Una regla simple es por ejemplo poner un umbral donde todas las piezas que tengan un tempo detectado superior, se utilice la mitad del tempo detectado.\\
 
 Para la detección del \emph{beat} comúnmente se utilizan técnicas basadas en una detección estadística, simplemente utilizando la energía de la señal o analizando la energía en una banda de frecuencias seleccionada, o técnicas de filtrado y detección del ritmo mediante bancos de filtros y procesamiento de frecuencias seleccionadas.\\
@@ -117,13 +121,15 @@ Una de las técnicas más utilizadas, por muchos algoritmos de detección y trac
 Luego de extraída la envolvente y procesada con alguna técnica en cada canal, una técnica clásica para determinar el \emph{tempo} de la señal es utilizar un banco de filtros resonadores.
 Considerando un filtro de retardo T y ganancia $\alpha$, si la señal de entrada tiene amplitud A y periodo K, la señal de salida va a presentar valores altos si T=K (o eventualmente algún divisor). De lo contrario se obtiene una salida chica. Al final del algoritmo se obtiene una especie de puntaje para cada filtro resonador. El filtro que obtenga más puntaje será el que tenga un retardo más parecido al período de la señal.\\
 
-Kalman\\
+Otras técnicas incluyen para el seguimiento del \emph{beat} un algoritmo de filtrado de Kalman. Para el filtrado de Kalman se modela al sistema de Beat Tracking como un sistema dinámico de ecuaciones lineales donde el \emph{Tempo} \emph{musical} puede ser modelado como una variable de estado de un sistema dinámico estocástico.\\
 
-Nosotros\\
+El algoritmo a implementar se basa en un sistema de competencia de agentes con distintas hipótesis de tiempo y fase, donde se cada uno de ellos acumula más puntaje cuanto más cercano sea su hipótesis a los eventos detectados en la señal, como se pasa a detallar a continuación.\\
+
+\section{Algoritmo a implementar}
 
 Como se puede ver en la figura \ref{fig:bloques} el algoritmo consta de 3 fases fundamentales:
 \begin{itemize}
-\item \textbf{Audio Feature Extraction}: En esta etapa se trasforma la señal de audio en 1 secuencia contínua que caracteriza la información más relevante para el análisis rítmico. En esta etapa se basarán las siguientes partes del algoritmo.
+\item \textbf{Audio Feature Extraction}: En esta etapa se trasforma la señal de audio en 1 secuencia continua que caracteriza la información más relevante para el análisis rítmico, etapa en la cual se basarán las siguientes partes del algoritmo.
 \item \textbf{Pre-Tracking}: Al finalizar el Pre-Tracking se tendrá un conjunto de hipótesis iniciales con respecto a posibles períodos y fases de los beats. Consta de 3 subetapas donde se estimarán las características que definen a un agente:
 \begin{itemize}
 \item Período
@@ -142,7 +148,7 @@ A su vez se presenta un sistema de evaluación que decide en función del puntaj
 \label{fig:bloques}
 \end{figure}
 
-\section{Audio Feature Extraction}
+\subsection{Audio Feature Extraction}
 En \cite{bib:feature_extraction} se evalúan distintas magnitudes para caracterizar la información más relevante para el análisis rítmico. Está fuera del alcance del presente trabajo analizar la posibilidad de evaluar distintas magnitudes, por lo que se trabajará con el \textbf{Flujo Espectral} como magnitud característica de la pieza musical.\\
 
 El flujo espectral utiliza una representación tiempo-frecuencia de la señal basada en la trasformada corta de Fourier utilizando una ventana de Hamming, $w(m)$.\\
@@ -158,23 +164,22 @@ El flujo espectral lleva una medida del cambio en magnitud de cada \emph{bin} de
 SF(n)=\sum\limits_{k=-\frac{N}{2}}^{\frac{N}{2}-1} H(|X(n,k)|-X(n-1,k)|)
 \label{ec:sf}
 \end{eqnarray}
-donde $N=2048$ (46 $ms$ a una frecuencia de muestreo $r=44100Hz$) y el tamaño del salto es $h=441$ (10 $ms$ o 78\% de solapado). $H(x)$ es un rectificador de media onda: $H(x)=\frac{x+|x|}{2}$.
+donde $N=2048$ (46 $ms$ a una frecuencia de muestreo $r=44100Hz$) y el tamaño del salto es $h=441$ (10 $ms$ o 78\% de solapado). $H(x)$ es un rectificador de media onda: $H(x)=\frac{x+|x|}{2}$. La función de $H(x)$ es conservar únicamente las variaciones crecientes en la magnitud del espectro. Al pasar el Flujo Espectral por un filtro Butter se eliminan las variaciones de alta frecuencia que no son de interés y contribuyen a dificultar la detección de eventos.
 
-
-%TODO figura
-
-\section{Pre-Tracking}
+\subsection{Pre-Tracking}
 \label{sec:pretracking}
 
 La etapa del Pre-Tracking es fundamental ya que en ella se basarán las etapas siguientes del algoritmo. Se analiza una \emph{ventana de inducción} de 5 segundos y se obtiene como salida un conjunto de agentes caracterizados por $(P_i,\phi _i, S_i) $ para cada agente $i=1\dots N$. Consta de 3 sub-etapas donde se calcula el período ($P_i$), fase ($\phi _i$) y puntaje ($S_i$) de cada agente $i$.
 
-\subsection{Período}
+\subsubsection{Período}
+\addcontentsline{toc}{subsubsection}{Período}
+
 La primera etapa consiste en hallar una función de periodicidad continua basada en la autocorrelación y el Flujo Espectral:
 \begin{equation}
 	A(\tau) = \sum\limits_{n=0}^{m}SF(n)SF(n+\tau)
 	\label{ec:autocorrelacion}
 \end{equation}
-La segunda etapa consiste en la detección de eventos, por medio de un hallado y filtrado de picos de la función de autocorrelación descripta anteriormente (ecuación \ref{ec:autocorrelacion}). Los eventos detectados en $A(\tau)$ corresponderán con los períodos iniciales de los agentes del Pre-Tracking. El criterio propuesto para obtener dichos picos es:
+La segunda etapa consiste en la detección de las periodicidades más relevantes presentes en la ventana de inducción, por medio de un algoritmo de hallado y filtrado de picos de la función de autocorrelación descripta anteriormente (ecuación \ref{ec:autocorrelacion}). Los eventos detectados en $A(\tau)$ corresponderán con los períodos iniciales de los agentes del Pre-Tracking. El criterio propuesto para obtener dichos picos es:
 \begin{equation*}
 	\begin{cases}
 	P_i = \arg\max_i \left\{ A(\tau) \right\}, & i=1,\dots, N\\
@@ -186,7 +191,8 @@ $\delta$ es un umbral determinado empíricamente en $0.75$ y $M$ es un rango de 
 
 %TODO figura y explicar que es lo q agregamos nosotros
 
-\subsection{Fase}
+\subsubsection{Fase}
+\addcontentsline{toc}{subsubsection}{Fase}
 
 Para cada $P_i$ estimado se generan $j$ hipótesis para la fase: $\phi_i^j$. Se supone fase y períodos constantes en cada ventana de análisis.\\
 
@@ -194,7 +200,8 @@ Se utiliza un \emph{template} de tren de pulsos isócronos para ver cuál ajusta
 
 Utilizando un proceso de tracking simplificado como veremos en la sección \ref{sec:tracking} se selecciona el tren de pulsos que mejor ajusta los eventos detectados. Hasta este momento tenemos una pareja $(P_i,\phi _i)$ para cada agente.
 
-\subsection{Puntaje}
+\subsubsection{Puntaje}
+\addcontentsline{toc}{subsubsection}{Puntaje}
 
 A cada pareja $(P_i,\phi _i)$ se le asigna un puntaje preliminar $S_i^{raw}$ que corresponde a la suma de los errores entre los elementos del tren de pulsos y los máximos locales del Flujo Espectral, dado por la ecuación \ref{ec:ds}.\\
 
@@ -226,17 +233,17 @@ S_i=\frac{S_i^{rel}}{\max S_i^{rel}}\max S_i^{raw}
 \label{ec:S}
 \end{equation}
 
-Tenemos entonces un conjunto de agentes, donde cada uno de ellos está caracterizado por una tríada $(P_i,\phi _i,S_i)$ que serán utilizados como hipótesis iniciales para la etapa de \textbf{Tracking}.
+Tenemos entonces un conjunto de agentes, donde cada uno de ellos está caracterizado por una tríada $(P_i,\phi _i,S_i)$ que será utilizada como hipótesis iniciales para la etapa de \textbf{Tracking}.
 
-\section{Beat-Tracking}
+\subsection{Beat-Tracking}
 \label{sec:tracking}
 
 La idea de la etapa de Tracking es supervisar flujo de entrada de los picos detectados del Flujo Espectral y mantener un buen balance entre inercia y rapidez de la respuesta ante cambios.\\
 
-Cada predicción es evaluada respecto de su desviación al máximo local correspondiente en los datos observados, considerando una ventana como se la mostrada en la figura \ref{fig:grafica}, donde se consideran 2 intervalos de tolerancia:
+Cada predicción es evaluada respecto de su desviación al máximo local correspondiente en los datos observados, considerando una ventana como se muestra en la figura \ref{fig:grafica}, donde se consideran 2 intervalos de tolerancia:
 \begin{itemize}
 \item \emph{inner}: $T_{in}\in[T_{in}^l,T_{in}^r]$ con $T_{in}^l=T_{in}^r=46.4ms$ para manejar pequeñas desviaciones de fase y período
-\item \emph{outer}: $T_{out}\in[T_{out}^l,T_{in}^l] \bigcup [T_{in}^r,T_{out}^r]$ con $T_{out}^l=0.2\;P_i$ y $T_{out}^r=0.4\;P_i$ para contemplar eventuales cambios repentinos de tiempo. La asimetría refleja una mayor tendencia a disminuir el tempo.\\
+\item \emph{outer}: $T_{out}\in[T_{out}^l,T_{in}^l] \bigcup [T_{in}^r,T_{out}^r]$ con $T_{out}^l=0.2\;P_i$ y $T_{out}^r=0.4\;P_i$ para contemplar eventuales cambios repentinos de tempo. La asimetría refleja una mayor tendencia a disminuir el tempo.\\
 \end{itemize}
 
 \begin{figure}[h!]
@@ -292,7 +299,8 @@ $$
 
 Para que los hijos tengan competitividad respecto al resto de los agentes, se los inicializa con un puntaje igual al 90\% del puntaje del ``padre'' en ese instante.
 
-\subsection{Matado de agentes}
+\subsubsection{Matado de agentes}
+\addcontentsline{toc}{subsubsection}{Matado de agentes}
 
 En cualquier punto del análisis, algunas situaciones dan por finalizada la operación de un agente, con los criterios que se explican a continuación:
 
@@ -304,6 +312,7 @@ En cualquier punto del análisis, algunas situaciones dan por finalizada la oper
 \end{itemize}
 
 \subsection{Agent Referee}
+\addcontentsline{toc}{subsection}{Agent Referee}
 
 En la versión causal el \emph{referee} va determinando en cada instante cuál es el mejor agente. Mantiene una continua evaluación y le va asignando un puntaje a cada agente respecto a qué tan bueno es el matcheo entre los datos que van llegando y la prediccion del beat. La variación de puntaje en cada instante está dada por la ecuación \ref{ec:ds}.\\
 
@@ -361,7 +370,7 @@ Para elegir el agente ganador tomamos la idea de que utiliza \emph{Dixon} en el 
 
 \section{Señales sintéticas}
 
-Como primer prueba para testear el algoritmo implementado se generan diversas señales sintéticas con período constante. Para ello se convolucionan el sonido de un platillo de batería con un tren de pulsos de frecuencia constante. La prueba siguiente, también sintética consiste en generar una señal con frecuencia variando linealmente a lo largo del tiempo para analizar la performance del algoritmo en el tracking del período variante de una señal.\\
+Como primer prueba para testear el algoritmo implementado se generan diversas señales sintéticas con período constante. Para ello se convoluciona el sonido de un platillo de batería con un tren de pulsos de frecuencia constante. La prueba siguiente, también sintética consiste en generar una señal con frecuencia variando linealmente a lo largo del tiempo para analizar la performance del algoritmo en el tracking del período variante de una señal.\\
 
 Como primer ejemplo se presenta el caso de una señal de período constante en $90\;BMP$. Los resultados se muestran en las figuras \ref{fig:90BPM}.
 
@@ -509,12 +518,40 @@ Performance agente 1:
 
 En este caso la performance del algoritmo hubiera sido perfecta.
 
+\subsection{Caso de mal funcionamiento}
 
-\section{Conclusiones}
+En esta sección se presenta un caso en el que el desempeño del algoritmo es malo, no pudiendo realizar una correcta detección y seguimiento del \emph{beat}.\\
+
+Los resultados cuantitativos obtenidos en este caso son:
+
+\begin{verbatim}
+---------------------------------------------------------------------
+Performance:
+        Cont-Based:	 cC:	0.00 	 cT:	0.00	   aC:	0.00  	 aT:	0.00
+        F-Mesure:	   f:	16.67	   p:	30.77	   r:	11.43  	 a:	9.09
+---------------------------------------------------------------------
+\end{verbatim}
+
+\begin{wrapfigure}{l}{0.55\textwidth}
+	\vspace{-45pt}
+	\begin{center}
+	\includegraphics[width=0.5\textwidth]{./pics/datos_2_18_A_autocorr.pdf}
+	\end{center}
+	\vspace{-20pt}
+	\caption{Autocorrelación del Flujo\\Espectral}
+	\label{fig:datos_2_18_A_autocorr}
+	\vspace{-15pt}
+\end{wrapfigure}
+
+Como se puede observar se obtuvieron resultados muy malos para esta pieza musical. La razón principal se debe a una mala performance de la etapa de pre-tracking. La pieza musical en cuestión comienza con unos segundos de silencio con ruido de fondo, careciendo de periodicidad alguna. Lo que ocurre es que en la ventana de inducción se encuentran muy pocos indicios de periodicidad, como se puede observar en la figura \ref{fig:datos_2_18_A_autocorr}. La mayoría de los picos detectados corresponden a variaciones muy pequeñas en la función de autocorrelación y no a verdaderas evidencias de periodicidad en la señal. \\
+
+Más generalmente la razón fundamental de una baja performance del algoritmo se da por la dificultad de detección de los eventos. Para hacerle frente a esta dificultad se pueden analizar distintas técnicas de detección de eventos e incluso pensar en combinar algunas de ellas. Por otro lado se pueden realizar algunas consideraciones prácticas heurísticas como fijar en el pre-tracking un set de agentes por defecto cuando se considere que no hay evidencias suficientes de periodicidad. Otra posibilidad es realizar el proceso de pre-tracking en distintas partes de la pieza musical, para lidiar con pasajes de la pieza donde se encuentren silencios o no hay mucha evidencia de periodicidad.
+
+\chapter{Conclusiones}
 
 Como primer punto se debe destacar que una gran cantidad de detalles de implementación no están documentados en el \emph{paper} que se basó el presente trabajo (\cite{bib:el_posta}), lo cual ocasionó una serie de dudas y  por tanto la toma de las decisiones que nos parecieron más adecuadas, mencionadas en la sección \ref{sec:nosotros}.\\
 
-Como conclusión general se puede decir que se obtuvieron buenos resultados, en algunas piezas musicales los resultados son excelentes, y en otras ``más difíciles'' no tanto, pero en general parecen ser aceptables. El trabajo \cite{bib:el_posta} consta además de un software disponible en \emph{Marsyas framework} bajo licencia GPL. Comparando los resultados de esta implementación con los resultados del presente trabajo debemos decir que obtuvimos un desempeño algo inferior.\\
+Como conclusión general se puede decir que se obtuvieron buenos resultados, en algunas piezas musicales los resultados son excelentes, y en otras ``más difíciles'' no tanto, pero en general parecen ser aceptables. El trabajo \cite{bib:el_posta} consta además de un software disponible en \emph{Marsyas framework} bajo licencia GPL. Comparando los resultados de esta implementación con los resultados del presente trabajo debemos decir que obtuvimos un desempeño inferior.\\
 
 El algoritmo además de arrojar buenos resultados en la mayoría de los casos, está programado con buena robustez ante diferentes características de las señales de entrada, poniendo siempre umbrales variables y dependientes de características propias de la señal y teniendo algunos cuidados especiales retroalimentando información obtenida de la señal misma para cambiar dinámicamente algunos valores.\\
 
