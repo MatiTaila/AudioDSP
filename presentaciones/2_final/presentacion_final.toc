@@ -1,0 +1,10 @@
+\beamer@endinputifotherversion {3.10pt}
+\select@language {spanish}
+\beamer@sectionintoc {1}{Gral}{2}{0}{1}
+\beamer@sectionintoc {2}{Feature Selection}{7}{0}{2}
+\beamer@sectionintoc {3}{Pre-Tracking}{10}{0}{3}
+\beamer@sectionintoc {4}{Beat-Tracking}{29}{0}{4}
+\beamer@sectionintoc {5}{Ejemplo 1}{38}{0}{5}
+\beamer@sectionintoc {6}{Ejemplo 2}{43}{0}{6}
+\beamer@sectionintoc {7}{Conclusiones}{50}{0}{7}
+\beamer@sectionintoc {8}{Referencias}{56}{0}{8}

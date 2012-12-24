@@ -89,7 +89,7 @@
 % =================== DATOS DEL DOCUMENTO =======================
 % ===============================================================
 \author{Gonzalo Gutiérrez, Matias Tailanián}
-\date{19 de Octubre de 2012}
+\date{26 de Diciembre del 2012}
 \title{\textit{Seguimiento de Tempo}}
 \subtitle{Procesamiento digital de señales de audio\\Curso 2012}
 
@@ -220,6 +220,7 @@
 % ===============================================================
 \begin{frame}
 \frametitle{Pre-Tracking}
+\vspace*{-1cm}
 \begin{columns}
 
 % -----------------------------------------------------------------
@@ -264,13 +265,15 @@ Se utiliza un \alert<11>{\emph{template} de tren de pulsos} para ver cuál ajust
 }
 }
 \only<12-17>{
-\begin{description}
-  \item {\textbf{-Mejor fase:}
+
   \only<13->{
+  \begin{block}{Mejor fase}
   Se obtiene cuando al ``mover'' el tren de pulsos se alcanza un máximo en el puntaje que arroja la siguiente ecuación:
+  \end{block}
 }
-}
-\end{description}
+
+
+
 
 \only<14->{
 \begin{equation*}
@@ -329,6 +332,7 @@ agentes en el cual cada uno empezará a realizar su propio beat tracking
 
 
 \only<7,8,9,10,11>{
+\vspace*{0.8cm}
 \begin{tikzpicture}
 \alt<11->
 {\node[opacity=1]
@@ -339,6 +343,7 @@ agentes en el cual cada uno empezará a realizar su propio beat tracking
 }
 
 \only<12-16>{
+\vspace*{0.8cm}
 \begin{tikzpicture}
 \alt<16->
 {\node[opacity=1]
@@ -349,19 +354,20 @@ agentes en el cual cada uno empezará a realizar su propio beat tracking
 }
 
 \only<17 >{
+\vspace*{1cm}
 \begin{tikzpicture}
 \alt<17->
 {\node[opacity=1]
-{\includegraphics[width=1\textwidth]{./pics/graficamejor.png}};}
+{\includegraphics[width=.9\textwidth]{./pics/graficamejor.png}};}
 {\node[opacity=.15]
-{\includegraphics[width=1\textwidth]{./pics/graficamejor.png}};}
+{\includegraphics[width=.9\textwidth]{./pics/graficamejor.png}};}
 \end{tikzpicture}
 }
 
 
 \end{scriptsize}
 
-\vspace*{-205pt}
+\vspace*{-20pt}
 \begin{block}<5>{Promedio de BPM}
 El pico mas alto corresponde a 120BPM
 \end{block}
@@ -425,24 +431,35 @@ Niveles de toleracia: $T_{in}\in[T_{in}^l,T_{in}^r]$ y $T_{out}\in[T_{out}^l,T_{
 }
 
 \only<5->{
-\begin{itemize} \item \textbf{Descarte de agentes} \end{itemize}
-}
+\begin{itemize} \item \textbf{Descarte de agentes}
 
 \only<6->{
 \vspace{10pt}
-\begin{description}
-  \item<6->[\alert<6>{-Replacement:}]
+%\begin{description}
+%  \item<6->[\alert<6>{-Replacement:}]
+%  \vspace{10pt}
+%  \item<7->[\alert<7>{-Redundancy:}]
+%  \vspace{10pt}
+%  \item<8->[\alert<8>{-Obsolescence:}]
+%  \vspace{10pt}
+%  \item<9->[\alert<9>{-Loss:}]
+%  \vspace{10pt}
+%\end{description}
+
+\begin{itemize}
+  \item \textbf{Replacement}
   \vspace{10pt}
-  \item<7->[\alert<7>{-Redundancy:}]
+  \item \textbf{Redundancy}
   \vspace{10pt}
-  \item<8->[\alert<8>{-Obsolescence:}]
+  \item \textbf{Obsolescence}
   \vspace{10pt}
-  \item<9->[\alert<9>{-Loss:}]
+  \item \textbf{Loss}
   \vspace{10pt}
-\end{description}
+\end{itemize}
 
 }
-
+ \end{itemize}
+}
 
 \end{scriptsize}
 
@@ -468,28 +485,28 @@ El agente mantiene su período y fase y además crea 3 ``hijos'' variando dichos
 
 \only<6>{
 \vspace*{60pt}
-\begin{block}{}
+\begin{block}{Replacement}
 Si es el peor de un grupo de agentes que alcanzó su máximo, y su puntuación es inferior a una nueva creación de agente
 \end{block}
 }
 
 \only<7>{
 \vspace*{60pt}
-\begin{block}{}
+\begin{block}{Redundancy}
 Para incrementar la eficiencia del algoritmo, se elimina un agente si se duplica el trabajo de un agente de score alto, si sus períodos difieren menos de 11,6ms y sus fases menos de 23,2ms
 \end{block}
 }
 
 \only<8>{
 \vspace*{60pt}
-\begin{block}{}
+\begin{block}{Obsolescence}
 Se elimina un agente si la diferencia entre su puntuación y el mejor agente es mayor que el 80\%
 \end{block}
 }
 
 \only<9>{
 \vspace*{60pt}
-\begin{block}{}
+\begin{block}{Loss}
 Se descarta una agente si parece estar ``perdido'', es decir, si su predicción de beat cae 8 veces fuera de la ventana de tolerancia interior
 \end{block}
 }
@@ -526,7 +543,7 @@ Se descarta una agente si parece estar ``perdido'', es decir, si su predicción 
 \only<2>{
 \vspace*{50pt}
 \begin{block}{Pre-Tracking}
-El valor del mayor pico corresponde a xxBPM
+El valor del mayor pico corresponde a 63BPM
 \end{block}
 }
 
@@ -636,7 +653,7 @@ F-Mesure: & f: 94.44 & p: 94.44 & r: 94.44 & a: 89.47 \\ \hline
 \only<2>{
 \vspace*{50pt}
 \begin{block}{Pre-Tracking}
-El valor del mayor pico corresponde a xxBPM
+El valor del mayor pico corresponde a 130BPM
 \end{block}
 }
 
@@ -661,7 +678,7 @@ El 2do agente es el ganador para esta pieza
 \vspace*{50pt}
 \begin{block}{Agente 1}
 \begin{center}
-\movie[label=cells2]{}{./music/datos2_14_A_tracked.wav}
+\movie[label=cells2]{}{./music/datos2_14_A_tracked2.wav}
 \hyperlinkmovie[]{cells2}{\beamergotobutton{PLAY}}
 \end{center}
 \end{block}
