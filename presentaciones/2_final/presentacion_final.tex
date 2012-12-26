@@ -558,8 +558,8 @@ El 1er agente es el ganador para esta pieza
 \vspace*{50pt}
 \begin{block}{Agente 1}
 \begin{center}
-\movie[label=cells]{}{./music/datos2_2_A_tracked.wav}
-\hyperlinkmovie[]{cells}{\beamergotobutton{PLAY}}
+\movie[label=cells34]{}{./music/datos2_2_A_tracked.wav}
+\hyperlinkmovie[]{cells34}{\beamergotobutton{PLAY}}
 \end{center}
 \end{block}
 }
@@ -668,8 +668,8 @@ El 2do agente es el ganador para esta pieza
 \vspace{50pt}
 \begin{block}{Agente 2}
 \begin{center}
-\movie[label=cells2]{}{./music/datos2_14_A_tracked.wav}
-\hyperlinkmovie[]{cells2}{\beamergotobutton{PLAY}}
+\movie[label=cells4]{}{./music/datos2_14_A_tracked.wav}
+\hyperlinkmovie[]{cells4}{\beamergotobutton{PLAY1}}
 \end{center}
 \end{block}
 }
@@ -678,8 +678,8 @@ El 2do agente es el ganador para esta pieza
 \vspace*{50pt}
 \begin{block}{Agente 1}
 \begin{center}
-\movie[label=cells2]{}{./music/datos2_14_A_tracked2.wav}
-\hyperlinkmovie[]{cells2}{\beamergotobutton{PLAY}}
+\movie[label=cells22]{}{./music/datos2_14_A_tracked2.wav}
+\hyperlinkmovie[]{cells22}{\beamergotobutton{PLAY2}}
 \end{center}
 \end{block}
 }
@@ -766,6 +766,116 @@ F-Mesure: & f: 100.00 & p: 100.00 & r: 100.00 & a: 100.00 \\ \hline
 \end{center}
 \end{block}
 
+\end{scriptsize}
+}
+
+
+\end{frame}
+
+
+
+\section{Ejemplo 3}
+% ========================= FRAME ===============================
+% ===============================================================
+\begin{frame}
+\frametitle{Ejemplos}
+
+\only<1->{
+\vspace*{10pt}
+\begin{scriptsize}
+\begin{itemize} \item \textbf{Caso de mal funcionamiento} \end{itemize}
+\end{scriptsize}
+}
+
+
+
+\begin{columns}
+\column{1.5in}
+
+\begin{scriptsize}
+
+
+\only<2>{
+\vspace*{50pt}
+\begin{block}{Pre-Tracking}
+El valor del mayor pico corresponde a 145BPM, mala estimación!
+\end{block}
+}
+
+\only<3>{
+\vspace*{50pt}
+\begin{block}{Beat Tracking}
+Dificultad de detección de eventos
+\end{block}
+}
+
+\only<4>{
+\vspace*{50pt}
+\begin{block}{Agente 1}
+\begin{center}
+\movie[label=cells12377]{}{./music/datos2_18_A_tracked.wav}
+\hyperlinkmovie[]{cells12377}{\beamergotobutton{PLAY}}
+\end{center}
+\end{block}
+}
+
+
+
+
+
+
+\end{scriptsize}
+
+
+\column{3in}
+\begin{scriptsize}
+
+
+\only<1-2 >{
+\begin{tikzpicture}
+\alt<2>
+{\node[opacity=1]
+{\includegraphics[width=1\textwidth]{./pics/datos_2_18_A_autocorr.pdf}};}
+{\node[opacity=.15]
+{\includegraphics[width=1\textwidth]{./pics/datos_2_18_A_autocorr.pdf}};}
+\end{tikzpicture}
+}
+
+\only<3-4>{
+\begin{tikzpicture}
+\alt<3->
+{\node[opacity=1]
+{\includegraphics[width=1\textwidth]{./pics/datos_2_18_A_agents.pdf}};}
+{\node[opacity=.15]
+{\includegraphics[width=1\textwidth]{./pics/datos_2_18_A_agents.pdf}};}
+\end{tikzpicture}
+}
+
+%\only<4>{
+%\begin{tikzpicture}
+%\alt<4>
+%{\node[opacity=1]
+%{\includegraphics[width=1\textwidth]{./pics/datos_2_2_A_beats_bien.pdf}};}
+%{\node[opacity=.15]
+%{\includegraphics[width=1\textwidth]{./pics/datos_2_2_A_beats_bien.pdf}};}
+%\end{tikzpicture}
+%}
+
+\end{scriptsize}
+\end{columns}
+
+\only<5>{
+\vspace*{50pt}
+\begin{scriptsize}
+\begin{block}{Agente 1}
+\begin{center}
+\rowcolors{1}{RoyalBlue!5}{RoyalBlue!20}
+\begin{tabular}{rllll} \hline
+Cont-Based: & cC: 0.00 & cT: 0.00 & aC: 0.00 & aT: 0.00 \\ \hline
+F-Mesure: & f: 16.67 & p: 30.77 & r: 11.43 & a: 9.09 \\ \hline
+\end{tabular}
+\end{center}
+\end{block}
 \end{scriptsize}
 }
 

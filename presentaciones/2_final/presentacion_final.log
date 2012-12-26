@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  24 DEC 2012 20:41
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.16)  26 DEC 2012 07:01
 entering extended mode
  %&-line parsing enabled.
 **presentacion_final.tex
@@ -1260,22 +1260,22 @@ LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <6> not available
 (Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 106
 .
 
-Overfull \hbox (125.61397pt too wide) detected at line 106
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) detected at line 106
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <14.4> not available
 (Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 112
 .
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-<./pics/bloques.png, id=105, 1075.01625pt x 664.4825pt>
+<./pics/bloques.png, id=112, 1075.01625pt x 664.4825pt>
 File: ./pics/bloques.png Graphic file (type png)
 
 <use ./pics/bloques.png>
@@ -1316,8 +1316,8 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 150.
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [2
@@ -1325,8 +1325,8 @@ Overfull \hbox (125.61397pt too wide) has occurred while \output is active
  <./pics/bloques.png (PNG copy)>]
 File: ./pics/bloques.png Graphic file (type png)
  <use ./pics/bloques.png>
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [3
@@ -1334,8 +1334,8 @@ Overfull \hbox (125.61397pt too wide) has occurred while \output is active
 ]
 File: ./pics/bloques.png Graphic file (type png)
  <use ./pics/bloques.png>
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [4
@@ -1343,8 +1343,8 @@ Overfull \hbox (125.61397pt too wide) has occurred while \output is active
 ]
 File: ./pics/bloques.png Graphic file (type png)
  <use ./pics/bloques.png>
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [5
@@ -1352,8 +1352,8 @@ Overfull \hbox (125.61397pt too wide) has occurred while \output is active
 ]
 File: ./pics/bloques.png Graphic file (type png)
  <use ./pics/bloques.png>
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [6
@@ -1371,11 +1371,11 @@ n/8 ^^@ \OT1/lmr/m/n/8 1\OML/lmm/m/it/8 ; \OT1/lmr/m/it/8 k\OT1/lmr/m/n/8 )\OMS
 /lmsy/m/n/8 j[]\OT1/lmr/m/n/8 )[][][][][]
  []
 
-<./pics/SF.png, id=280, 904.1278pt x 678.28406pt>
+<./pics/SF.png, id=292, 904.1278pt x 678.28406pt>
 File: ./pics/SF.png Graphic file (type png)
  <use ./pics/SF.png>
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [7
@@ -1392,8 +1392,8 @@ n/8 ^^@ \OT1/lmr/m/n/8 1\OML/lmm/m/it/8 ; \OT1/lmr/m/it/8 k\OT1/lmr/m/n/8 )\OMS
 
 File: ./pics/SF.png Graphic file (type png)
 <use ./pics/SF.png>
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [8
@@ -1410,8 +1410,8 @@ y/m/n/8 ^^@ \OT1/lmr/m/n/8 1\OML/lmm/m/it/8 ; \OT1/lmr/m/it/8 k\OT1/lmr/m/n/8 )
 
 File: ./pics/SF.png Graphic file (type png)
 <use ./pics/SF.png>
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [9
@@ -1430,7 +1430,7 @@ Overfull \hbox (39.09833pt too wide) detected at line 383
 [] [][][][]
  []
 
-<./pics/ACF.png, id=396, 1205.50375pt x 904.37875pt>
+<./pics/ACF.png, id=411, 1205.50375pt x 904.37875pt>
 File: ./pics/ACF.png Graphic file (type png)
  <use ./pics/ACF.png>
 Overfull \hbox (5.66605pt too wide) in paragraph at lines 383--383
@@ -1438,8 +1438,8 @@ Overfull \hbox (5.66605pt too wide) in paragraph at lines 383--383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [10
@@ -1456,8 +1456,8 @@ Overfull \hbox (5.66605pt too wide) in paragraph at lines 383--383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [11
@@ -1474,8 +1474,8 @@ Overfull \hbox (5.66605pt too wide) in paragraph at lines 383--383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [12
@@ -1492,8 +1492,8 @@ Overfull \hbox (5.66605pt too wide) in paragraph at lines 383--383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [13
@@ -1510,8 +1510,8 @@ Overfull \hbox (5.66605pt too wide) in paragraph at lines 383--383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [14
@@ -1521,7 +1521,7 @@ Overfull \hbox (39.09833pt too wide) detected at line 383
 [] [][]
  []
 
-<./pics/ACF2.png, id=574, 1205.50375pt x 904.37875pt>
+<./pics/ACF2.png, id=594, 1205.50375pt x 904.37875pt>
 File: ./pics/ACF2.png Graphic file (type png)
  <use ./pics/ACF2.png>
 Overfull \hbox (5.66605pt too wide) in paragraph at lines 383--383
@@ -1529,14 +1529,14 @@ Overfull \hbox (5.66605pt too wide) in paragraph at lines 383--383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [15
 
  <./pics/ACF2.png (PNG copy)>]
-<./pics/Template.png, id=609, 1205.50375pt x 904.37875pt>
+<./pics/Template.png, id=630, 1205.50375pt x 904.37875pt>
 File: ./pics/Template.png Graphic file (type png)
 
 <use ./pics/Template.png>
@@ -1549,8 +1549,8 @@ Overfull \vbox (3.72264pt too high) detected at line 383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [16
@@ -1567,8 +1567,8 @@ Overfull \vbox (3.72264pt too high) detected at line 383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [17
@@ -1585,8 +1585,8 @@ Overfull \vbox (3.72264pt too high) detected at line 383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [18
@@ -1603,8 +1603,8 @@ Overfull \vbox (3.72264pt too high) detected at line 383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [19
@@ -1621,13 +1621,13 @@ Overfull \vbox (3.72264pt too high) detected at line 383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [20
 
-] <./pics/r.pdf, id=781, 487.8225pt x 396.48125pt>
+] <./pics/r.pdf, id=807, 487.8225pt x 396.48125pt>
 File: ./pics/r.pdf Graphic file (type pdf)
  <use ./pics/r.pdf>
 Overfull \hbox (5.66605pt too wide) in paragraph at lines 383--383
@@ -1639,8 +1639,8 @@ Overfull \vbox (17.29225pt too high) detected at line 383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [21
@@ -1657,8 +1657,8 @@ Overfull \vbox (17.29225pt too high) detected at line 383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [22
@@ -1675,8 +1675,8 @@ Overfull \vbox (17.29225pt too high) detected at line 383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [23
@@ -1699,8 +1699,8 @@ Overfull \vbox (17.29225pt too high) detected at line 383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [24
@@ -1723,8 +1723,8 @@ Overfull \vbox (17.29225pt too high) detected at line 383
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [25
@@ -1736,26 +1736,26 @@ Overfull \hbox (18.91551pt too wide) detected at line 383
 [][] \OMS/lmsy/m/n/8 ^^C [][][][][][][][]
  []
 
-<./pics/graficamejor.png, id=958, 575.57893pt x 335.53929pt>
+<./pics/graficamejor.png, id=989, 575.57893pt x 335.53929pt>
 File: ./pics/graficamejor.png Graphic file (type png)
 
 <use ./pics/graficamejor.png>
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [26
 
  <./pics/graficamejor.png>]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [27
 
 ]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [28
@@ -1765,18 +1765,18 @@ LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <8> not available
 (Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 518
 .
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [29
 
-] <./pics/grafica.png, id=1095, 738.76pt x 420.57124pt>
+] <./pics/grafica.png, id=1130, 738.76pt x 420.57124pt>
 File: ./pics/grafica.png Graphic file (type png)
 
 <use ./pics/grafica.png>
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [30
@@ -1784,8 +1784,8 @@ Overfull \hbox (125.61397pt too wide) has occurred while \output is active
  <./pics/grafica.png (PNG copy)>]
 File: ./pics/grafica.png Graphic file (type png)
  <use ./pics/grafica.png>
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [31
@@ -1793,48 +1793,48 @@ Overfull \hbox (125.61397pt too wide) has occurred while \output is active
 ]
 File: ./pics/grafica.png Graphic file (type png)
  <use ./pics/grafica.png>
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [32
 
 ]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [33
 
 ]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [34
 
 ]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [35
 
 ]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [36
 
 ]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [37
 
-] <./pics/datos_2_2_A_autocorr.pdf, id=1368, 543.02875pt x 423.5825pt>
+] <./pics/datos_2_2_A_autocorr.pdf, id=1411, 543.02875pt x 423.5825pt>
 File: ./pics/datos_2_2_A_autocorr.pdf Graphic file (type pdf)
 
 <use ./pics/datos_2_2_A_autocorr.pdf>
@@ -1847,8 +1847,8 @@ Overfull \vbox (4.65456pt too high) detected at line 628
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [38
@@ -1865,13 +1865,13 @@ Overfull \vbox (4.65456pt too high) detected at line 628
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [39
 
-] <./pics/datos_2_2_A_agents.pdf, id=1444, 507.8975pt x 396.48125pt>
+] <./pics/datos_2_2_A_agents.pdf, id=1489, 507.8975pt x 396.48125pt>
 File: ./pics/datos_2_2_A_agents.pdf Graphic file (type pdf)
 
 <use ./pics/datos_2_2_A_agents.pdf>
@@ -1884,14 +1884,14 @@ Overfull \vbox (4.78426pt too high) detected at line 628
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [40
 
  <./pics/datos_2_2_A_agents.pdf>]
-<./pics/datos_2_2_A_beats_bien.pdf, id=1496, 501.875pt x 398.48875pt>
+<./pics/datos_2_2_A_beats_bien.pdf, id=1542, 501.875pt x 398.48875pt>
 File: ./pics/datos_2_2_A_beats_bien.pdf Graphic file (type pdf)
 
 <use ./pics/datos_2_2_A_beats_bien.pdf>
@@ -1904,20 +1904,20 @@ Overfull \vbox (7.68422pt too high) detected at line 628
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [41
 
 <<./music/datos2_2_A_tracked.wav>> <./pics/datos_2_2_A_beats_bien.pdf>]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [42
 
-] <./pics/datos_2_14_A_autocorr2.pdf, id=1569, 532.99126pt x 423.5825pt>
+] <./pics/datos_2_14_A_autocorr2.pdf, id=1617, 532.99126pt x 423.5825pt>
 File: ./pics/datos_2_14_A_autocorr2.pdf Graphic file (type pdf)
 
 <use ./pics/datos_2_14_A_autocorr2.pdf>
@@ -1930,8 +1930,8 @@ Overfull \vbox (7.84099pt too high) detected at line 773
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [43
@@ -1949,13 +1949,13 @@ Overfull \vbox (7.84099pt too high) detected at line 773
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [44
 
-] <./pics/datos_2_14_A_agents.pdf, id=1646, 509.905pt x 396.48125pt>
+] <./pics/datos_2_14_A_agents.pdf, id=1696, 509.905pt x 396.48125pt>
 File: ./pics/datos_2_14_A_agents.pdf Graphic file (type pdf)
 
 <use ./pics/datos_2_14_A_agents.pdf>
@@ -1968,14 +1968,14 @@ Overfull \vbox (4.11876pt too high) detected at line 773
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [45
 
  <./pics/datos_2_14_A_agents.pdf>]
-<./pics/datos_2_14_A_beats_lento.pdf, id=1698, 501.875pt x 398.48875pt>
+<./pics/datos_2_14_A_beats_lento.pdf, id=1749, 501.875pt x 398.48875pt>
 File: ./pics/datos_2_14_A_beats_lento.pdf Graphic file (type pdf)
 
 <use ./pics/datos_2_14_A_beats_lento.pdf>
@@ -1988,14 +1988,14 @@ Overfull \vbox (7.68422pt too high) detected at line 773
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [46
 
 <<./music/datos2_14_A_tracked.wav>> <./pics/datos_2_14_A_beats_lento.pdf>]
-<./pics/datos_2_14_A_beats_bien.pdf, id=1751, 501.875pt x 398.48875pt>
+<./pics/datos_2_14_A_beats_bien.pdf, id=1803, 501.875pt x 398.48875pt>
 File: ./pics/datos_2_14_A_beats_bien.pdf Graphic file (type pdf)
 
 <use ./pics/datos_2_14_A_beats_bien.pdf>
@@ -2008,78 +2008,159 @@ Overfull \vbox (7.68422pt too high) detected at line 773
  []
 
 
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [47
 
 <<./music/datos2_14_A_tracked2.wav>> <./pics/datos_2_14_A_beats_bien.pdf>]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [48
 
 ]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [49
 
-]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+] <./pics/datos_2_18_A_autocorr.pdf, id=1914, 532.99126pt x 423.5825pt>
+File: ./pics/datos_2_18_A_autocorr.pdf Graphic file (type pdf)
+
+<use ./pics/datos_2_18_A_autocorr.pdf>
+Overfull \hbox (5.66605pt too wide) in paragraph at lines 883--883
+[][] 
+ []
+
+
+Overfull \vbox (7.84099pt too high) detected at line 883
+ []
+
+
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [50
 
-]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+ <./pics/datos_2_18_A_autocorr.pdf>]
+File: ./pics/datos_2_18_A_autocorr.pdf Graphic file (type pdf)
+ <use ./pics/datos_2_18_A_autocorr.pdf>
+Overfull \hbox (5.66605pt too wide) in paragraph at lines 883--883
+[][] 
+ []
+
+
+Overfull \vbox (7.84099pt too high) detected at line 883
+ []
+
+
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [51
 
-]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+] <./pics/datos_2_18_A_agents.pdf, id=1992, 509.905pt x 396.48125pt>
+File: ./pics/datos_2_18_A_agents.pdf Graphic file (type pdf)
+
+<use ./pics/datos_2_18_A_agents.pdf>
+Overfull \hbox (5.66605pt too wide) in paragraph at lines 883--883
+[][] 
+ []
+
+
+Overfull \vbox (4.11876pt too high) detected at line 883
+ []
+
+
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [52
 
-]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+ <./pics/datos_2_18_A_agents.pdf>]
+File: ./pics/datos_2_18_A_agents.pdf Graphic file (type pdf)
+ <use ./pics/datos_2_18_A_agents.pdf>
+Overfull \hbox (5.66605pt too wide) in paragraph at lines 883--883
+[][] 
+ []
+
+
+Overfull \vbox (4.11876pt too high) detected at line 883
+ []
+
+
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [53
 
-]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+<<./music/datos2_18_A_tracked.wav>>]
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [54
 
 ]
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [55
 
 ]
-LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 821.
-
-
-Overfull \hbox (125.61397pt too wide) has occurred while \output is active
-  [] [] [] [] [] [] [] [] [] [] [] 
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
  []
 
 [56
+
+]
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+[57
+
+]
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+[58
+
+]
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+[59
+
+]
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+[60
+
+]
+LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <10> not available
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 931.
+
+
+Overfull \hbox (158.30362pt too wide) has occurred while \output is active
+  [] [] [] [] [] [] [] [] [] [] [] [] 
+ []
+
+[61
 
  </usr/share/texmf/tex/latex/beamer/base/art/beamericonarticle.pdf>]
 \tf@nav=\write6
@@ -2098,10 +2179,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 19226 strings out of 494999
- 358530 string characters out of 1180816
- 541690 words of memory out of 3000000
- 21738 multiletter control sequences out of 15000+50000
+ 19322 strings out of 494999
+ 360639 string characters out of 1180816
+ 542280 words of memory out of 3000000
+ 21819 multiletter control sequences out of 15000+50000
  72806 words of font info for 51 fonts, out of 3000000 for 9000
  54 hyphenation exceptions out of 8191
  55i,16n,60p,407b,1049s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2120,9 +2201,9 @@ texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm
 /lmsso8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf
 /fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/a
 msfonts/symbols/msam7.pfb>
-Output written on presentacion_final.pdf (56 pages, 8289242 bytes).
+Output written on presentacion_final.pdf (61 pages, 10872507 bytes).
 PDF statistics:
- 2199 PDF objects out of 2487 (max. 8388607)
- 131 named destinations out of 1000 (max. 500000)
- 304 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2463 PDF objects out of 2487 (max. 8388607)
+ 143 named destinations out of 1000 (max. 500000)
+ 354 words of extra memory for PDF output out of 10000 (max. 10000000)
 
