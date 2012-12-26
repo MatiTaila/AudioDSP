@@ -19,11 +19,11 @@ opt.sintetica  = 0;
 opt.show_plots = 2;
 opt.save_plots = 0;
 opt.log        = 1;
-opt.wav_write  = 0;
+opt.wav_write  = 1;
 opt.txt_write  = 1;
 opt.compu_mati = 1;
 opt.referee    = 1;
-opt.cmp_gt     = 0;
+opt.cmp_gt     = 1;
 
 if opt.show_plots
     audio_colors;
